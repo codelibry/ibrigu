@@ -99,6 +99,35 @@
 				padding-bottom: 7px
 				+max-screen($breakpoint-md)
 					padding-bottom: 0
+		.form 
+			.nf-error-msg 
+				font-size: 10px
+				line-height: 1.35
+				+max-screen($breakpoint-md)
+					font-size: 8px
+			.nf-form-content .nf-field 
+				.field-wrap.checkbox-wrap .nf-field-label label
+					line-height: 1.45
+					font-size: 9px
+					margin-left: 20.5px 
+					+max-screen($breakpoint-md)
+						margin-left: 15px
+					&::after 
+						width: 11px 
+						height: 11px 
+						left: -20.5px 
+						+max-screen($breakpoint-md)
+							width: 9px 
+							height: 9px 
+							left: -15px 
+				.checkbox-wrap label:before
+					font-size: 6px
+					left: -18.5px
+					top: 3px 
+					+max-screen($breakpoint-md)
+						font-size: 5px
+						left: -13.5px 
+						top: 2px 
 	//&__menu__title
 	//	text-transform: uppercase
 	//	font-size: 12px
@@ -125,6 +154,7 @@
 			+max-screen($breakpoint-md)
 				font-size: 9px
 				line-height: 1
+	
 
 
 +max-screen($breakpoint-md)
