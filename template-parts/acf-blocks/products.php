@@ -22,7 +22,7 @@
                         $product_link = get_permalink($product->get_id());
                         ?>
 
-                        <li class="products__item col-6 col-md-4">
+                        <li class="products__item col-6 col-md-4 col-xl-2">
                             <div class="products__item-wrap">
                                 <a href="<?php echo $product_link; ?>" class="products__item-img">
                                     <?php echo $product_thumbnail; ?>

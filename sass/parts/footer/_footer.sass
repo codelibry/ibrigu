@@ -1,13 +1,13 @@
 .footer
 	background: #EBEBE8
+	.container
+		max-width: 100%
 	&__main
-		padding: 100px 0
+		padding: 90px 0 40px
 		background: #EBEBE8
 		+max-screen($breakpoint-lg)
-			padding: 60px 0
+			padding: 60px 0 40px
 		+max-screen($breakpoint-md)
-			padding: 40px 0 0
-		+max-screen($breakpoint-sm)
 			padding: 14px 27.5px 0 0
 		&__logo
 			display: block
@@ -21,100 +21,110 @@
 			margin-top: 28px
 
 		&__nav
-			padding-top: 53px
 			+max-screen($breakpoint-lg)
 				padding-top: 40px
 			+max-screen($breakpoint-md)
-				padding-top: 20px
-			+max-screen($breakpoint-sm)
 				padding-top: 5px
 			h4
-				margin-bottom: 0
+				text-transform: uppercase
+				font-size: 12px
+				line-height: 1.33
+				font-weight: 400
+				margin-bottom: 13px
+				+max-screen($breakpoint-md)
+					font-size: 9px
+					line-height: 1
+					margin-bottom: 0
 			ul
 				width: 100%
-				margin: -10px 0
 				display: flex
 				flex-direction: column
-				+max-screen($breakpoint-md)	
-					margin: 0
 			li
+				font-size: 12px
+				line-height: 1
+				+max-screen($breakpoint-md)
+					font-size: 9px
 				a
-					transition: 0.3s ease-out
 					display: inline-block
-					font-size: 18px
-					+min-screen($breakpoint-lg)
-						font-size: 16px
+					font-size: 12px
+					line-height: 1.33
+					transition: 0.3s ease-out
 					+max-screen($breakpoint-md)
-						font-size: 12px
-					+max-screen($breakpoint-sm)
 						font-size: 9px
-						&:hover
-							color: $color-primary
+					&:hover
+						color: $color-primary
+				&:not(:last-of-type)
+					margin-bottom: 16px
 
 		&__social
 			&__list
 				display: flex
-				gap: 14px
+				gap: 0 44px
+				+max-screen($breakpoint-lg)
+					gap: 0 14px
 				li
 					a
+						font-size: 12px
+						text-decoration: underline
+						+max-screen($breakpoint-lg)
+							display: block
+							height: 10px
+							font-size: 0
+							text-decoration: none
 						img
 							width: auto
-							height: 30px
-							+max-screen($breakpoint-lg)
-								height: 20px
-							+max-screen($breakpoint-sm)
-								height: 11px
+							height: 100%
 		&__newsletter
-			padding-top: 40px
+			max-width: 400px
 			+max-screen($breakpoint-lg)
+				max-width: unset
 				padding-top: 40px
 			+max-screen($breakpoint-md)
-				padding-top: 20px
-			+max-screen($breakpoint-sm)
 				padding-top: 5px
 			p
-				padding-bottom: 40px !important
+				font-size: 12px
+				line-height: 1.5
+				padding-bottom: 15px !important
 				+max-screen($breakpoint-md)
-					padding-bottom: 20px !important
-				+max-screen($breakpoint-sm)
+					font-size: 9px
+					line-height: 1.11
 					padding-bottom: 5px !important
+				strong
+					+max-screen($breakpoint-md)
+						font-weight: 400
+				br
+					+max-screen($breakpoint-lg)
+						display: none
 			.nf-form-cont
 				padding-bottom: 7px
 				+max-screen($breakpoint-md)
 					padding-bottom: 0
-	&__menu__title
-		margin-bottom: 5px
-		text-transform: uppercase
-		+min-screen($breakpoint-lg)
-			font-size: 16px
-		+max-screen($breakpoint-md)
-			font-size: 12px
-		+max-screen($breakpoint-sm)
-			font-size: 9px
-			a
-				+min-screen($breakpoint-lg)
-					font-size: 16px
-				+max-screen($breakpoint-md)
-					font-size: 12px
-				+max-screen($breakpoint-sm)
-					font-size: 9px
+	//&__menu__title
+	//	text-transform: uppercase
+	//	font-size: 12px
+	//	margin-bottom: 13px
+	//	+max-screen($breakpoint-md)
+	//		margin-bottom: 5px
+	//		font-size: 9px
+	//		a
+	//			font-size: 12px
+	//			+max-screen($breakpoint-md)
+	//				font-size: 9px
 	&__bottom
-		padding: 26px 0
-		+max-screen($breakpoint-sm)
-			padding: 0 0 13px
+		padding: 37px 0 30px
+		+max-screen($breakpoint-md)
+			padding: 17px 0 13px
 		&__wrapper
 			text-align: center
 		&__inner
 			display: flex
-			flex-direction: column
+			justify-content: space-between
+			//flex-direction: column
 		&__copyright
-			margin-top: 18px
-			+min-screen($breakpoint-lg)
-				font-size: 16px
+			font-size: 13px
 			+max-screen($breakpoint-md)
-				font-size: 12px
-			+max-screen($breakpoint-sm)
 				font-size: 9px
+				line-height: 1
 
 
 +max-screen($breakpoint-md)
@@ -143,10 +153,8 @@
 			
 	.footer-nav
 		+max-screen($breakpoint-md)
+			overflow: hidden
+			transition: max-height 0.6s linear 0.3s
 			display: none
-			// max-height: 0px
-			// overflow: hidden
-			// transition: max-height 0.6s linear 0.3s
-			// .footer-active &
-			// 	max-height: 90px
-			// 	transition: max-height 0.6s ease-out 0s
+			.footer-active &
+				transition: max-height 0.6s ease-out 0s

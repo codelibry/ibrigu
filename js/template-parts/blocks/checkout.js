@@ -255,5 +255,15 @@ function message() {
             });
         }, 300);
     }
+    if($('body').hasClass('woocommerce-cart') && $('.woocommerce-message').length > 0){
+        $('<div class="scroller"></div>').prependTo('.woocommerce-message');
+        setTimeout(() => {
+            $('.scroller').animate({
+                right: '100%',
+            }, 10000, function() {
+                $('.woocommerce-message').remove();
+            });
+        }, 300);
+    }
 }
 export {checkout}

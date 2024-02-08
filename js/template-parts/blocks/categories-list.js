@@ -28,9 +28,15 @@ function addSliderItemsClass(){
 }
 function sliderInit() {
     let sliderWidth = 0;
-    $('.catalog__categoriesList .catalog__categoriesList__itemWrapper.active').each(function(){
-        sliderWidth += $(this).outerWidth();
-        $('.catalog__categoriesList').css('width', sliderWidth);
+    $(window).on('load', function(){
+        $('.catalog__categoriesList .catalog__categoriesList__itemWrapper.active').each(function(){
+            console.log($(this).outerWidth());
+            sliderWidth += $(this).outerWidth();
+        });
+        $('.catalog__categoriesList').animate(
+            {
+                width: sliderWidth
+            }, 300);
     });
 }
 
@@ -74,8 +80,12 @@ function slidesChange(){
             } else{
                 $('.catalog__categoriesList__prev').removeClass('disabled');
             }
-    
-            sliderInit();
+            let sliderWidth = 0;
+            $('.catalog__categoriesList .catalog__categoriesList__itemWrapper.active').each(function(){
+                console.log($(this).outerWidth());
+                sliderWidth += $(this).outerWidth();
+                $('.catalog__categoriesList').css('width', sliderWidth);
+            });
         })
     }
 }

@@ -1,7 +1,17 @@
 .products
     &__list
         gap: 20px 0
+        margin-left: -16.5px
+        margin-right: -16.5px
+        +max-screen($breakpoint-xl)
+            margin-left: -10px
+            margin-right: -10px
     &__item
+        padding-left: 16.5px
+        padding-right: 16.5px
+        +max-screen($breakpoint-xl)
+            padding-left: 10px
+            padding-right: 10px
         &-wrap
         &-img
             display: block
@@ -9,15 +19,22 @@
             width: 100%
             height: 0
             overflow: hidden
-            padding-bottom: 125.14%
+            padding-bottom: 129.205%
+            +max-screen($breakpoint-lg)
+                padding-bottom: 125.14%
             img
                 position: absolute
                 width: 100%
                 height: 100%
         &-name, &-price
             display: block
-            font-size: 10px
+            font-size: 15px
+            line-height: 1.66
+            +max-screen($breakpoint-md)
+                font-size: 10px
         &-name
-            margin-top: 12px
+            margin-top: 21px
+            +max-screen($breakpoint-md)
+                margin-top: 12px
         &-price
-            margin-top: 5px
+            //margin-top: 5px

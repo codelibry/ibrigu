@@ -117,7 +117,7 @@ add_action('woocommerce_account_change_password', 'custom_account_password_form'
 function custom_account_password_form() {
     ?>
     <div class="woocommerce-MyAccount-content myAccount__changePasswordForm">
-		<div class="myAccount__changePasswordForm__title woocommerce-text editAccount__form__title desktop-lg">
+		<div class="myAccount__changePasswordForm__title woocommerce-text editAccount__form__title">
 			<?php _e('Change password', 'woocommerce_custom_text'); ?>
 		</div>
         <form action="" method="post" id="chnagePassword">
@@ -127,7 +127,7 @@ function custom_account_password_form() {
             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
                 <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_1" id="password_1" placeholder="<?php _e('New password *', 'woocommerce_custom_text'); ?>" />
             </p>
-			<p class="woocommerce-form-text woocommerce-text change-password-text">
+			<p class="woocommerce-form-text woocommerce-text chnage-password-text">
 				<?php _e('8-15 characters', 'woocommerce_custom_text'); ?>
 			</p>
             <p class="submitBtn__wrapper">
@@ -348,13 +348,13 @@ function add_password_fields_to_registration() {
     <p class="form-row woocommerce-form-row form-row-wide">
         <input type="password" class="input-text" name="password" id="reg_password" placeholder="<?php _e('Password *', 'woocommerce'); ?>" value="<?php if (!empty($_POST['password'])) echo esc_attr($_POST['password']); ?>" required/>
     </p>
-    <span class="underPasswordText woocommerce-text desktop-sm"><?php _e('8-15 characters', 'woocommerce_custom_text'); ?></span>
+    <span class="underPasswordText woocommerce-text "><?php _e('8-15 characters', 'woocommerce_custom_text'); ?></span>
     <p class="form-row woocommerce-form-row form-row-wide">
         <input type="password" class="input-text" name="confirm_password" id="reg_confirm_password" placeholder="<?php _e('Confirm password *', 'woocommerce'); ?>" value="<?php if (!empty($_POST['confirm_password'])) echo esc_attr($_POST['confirm_password']); ?>" required/>
     </p>
     <div class="form-row woocommerce-form-row form-row-wide form-privacy-checkbox-wrapper form-checkbox-wrapper">
         <div class="form-privacy-checkbox form-checkbox"><input type="checkbox" name="privacy"></div>
-        <span class="woocommerce-text sm desktop-sm"><?php _e('Having read the privacy policy I authorize Ibrigu to process my personal data.', 'woocommerce_custom_text'); ?></span>
+        <span class="woocommerce-text sm"><?php _e('Having read the privacy policy I authorize Ibrigu to process my personal data.', 'woocommerce_custom_text'); ?></span>
     </div>
     <div class="errors">
         <div class="error-msg checkbox"><?php _e('Please confirm that you have read the Privacy Policy', 'woocommerce_custom_text'); ?></div>
@@ -459,4 +459,6 @@ function display_shipping_province_in_admin($order) {
     echo '<p><strong>Province:</strong> ' . esc_html($province) . '</p>';
     echo '<p><strong>Phone Number:</strong> ' . esc_html($phone) . '</p>';
 }
+
+
 

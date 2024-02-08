@@ -5,278 +5,358 @@
 	width: 100%
 	z-index: 999999
 	background: #F2F2EF
-	display: flex
-	justify-content: center
-	padding: 30px 0
-	height: calc(36px + (30px * 2))
-	+max-screen($breakpoint-lg)
-		height: calc(35px + (30px * 2))
-	+max-screen($breakpoint-md)
-		padding: 20px 0
-		height: calc(30px + (20px * 2))
-	&__container
+	.container
 		max-width: 100%
-	&__row
-		display: flex
-		align-items: center
-		width: 100%
-		height: 100%
-		+max-screen($breakpoint-lg)
-			justify-content: unset
-		.home &
-			gap: 0 16px
-	&__toggle
-		.home &
-			order: 5
-
-	&__nav
-		position: absolute
-		padding-left: 0
-		padding-top: 0
-		top: 100%
-		left: 0
-		width: 100%
-		padding: 0
-		background: #F2F2EF
-	&__lang
-		margin-bottom: 1px
-		margin-left: 7px
-		transition: $default-transition
-		+max-screen($breakpoint-md)
-			align-self: flex-end
-		&.lang--desktop
-			.header-active &
-				+max-screen($breakpoint-md)
+	.nav-toggle
+		width: 27px
+		height: 16px
+		z-index: 6
+		position: relative
+		&-icon
+			position: absolute
+			width: 100%
+			height: 100%
+			span,
+			&:before,
+			&:after
+				content: ''
+				position: absolute
+				width: 100%
+				height: 2px
+				background-color: $color-black
+				left: 0
+				transition: opacity 0.25s linear 0s , top 0.25s linear 0.25s , transform 0.25s linear 0s
+				.home &
+					background-color: $color-white
+				//.header__dark &,
+				//.scrolled &
+				//	background-color: $color-black
+			span
+				top: 0
+			&:before
+				top: 50%
+			&:after
+				top: 100%
+			.header-active &, &.nav-close
+				span, &:before, &:after
+					top: 50%
+					transition: opacity 0.25s linear 0.25s , top 0.25s linear 0s , transform 0.25s linear 0.25s
+				span
 					opacity: 0
-		&.lang--mobile
+				&:before
+					transform: rotate(45deg)
+				&:after
+					transform: rotate(-45deg)
+
+	&__wrap
+		align-items: flex-start
+		width: 100%
+		padding: 5px 0
+		+max-screen($breakpoint-md)
+			padding: 20px 0
+		.home &
+			+max-screen($breakpoint-md)
+				gap: 0 16px
+		&.header--desktop, &.header--mobile
+			.header
+				&__nav
+					.sub-menu
+						display: none
+						overflow: hidden
+						+max-screen($breakpoint-md)
+							border-bottom: 1px solid $color-black
+							.menu-item 
+								line-height: 1.15
+					.menu-item__icon
+						display: none
+					.menu-item
+						text-transform: none
+						a
+							.home &
+								color: $color-white
+								+max-screen($breakpoint-md)
+									color: $color-black
+						&.current-menu-item, &.current-menu-parent .menu-item__parent
+							&>a
+								text-decoration: underline
+				&__logo
+					.header--logo
+						display: block
+						svg
+							display: flex
+							width: 100%
+							height: 100%
+		&.header--desktop
+			display: flex
+			padding-top: 80px
+			+max-screen(1440px)
+				padding-top: 56px
+			+max-screen(1200px)
+				padding-top: 36px
+			+max-screen($breakpoint-md)
+				display: none
+			.header
+				&__nav
+					.cart
+						padding: 2px 0 5px
+						svg
+							width: 29px
+							height: auto
+						path
+							fill: $color-black
+							.home &
+								fill: $color-white
+
+					.sub-menu
+						.menu-item
+							text-transform: unset
+					.menu-item
+						padding: 0
+						&:not(:last-of-type)
+							padding-bottom: 5px
+					.menu-item
+						font-size: 15px
+						line-height: 1.33
+						padding: 2px 0
+						&.menu-active
+							.sub-menu
+								padding: 14px 0
+					&.nav--left, &.nav--right
+						a
+							display: flex
+					&.nav--left
+						a
+							justify-content: flex-start
+					&.nav--right
+						a
+							justify-content: flex-end
+				&__logo
+					position: absolute
+					left: 50%
+					top: 80px
+					transform: translateX(-50%)
+					transition: $default-transition
+					+max-screen(1440px)
+						top: 56px
+					+max-screen(1200px)
+						top: 36px
+					.header--logo
+						width: auto
+						height: 84px
+						+max-screen($breakpoint-xl)
+							height: 60px
+						+max-screen($breakpoint-lg)
+							height: 45px
+				&__lang
+					margin: 0 142px 0 auto
+					transition: $default-transition
+					+max-screen($breakpoint-xl)
+						margin: 0 90px 0 auto
+					+max-screen($breakpoint-lg)
+						margin: 0 60px 0 auto
+					&__list
+						display: flex
+						line-height: 1.33
+						li, a
+							font-size: 15px
+		&.header--mobile
 			display: none
 			+max-screen($breakpoint-md)
 				display: flex
-				justify-content: center
-				padding-top: 40px
-				margin: 0 auto
-				margin-top: auto
-		&__item-sep 
-			padding: 0 6px 
-		.home &
-			order: 2
-		&__list
-			display: flex
-			a
-				font-size: 18px
-				+max-screen($breakpoint-lg)
-					font-size: 16px
-				+max-screen($breakpoint-md)
-					font-size: 10px
-	&__logo
-		position: absolute
-		left: 50%
-		top: 50%
-		transform: translate(-50%, -50%)
-		transition: $default-transition
-		.header-active &
-			+max-screen($breakpoint-md)
+				align-items: center
+			.header__toggle
+				z-index: 0
+			.header__close 
+				width: 23px 
+				height: 23px
+				position: absolute 
+				left: 28px 
+				top: 89px 
 				opacity: 0
-		.home &
-			position: unset
-			transform: unset
-			order: 1
-			margin: 0 auto 0 0
-		.header--logo
-			display: block
-			width: auto
-			height: 36px
-			+max-screen($breakpoint-lg)
-				height: 35px
-			+max-screen($breakpoint-md)
-				height: 30px
-			svg
-				display: flex
-				width: 100%
-				height: 100%
+				transition-duration: 0.3s 
+				&::before,
+				&::after 
+					content: ""
+					position: absolute
+					left: 0
+					top: 50%
+					height: 2px 
+					width: 100% 
+					background-color: $color-black
+				&::before 
+					transform: rotate(45deg)
+				&::after 
+					transform: rotate(-45deg)
+			.main-nav
+				max-height: 0
+				overflow-y: auto
+				transition: all 0.42s linear 0s
+				min-height: 0
+				height: 0
+				padding: 0 15px
+				display: flex 
+				flex-direction: column 
+				.header-active &
+					max-height: 100svh
+					min-height: 100svh
+					height: 100svh
+					padding: 40px 28px
+			.header
+				&__nav
+					position: absolute
+					padding-left: 0
+					padding-top: 0
+					top: 0
+					left: 0
+					width: 100%
+					padding: 0
+					background: #F2F2EF
+					z-index: 1
+					.menu-main-menu-mobile-container
+						margin-top: auto
+					.sub-menu
+						+max-screen($breakpoint-lg)
+							padding: 6px 0
+						.menu-item
+							padding: 3px 0
+							border-bottom: 0
+							+max-screen($breakpoint-lg)
+								padding: 6px 0
+					.menu-item
+						font-size: 19px
+						line-height: 1.24em
+						text-align: center
+						padding: 9px
+						border-bottom: 1px solid $color-black
+						opacity: 0
+						transition: 0.42s
+						.header-active &
+							opacity: 1
+							@for $i from 1 to 10
+								&:nth-child(#{$i})
+									transition-delay: 0.42s + $i * 0.1s
+						&.menu-item-has-children 
+							padding: 0
+							border-bottom: 0
+							.menu-item__parent
+								padding: 9px 
+								border-bottom: 1px solid $color-black
 
-	&__wishlist, &__cart
-		transition: $default-transition
-		.header-active &
-			+max-screen($breakpoint-md)
-				opacity: 0
-		a
-			display: flex
-			align-items: center
-			justify-content: center
-	&__wishlist
-		margin-left: auto
-		margin-right: 10px
-		position: relative
-		.home &
-			order: 4
-			margin: 0
-		&Count 
-			position: absolute
-			font-size: 8px
-			top: -5px
-			border-radius: 50%
-			right: -5px
-			display: flex
-			justify-content: center
-			align-items: center
-			left: 50%
-			top: 50%
-			transform: translate(-50%,-50%)
-	&__cart
-		position: relative
-		z-index: 1
-		.home &
-			order: 3
-.main-nav
-	max-height: 0
-	overflow-y: auto
-	transition: all 0.42s linear 0s
-	+max-screen($breakpoint-md)
-		min-height: 0
-		height: 0
-		display: flex 
-		flex-direction: column 
-	.header-active &
-		max-height: 300px
-		transition: all 0.42s ease-out 0s
-		padding: 40px 30px 40px
-		+max-screen($breakpoint-md)
-			max-height: 100svh
-			min-height: calc(100svh - 70px)
-			height: calc(100svh - 70px)
-			padding: 40px 15px
-#main-nav
-	.sub-menu
-		display: none
-		overflow: hidden
-		+max-screen($breakpoint-md)
-			padding: 6px 0
-			border-bottom: 1px solid $color-black
-		.menu-item
-			padding: 3px 0
-			border-bottom: 0
-			+max-screen($breakpoint-lg)
-				padding: 6px 0
-				line-height: 1.14
-				&:last-child
-					padding-bottom: 6px
-	.menu-item__icon
-		display: none
-	.menu-item
-		font-size: 14px
-		line-height: 1.24em
-		text-transform: uppercase
-		padding-bottom: 3px
-		border-bottom: 1px solid $color-black
-		+max-screen($breakpoint-lg)
-			opacity: 0
-			transition: 0.42s
-			padding-bottom: 12px
-			.header-active &
-				opacity: 1
-				@for $i from 1 to 10
-					&:nth-child(#{$i})
-						transition-delay: 0.42s + $i * 0.1s
-		+max-screen($breakpoint-md)
-			font-size: 19px
-			padding: 9px
-			text-align: center
-			&.menu-item-has-children 
-				padding: 0
-				border-bottom: 0
-				.menu-item__parent
-					padding: 9px 
-					border-bottom: 1px solid $color-black
-		&:last-of-type
-			padding-bottom: 0
-			+max-screen($breakpoint-md)
-				padding-bottom: 9px
-		&>a
-			
-		&.current-menu-item
-			&>a
-				text-decoration: underline
-.nav-toggle
-	width: 27px
-	height: 16px
-	z-index: 6
-	position: relative
-
-	&-icon
-		position: absolute
-		width: 100%
-		height: 100%
-
-		span,
-		&:before,
-		&:after
-			content: ''
-			position: absolute
-			width: 100%
-			height: 2px
-			background-color: #000
-			.header__dark &,
-			.scrolled &
-				background-color: #000
-
-		span
-			top: 0
-			left: 0
-			transition: opacity 0.25s linear 0s , top 0.25s linear 0.25s
-		&:before
-			top: 50%
-			left: 0
-			transition: opacity 0.25s linear 0s , top 0.25s linear 0.25s , transform 0.25s linear 0s
-		&:after
-			top: 100%
-			left: 0
-			transition: opacity 0.25s linear 0s , top 0.25s linear 0.25s , transform 0.25s linear 0s
-
-		.header-active &,&.nav-close
-			span
-				opacity: 0
-				top: 50%
-				transition: opacity 0.25s linear 0.25s , top 0.25s linear 0s
-			&:before
-				transform: rotate(45deg)
-				top: 50%
-				transition: opacity 0.25s linear 0.25s , top 0.25s linear 0s , transform 0.25s linear 0.25s
-			&:after
-				transform: rotate(-45deg)
-				top: 50%
-				transition: opacity 0.25s linear 0.25s , top 0.25s linear 0s , transform 0.25s linear 0.25s
+				&__toggle
+					.home &
+						order: 5
+				&__lang
+					display: flex
+					align-self: flex-end
+					justify-content: center
+					margin: 0 auto -9px 7px
+					transition: all 0.35s linear !important
+					+max-screen($breakpoint-md)
+						margin: 0 0 -2px 7px
+					.home &
+						order: 2
+					.header-active &
+						opacity: 0
+					&.lang--nav
+						margin: 0
+						padding-top: 40px
+						opacity: 1
+						margin-top: auto
+						margin-left: auto
+						margin-right: auto
+					&__list
+						display: flex
+						li, a
+							display: block
+							height: 100%
+							font-size: 10px
+				&__logo
+					position: absolute
+					left: 50%
+					top: 50%
+					transform: translate(-50%, -50%)
+					transition: all 0.35s linear !important
+					.header-active &
+						opacity: 0
+					.home &
+						position: unset
+						transform: unset
+						order: 1
+						margin: 0 auto 0 0
+					.header--logo
+						width: auto
+						height: 30px
+				&__wishlist, &__cart
+					transition: all 0.35s linear !important
+					.header-active &
+						opacity: 0
+					a
+						display: flex
+						align-items: center
+						justify-content: center
+				&__wishlist
+					display: block
+					position: relative
+					margin-left: auto
+					margin-right: 10px
+					.home &
+						order: 4
+						margin: 0
+					&Count
+						position: absolute
+						font-size: 8px
+						top: -5px
+						border-radius: 50%
+						right: -5px
+						display: flex
+						justify-content: center
+						align-items: center
+						left: 50%
+						top: 50%
+						transform: translate(-50%,-50%)
+				&__cart
+					.home &
+						order: 3
 .header--scrolled
 	&.header
 		background: #F2F2EF !important
 		transition: all 0.35s linear !important
 	.header
+		&__nav
+			.cart
+				path
+					fill: $color-black !important
+					transition: all 0.35s linear !important
+			.menu-item
+				a
+					color: $color-black !important
+					transition: all 0.35s linear !important
 		&__toggle
 			.nav-toggle-icon
 				span,
 				&:before,
 				&:after
-					background: #000 !important
+					background: $color-black !important
 					transition: all 0.35s linear !important
 		&__logo
 			.header--logo
 				svg
 					path
-						fill: #000 !important
+						fill: $color-black !important
 						transition: all 0.35s linear !important
 		&__lang
 			&__list
-				color: #000 !important
+				color: $color-black !important
 				transition: all 0.35s linear !important
 				a
-					color: #000 !important
+					color: $color-black !important
 					transition: all 0.35s linear !important
 		&__wishlist, &__cart
 			a
 				svg
 					path
-						fill: #000 !important
-						transition: all 0.35s linear !important	
+						fill: $color-black !important
+						transition: all 0.35s linear !important
 
 .header--unscrolled
 	&.header
@@ -315,28 +395,27 @@
 					span,
 					&:before,
 					&:after
-						background: #000
+						background: $color-black
 						transition: all 0.35s ease-out 0s
 			&__logo
 				.header--logo
 					svg
 						path
-							fill: #000
+							//fill: $color-black
 							transition: all 0.35s ease-out 0s
 			&__lang
 				&__list
-					color: #000
+					//color: $color-black
 					transition: all 0.35s ease-out 0s
 					a
-						color: #000
+						//color: $color-black
 						transition: all 0.35s ease-out 0s
 			&__wishlist, &__cart
 				a
 					svg
 						path
-							fill: #000
+							//fill: $color-black
 							transition: all 0.35s ease-out 0s
-.header--white-transparent
 	.header-unactive &
 		&.header
 			background: transparent
@@ -344,54 +423,74 @@
 		.header
 			&__toggle
 				.nav-toggle-icon
-					span,
-					&:before,
-					&:after
-						background: #fff
-						transition: all 0.4s linear 0.5s
+				span,
+				&:before,
+				&:after
+					background: $color-white
+					transition: all 0.4s linear 0.5s
 			&__logo
 				.header--logo
-					svg
-						path
-							fill: #fff
-							transition: all 0.4s linear 0.5s
+				svg
+					path
+						fill: $color-white
+						transition: all 0.4s linear 0.5s
 			&__lang
 				&__list
-					color: #fff
+					color: $color-white
 					transition: all 0.4s linear 0.5s
 					a
-						color: #fff
+						color: $color-white
 						transition: all 0.4s linear 0.5s
 			&__wishlist, &__cart
 				a
 					svg
 						path
-							fill: #fff
+							fill: $color-white
 							transition: all 0.4s linear 0.5s
-
-
-.header--white-transparent
-	&.header
-		background: transparent
 	.header
 		&__toggle
 			.nav-toggle-icon
-				span,
-				&:before,
-				&:after
-					background: #fff
+			span,
+			&:before,
+			&:after
+				background: $color-white
 		&__logo
 			.header--logo
-				svg
-					path
-						fill: #fff
+			svg
+				path
+					fill: $color-white
 		&__lang
 			&__list
-				color: #fff
-				a
-					color: #fff
+				color: $color-white
+				.header__lang__item-sep,
+				.header__lang__item a 
+					color: $color-white
 		&__wishlist, &__cart
 			a
 				svg
 					path
-						fill: #fff
+						fill: $color-white
+	&.header
+		background: transparent
+.header-active
+	.header__wrap.header--mobile .header__close
+		opacity: 1
+		transition-delay: 0.1s 
+	.header--mobile
+		.header__lang__list
+			li,
+			a 
+				color: $color-black
+			.header__lang.lang-nav 
+				margin-top: auto
+			.header__lang__item-sep
+				padding: 0 6px 
+.header
+	.container 
+		padding: 0 39px 
+		+max-screen(1200px)
+			padding: 0 30px 
+		+max-screen($breakpoint-md)
+			padding: 0 13.5px 
+	.header--mobile
+		padding-top: 82px

@@ -14,8 +14,9 @@
 <?php if ($consultationTitle && $consultationImage && $consultationImageMob) : ?>
     <section
             class="consultation-block <?php echo 'pt-' . $paddingTop_mobile . ' pb-' . $paddingBottom_mobile . ' pt-md-' . $paddingTop . ' pb-md-' . $paddingBottom; ?>"
+            style="background-color: <?php echo $backgroundColor; ?>"
     >
-        <div class="container" style="background-color: <?php echo $backgroundColor; ?>">
+        <div class="container">
             <div class="consultation-block__wrap">
                 <div class="consultation-block__title">
                     <h3 class="h5 text--center fw-bold">
@@ -35,7 +36,7 @@
                 </div>
                 <?php if ($consultationButton) : ?>
                     <div class="consultation-block__btn">
-                        <a href="<?php echo esc_url($consultationButton['url']); ?>" class="button button--black"
+                        <a href="<?php echo esc_url($consultationButton['url']); ?>" class="button button--black button--size--xl"
                            target="<?php echo $consultationButton['target'] ?: '_self'; ?>">
                             <?php echo $consultationButton['title']; ?>
                         </a>

@@ -1,6 +1,6 @@
-import $  from 'jquery';
+import $ from 'jquery';
 
-function header(){
+function header() {
     let headerToggle = false;
 
     $('.header__toggle').on('click',function(e){
@@ -30,7 +30,7 @@ function header(){
 
     // add class to header on scrolling
     $(document).on('scroll', function () {
-        if($(window).scrollTop() > 46) {
+        if ($(window).scrollTop() > 46) {
             $('.header').addClass('header--scrolled').removeClass('header--unscrolled');
         } else {
             $('.header').addClass('header--unscrolled').removeClass('header--scrolled');
@@ -47,11 +47,11 @@ function header(){
     var footerHeight = $('footer').outerHeight();
 
 
-    $(window).scroll(function(event){
+    $(window).scroll(function (event) {
         didScroll = true;
     });
 
-    setInterval(function() {
+    setInterval(function () {
         if (didScroll) {
             hasScrolled();
             didScroll = false;
@@ -60,36 +60,35 @@ function header(){
 
     function hasScrolled() {
         var st = $(document).scrollTop();
-        
+
         // Make sure they scroll more than delta
-        if(Math.abs(lastScrollTop - st) <= delta)
+        if (Math.abs(lastScrollTop - st) <= delta)
             return;
-        
+
         // If they scrolled down and are past the navbar, add class .nav-up.
         // This is necessary so you never see what is "behind" the navbar.
-        if (st > lastScrollTop && st > navbarHeight){
+        if (st > lastScrollTop && st > navbarHeight) {
             // Scroll Down
             $('body').removeClass('nav-down').addClass('nav-up');
         } else {
             // Scroll Up
-            if(st + $(window).height() < $(document).height()) {
+            if (st + $(window).height() < $(document).height()) {
                 $('body').removeClass('nav-up').addClass('nav-down');
             }
         }
 
 
-        if($('footer').offset().top<st+$(window).height() || st<50){
-        $('.bottomBar').addClass('hidden');
-        //$('.bottomBar').css('bottom',$('footer').height());
-        } else{
-        $('.bottomBar').removeClass('hidden');
-        //$('.bottomBar').css('bottom',0);
+        if ($('footer').offset().top < st + $(window).height() || st < 50) {
+            $('.bottomBar').addClass('hidden');
+            //$('.bottomBar').css('bottom',$('footer').height());
+        } else {
+            $('.bottomBar').removeClass('hidden');
+            //$('.bottomBar').css('bottom',0);
         }
-        
+
         lastScrollTop = st;
     }
-    
 }
 
 
-export { header };
+export {header};

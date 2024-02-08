@@ -1,13 +1,15 @@
-.img-block
-	display: block
-	position: relative
-	overflow: hidden
-	padding-bottom: 60%
-	box-sizing: border-box
-	img
-		position: absolute
-		top: 0
-		left: 0
-		object-fit: cover
+.img-wrap
+	+max-screen($breakpoint-md)
+		max-width: unset !important
+	.img-block
+		position: relative
 		width: 100%
-		height: 100%
+		height: 0
+		overflow: hidden
+		padding-bottom: 60%
+		box-sizing: border-box
+		img
+			position: absolute
+			width: 100%
+			height: 100%
+			object-fit: cover

@@ -1,23 +1,49 @@
 .contacts-block
+    .horizontal-line
+        +min-screen($breakpoint-xl)
+            display: none
     &__contacts
         &List
-            gap: 13px 0
+            gap: 46px 0
+            +max-screen($breakpoint-xl)
+                gap: 10px 0
         &Item
-            margin-bottom: 60px
-            +max-screen($breakpoint-md)
-                margin-bottom: 0
-            &:last-child
-                margin-bottom: 0
+            font-size: 18px
+            line-height: 1.55
+            +max-screen($breakpoint-lg)
+                font-size: 10px
+                line-height: 1.8
+
+        //&:last-child
     &__infoWrapper
         height: fit-content
-        h3
-            font-weight: 700
-            +max-screen($breakpoint-md)
-                padding-bottom: 14px
-            +max-screen($breakpoint-sm)
-                padding-bottom: 6px
-                font-size: 10px
+        display: flex
+        flex-direction: row
+        +max-screen($breakpoint-xl)
+            flex-direction: column
+        +max-screen($breakpoint-lg)
+            margin-bottom: 42px
+        +max-screen($breakpoint-md)
+            margin-bottom: 28px
+        &-col
+            width: 50%
+            max-width: 289px
+            margin-left: auto
+            +max-screen($breakpoint-xl)
+                width: 100%
+                max-width: 100%
 
+        h5
+            font-weight: 700
+            padding-bottom: 39px
+            +max-screen($breakpoint-lg)
+                padding-bottom: 6px
+
+    &__formWrapper
+        max-width: 600px
+        margin: 0 auto
+        +max-screen($breakpoint-lg)
+            max-width: 100%
     &__offices
         &List
             display: flex
@@ -25,6 +51,11 @@
             justify-content: space-between
         &Item
             margin-bottom: 30px
+            font-size: 18px
+            line-height: 1.55
+            +max-screen($breakpoint-lg)
+                font-size: 10px
+                line-height: 1.8
             &:last-child
                 margin-bottom: 0
             //h3
@@ -36,7 +67,7 @@
         &Item 
             padding-left: 50px
             padding-right: 50px
-            +max-screen($breakpoint-md)
+            +max-screen($breakpoint-lg)
                 padding-left: 25px
                 padding-right: 25px
     //&__formWrapper

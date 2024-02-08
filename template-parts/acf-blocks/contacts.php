@@ -12,34 +12,38 @@
             <div class="row">
                 <div class="contacts-block__infoWrapper col-lg-6">
                     <?php if( have_rows('offices') ):?>
-                        <ul class="contacts-block__officesList p-0">
-                            <?php  while( have_rows('offices') ) : the_row();
-                                $office = get_sub_field('office');
-                                ?>
-                                <?php if($office) :?>
-                                    <li class="contacts-block__officesItem">
-                                        <?php echo $office ?>
-                                    </li>
-                                <?php endif;?>
-                            <?php endwhile; ?>
-                        </ul>
+                        <div class="contacts-block__infoWrapper-col">
+                            <ul class="contacts-block__officesList p-0">
+                                <?php  while( have_rows('offices') ) : the_row();
+                                    $office = get_sub_field('office');
+                                    ?>
+                                    <?php if($office) :?>
+                                        <li class="contacts-block__officesItem">
+                                            <?php echo $office ?>
+                                        </li>
+                                    <?php endif;?>
+                                <?php endwhile; ?>
+                            </ul>
+                        </div>
                     <?php endif;?>
                     <div class="horizontal-line color--black"></div>
                     <?php if( have_rows('contacts') ):?>
-                        <h3>
-                            <?php _e('TELEPHONE');?>
-                        </h3>
-                        <ul class="contacts-block__contactsList p-0 d-flex flex-wrap">
-                            <?php  while( have_rows('contacts') ) : the_row();
-                                $contacts = get_sub_field('contactsItem');
-                                ?>
-                                <?php if($contacts) :?>
-                                    <li class="contacts-block__contactsItem col-6 p-0">
-                                        <?php echo $contacts ?>
-                                    </li>
-                                <?php endif;?>
-                            <?php endwhile; ?>
-                        </ul>
+                        <div class="contacts-block__infoWrapper-col">
+                            <h5>
+                                <?php _e('TELEPHONE');?>
+                            </h5>
+                            <ul class="contacts-block__contactsList p-0 d-flex flex-wrap">
+                                <?php  while( have_rows('contacts') ) : the_row();
+                                    $contacts = get_sub_field('contactsItem');
+                                    ?>
+                                    <?php if($contacts) :?>
+                                        <li class="contacts-block__contactsItem col-6 col-xl-12 p-0">
+                                            <?php echo $contacts ?>
+                                        </li>
+                                    <?php endif;?>
+                                <?php endwhile; ?>
+                            </ul>
+                        </div>
                     <?php endif;?>
                 </div>
                 <div class="contacts-block__formWrapper form col-lg-6">

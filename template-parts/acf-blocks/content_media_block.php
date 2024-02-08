@@ -21,15 +21,6 @@
     $paddingTop_mobile = get_sub_field('paddingTop_mobile');
     $paddingBottom_mobile = get_sub_field('paddingBottom_mobile');
     $block_title = get_sub_field('block_title');
-    //$imageClasses = '';
-    //$contentClasses = '';
-    //if($imagePosition=='left'):
-    //    $contentClasses.= 'offset-lg-2';
-    //    $imageClasses.= '';
-    //else:
-    //    $contentClasses.= 'offset-lg-1';
-    //    $imageClasses.= 'offset-lg-2';
-    //endif;
     
     $blockID = get_sub_field('block_id');
     $id = $blockID ? 'id="' . $blockID . '"' : '';
@@ -39,39 +30,37 @@
     <section <?php echo $id; ?>
             class="section  contentImageBlock  pt-<?php echo $paddingTop_mobile ?> pb-<?php echo $paddingBottom_mobile ?> pt-md-<?php echo $paddingTop ?> pb-md-<?php echo $paddingBottom ?> contentImageBlock--<?php echo $imagePosition; ?> contentImageBlock--<?php echo $imageLayout; ?>"
             style="background-color: <?php echo $backgroundColor; ?>">
-        <div class="container contentImageBlock__container">
+        <div class="container <?php echo $imageLayout == 'full' ? 'container--full' : '';?>">
             <div class="row contentImageBlock__row">
                 <?php if ($block_title) : ?>
-                    <div class="col-12 contentImageBlock__title__mobile">
-                        <h2 class="h1"><?php echo $block_title; ?></h2>
+                    <div class="contentImageBlock__title__mobile">
+                        <h2><?php echo $block_title; ?></h2>
                     </div>
                 <?php endif; ?>
-<!--                <div class="col-12  col-lg-6 --><?php //echo $contentClasses; ?><!-- contentImageBlock__content">-->
-                <div class="col-12  col-lg-6 contentImageBlock__content">
+                <div class="contentImageBlock__content">
                     <div class="contentImageBlock__content__inner">
                         <div class="content-block">
                             <?php if ($block_title): ?>
                                 <div class="contentImageBlock__title"><h2><?php echo $block_title; ?></h2></div>
                             <?php endif; ?>
                             <?php echo $content; ?>
-                            <?php if($button) :?>
+                            <?php if ($button) : ?>
                                 <div class="contentImageBlock__btn">
-                                    <a href="<?php echo esc_url($button['url']);?>" class="button button--black" target="<?php echo $button['target'] ? : '_self';?>">
-                                        <?php echo $button['title'];?>
+                                    <a href="<?php echo esc_url($button['url']); ?>" class="button button--black"
+                                       target="<?php echo $button['target'] ?: '_self'; ?>">
+                                        <?php echo $button['title']; ?>
                                     </a>
                                 </div>
                             <?php endif; ?>
                         </div>
-                        <?php
-                            if (get_sub_field('checkbox')) { ?>
-                                <img class="contentImageBlock__content__inner__image"
-                                     src="<?php echo esc_url($additionalImage['url']); ?>"
-                                     alt="<?php echo esc_attr($additionalImage['alt']); ?>"/>
-                            <?php } ?>
+                        <?php if ($checkbox) : ?>
+                            <img class="content-image"
+                                 src="<?php echo esc_url($additionalImage['url']); ?>"
+                                 alt="<?php echo esc_attr($additionalImage['alt']); ?>"/>
+                        <?php endif; ?>
                     </div>
                 </div>
-<!--                <div class="col-12 col-lg-6 --><?php //echo $imageClasses; ?><!-- contentImageBlock__image contentImageBlock__image----><?php //echo $imageLayout; ?><!--">-->
-                <div class="col-12 col-lg-6 contentImageBlock__image contentImageBlock__image--<?php echo $imageLayout; ?>">
+                <div class="contentImageBlock__image image--<?php echo $imagePosition; ?>">
                     <div class="contentImageBlock__image__inner">
                         <?php if ($imageType == 'image'): ?>
                             <?php if ($image): ?>

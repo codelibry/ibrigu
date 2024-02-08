@@ -1,13 +1,27 @@
 .consultation-block
+    .container
+        max-width: 1920px
+        padding-left: 30px
+        padding-right: 30px
+        +min-screen($breakpoint-md)
+            padding-left: 0
+            padding-right: 0
+        +max-screen($breakpoint-md)
+            padding-left: 15px
+            padding-right: 15px
     &__wrap
-        padding: 26px 0 84px
+        //padding: 26px 0 84px
     &__title
-        margin-bottom: 8px
+        margin-bottom: 28px
+        +max-screen($breakpoint-md)
+            margin-bottom: 8px
         h3
             font-weight: 700
             padding: 0
     &__text
-        margin-bottom: 18px
+        margin-bottom: 48px
+        +max-screen($breakpoint-md)
+            margin-bottom: 18px
     &__image
         position: relative
         +max-screen($breakpoint-md)
@@ -24,6 +38,11 @@
             height: 100%
             object-fit: cover
     &__btn
-        margin-top: 17px
+        display: flex
+        justify-content: center
+        margin-top: 69px
+        +max-screen($breakpoint-md)
+            margin-top: 17px
         a
-            width: 100%
+            +max-screen($breakpoint-md)
+                width: 100%

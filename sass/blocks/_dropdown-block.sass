@@ -1,9 +1,21 @@
 .dropdown-block
     &__wrap
+        &.dropdown--desk
+            display: flex
+            justify-content: space-between
+            gap: 0 158px
+            +max-screen($breakpoint-md)
+                display: none
+            .dropdown-block__list
+                flex: 0 0 calc(50% - (158px / 2))
+        &.dropdown--mobile
+            display: none
+            +max-screen($breakpoint-md)
+                display: block
     &__list
         display: flex
         flex-direction: column
-        gap: 15px 0
+        gap: 36px 0
+        +max-screen($breakpoint-md)
+            gap: 15px 0
         .list--item
-            &__title
-            &__content

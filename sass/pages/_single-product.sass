@@ -71,6 +71,8 @@ body.woocommerce.woocommerce-page
             +max-screen($breakpoint-lg)
                 font-size: 22px
                 padding-bottom: 12px
+            +max-screen($breakpoint-md)
+                display: none
         .woocommerce-breadcrumb
             padding-left: 0
             padding-top: 0
@@ -85,9 +87,16 @@ body.woocommerce.woocommerce-page
             +max-screen(1200px)
                 margin-bottom: 42px
                 padding-bottom: 24px
+            +max-screen($breakpoint-md)
+                margin-bottom: 0
+                padding-bottom: 10px
+                padding-left: 12px
+                padding-right: 12px
             a 
                 font-size: 14px
                 line-height: 1.15
+                +max-screen($breakpoint-md)
+                    font-size: 13px
                 &:last-of-type 
                     &::after 
                         content: none
@@ -99,6 +108,8 @@ body.woocommerce.woocommerce-page
                 height: 1px 
                 background-color: $color-black
                 width: 100%
+                +max-screen($breakpoint-md)
+                    content: none
     +max-screen($breakpoint-md)
         margin-bottom: 31px
     &__leftCol 
@@ -606,8 +617,7 @@ body.woocommerce.woocommerce-page
                     margin-top: -1px
                     &__item 
                         position: relative
-                        &Wrapper 
-                            margin-bottom: 11px
+                        margin-bottom: 11px
                         &::before
                             content: ""
                             padding-bottom: 120% 
@@ -975,6 +985,7 @@ body.woocommerce.woocommerce-page
             margin: auto
         +max-screen($breakpoint-md)
             padding: 0 4px 
+            width: 100%
             margin-bottom: -17px
         &__title
             text-transform: uppercase
@@ -1077,41 +1088,43 @@ body.woocommerce.woocommerce-page
             &.desktop 
                 display: none
         div.slick-list 
+            margin: 0 -63px
             margin-bottom: -63px
+            +max-screen(1440px)
+                margin: 0
+            +max-screen($breakpoint-md)
+                margin: 0
+                margin-bottom: -17px
         ul.slick-dots 
             margin-top: 72px
-    .slick-list 
-        margin: 0 -63px
-        +max-screen(1440px)
-            margin: 0
-        +max-screen($breakpoint-md)
-            margin: 0
-            margin-bottom: -17px
-    .slick-dots 
-        display: flex 
-        justify-content: center 
-        margin-top: 8px
-        li 
-            button 
-                border: 1px solid $color-bg-light
-                font-size: 0
-                width: 9px 
-                height: 9px 
-                display: block
-                margin: 0 4px 
-            &.slick-active
+            display: flex 
+            justify-content: center 
+            margin-top: 8px
+            li 
                 button 
-                    border-color: $color-black
-                    background-color: $color-black
+                    border: 1px solid $color-bg-light
+                    font-size: 0
+                    width: 9px 
+                    height: 9px 
+                    display: block
+                    margin: 0 4px 
+                &.slick-active
+                    button 
+                        border-color: $color-black
+                        background-color: $color-black
 .single-product .woocommerce-notices-wrapper
     position: absolute
     z-index: 1
+    width: 100% 
+    top: 120px 
     +min-screen(770px)
         width: 100vw
         left: 50%
         transform: translateX(-50%)
-        max-width: 1592px
-        top: 160px
+        max-width: 1560px
+        top: 240px
+        +max-screen(1200px)
+            top: 180px 
     .scroller
         position: absolute
         left: 14px 
@@ -1121,8 +1134,8 @@ body.woocommerce.woocommerce-page
         background-color: $color-black
         z-index: 1
         +min-screen(770px)
-            width: calc( 100% - 60px ) 
-            left: 30px 
+            width: calc( 100% - 30px ) 
+            left: 15px  
     .woocommerce-message 
         border: 0
 .singleProduct-container 

@@ -1,6 +1,6 @@
 .container
 	+min-screen($breakpoint-xxl)
-		max-width: 1790px
+		max-width: 1920px
 	+min-screen($breakpoint-md)
 		padding-left: 30px
 		padding-right: 30px
@@ -8,20 +8,18 @@
 		padding-left: 15px
 		padding-right: 15px
 	&--full
+		padding: 0
+		max-width: 1920px
 		+min-screen($breakpoint-xxl)
 			max-width: 100%
 	&.woocommerce-container 
 		max-width: 1592px
-		&-mb
-			+max-screen($breakpoint-md)
-				padding: 0
 		.archive.woocommerce & 
 			+max-screen($breakpoint-lg)
 				width: 85%
 			+max-screen($breakpoint-md)
 				width: 100%
-
-.row 
+.row
 	&--x
 		&--center
 			justify-content: center

@@ -39,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <h4 class="catalog__filtersList__attributeItem__apply button button--black sm"><?php _e('APPLICA', 'woocommerce_custom_text'); ?></h4>
+                <h4 class="catalog__filtersList__attributeItem__apply button button--black sm"><?php _e('APPLY', 'woocommerce_custom_text'); ?></h4>
             </div>
         </div>
         <div class="catalog__filtersList__attribute colors">
@@ -65,7 +65,7 @@
                         <?php $i++; endforeach; ?>
                     </div>
                 </div>
-                <h4 class="catalog__filtersList__attributeItem__apply button button--black sm"><?php _e('APPLICA', 'woocommerce_custom_text'); ?></h4>
+                <h4 class="catalog__filtersList__attributeItem__apply button button--black sm"><?php _e('APPLY', 'woocommerce_custom_text'); ?></h4>
             </div>
         </div>
         <div class="catalog__filtersList__attribute size">

@@ -1,4 +1,3 @@
-<?php get_header() ?>
 <?php $customer = new WC_Customer( get_current_user_id() ); 
 if($customer->first_name != "" or $customer->last_name != ""): 
     $customer_name = $customer->last_name . " " . $customer->first_name; 
@@ -110,5 +109,3 @@ $slider_title = get_field('empty_wishlist_related_products_title', 'options');
         </div>
     </div>
 </section>
-
-<?php get_footer(  ) ?>

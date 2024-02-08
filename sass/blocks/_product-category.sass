@@ -1,53 +1,117 @@
 .productCategory
     &__list
+        display: flex
+        flex-wrap: wrap
+        gap: 122px 0
+        +max-screen($breakpoint-md)
+            gap: 0
+            //gap: 0%
     &__item
         position: relative
+        &.full--width
+            width: 100vw
+            a
+                overflow: unset
+            .productCategory__item-wrap
+                width: 100%
+                padding-bottom: 100svh
+            .productCategory__item-img
+                width: 50vw
+                +max-screen($breakpoint-md)
+                    width: 100%
+                &:nth-last-of-type(2)
+                    right: 50%
+                &:last-of-type
+                    left: 50%
+            .productCategory__item-btn
+                bottom: 83px
+        &.half--width
+            width: calc(50% - (66px * 2))
+            margin: 0 66px
+            +max-screen($breakpoint-xl)
+                width: calc(50% - (35px * 2))
+                margin: 0 35px
+            +max-screen($breakpoint-lg)
+                width: calc(50% - (20px * 2))
+                margin: 0 20px
+            +max-screen($breakpoint-md)
+                width: 100%
+                margin: 0
+            &:after
+                content: ""
+                position: absolute
+                bottom: 0
+                height: 27%
+                background: #545454
+                background: linear-gradient(0deg,#545454,transparent)
+                z-index: 5
+                opacity: 0.19
+                width: 100%
+                min-height: 130px
+            a
+                overflow: hidden
+            .productCategory__item-wrap
+                width: 100%
+                padding-bottom: calc(100% * (838 / 797))
+                +max-screen($breakpoint-md)
+                    padding-bottom: calc(100% * (666 / 393))
+            .productCategory__item-btn
+                bottom: 55px
         &:hover
             .productCategory
                 &__item
                     &-img
                         transform: scale(1.05)
-        &:first-child
-            .productCategory
-                &__item
-                    &-wrap
-                        padding-bottom: 100svh
-
-        &:after
-            content: ''
-            position: absolute
-            left: 0
-            bottom: 0
-            width: 100%
-            height: 133px
-            background: rgb(84,84,84)
-            background: linear-gradient(0deg, rgba(84,84,84,1) 0%, rgba(0,0,0,0) 100%)
-            z-index: 5
-        &-wrap
-            position: relative
-            width: 100%
-            height: 0
+        a
             overflow: hidden
-            padding-bottom: calc(100% * (666 / 393))
+            display: block
+        &-wrap
+            width: 100%
+            padding-bottom: calc(100% * (838 / 797))
+            position: relative
+            height: 0
+            overflow-y: clip
+            +max-screen($breakpoint-md)
+                padding-bottom: calc(100% * (666 / 393))
+                overflow: hidden
+
         &-img
             position: absolute
             width: 100%
             height: 100%
             object-fit: cover
+            object-position: top
             transition: $default-transition
+            &.image
+                &--mob
+                    display: none
+                    +max-screen($breakpoint-md)
+                        display: block
+                &--desk
+                    display: block
+                    +max-screen($breakpoint-md)
+                        display: none
         &-btn
             position: absolute
             left: 0
-            bottom: 60px
             display: flex
+            justify-content: center
             align-items: center
-            justify-content: space-between
             width: 100%
             padding: 0 25px
             line-height: 1
             text-transform: uppercase
             z-index: 10
+            +max-screen($breakpoint-md)
+                justify-content: space-between
+                bottom: 60px
             span
                 color: #fff
-                font-size: 21px
+                font-size: 27px
                 line-height: 1
+                +max-screen($breakpoint-md)
+                    font-size: 21px
+            svg
+                display: none
+                +max-screen($breakpoint-md)
+                    display: block

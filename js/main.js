@@ -24,6 +24,7 @@ import { checkout } from './template-parts/blocks/checkout';
 import { dropdown } from './template-parts/blocks/dropdown';
 import { form } from './template-parts/blocks/form';
 import { sideCart } from './template-parts/blocks/sideCart';
+import { appearOnScroll } from './template-parts/blocks/appearOnScroll';
 
 header();
 footer();
@@ -45,4 +46,5 @@ checkout();
 dropdown();
 form();
 sideCart();
+appearOnScroll();
 // heroSlider();
