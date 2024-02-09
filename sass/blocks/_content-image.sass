@@ -29,6 +29,17 @@
                     .contentImageBlock__image__inner
                         +max-screen($breakpoint-md)
                             padding-bottom: calc(100% * (295 / 197))
+                &__inner 
+                    &::before 
+                        content: ""
+                        display: block
+                        padding-bottom: 110.417%
+                        +max-screen($breakpoint-md)
+                            content: none 
+                &__item 
+                    position: absolute
+                    left: 0
+                    top: 0
 
             &__content
                 padding-left: 30px

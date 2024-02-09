@@ -14,7 +14,13 @@
                 overflow: unset
             .productCategory__item-wrap
                 width: 100%
-                padding-bottom: 100svh
+                padding-bottom: 1080px 
+                +max-screen(1440px)
+                    padding-bottom: 900px
+                +max-screen(1200px)
+                    padding-bottom: 720px
+                +max-screen($breakpoint-lg)
+                    padding-bottom: 100svh
             .productCategory__item-img
                 width: 50vw
                 +max-screen($breakpoint-md)
@@ -26,8 +32,14 @@
             .productCategory__item-btn
                 bottom: 83px
         &.half--width
-            width: calc(50% - (66px * 2))
-            margin: 0 66px
+            width: calc(50% - 163.5px)
+            margin: 0 61.5px
+            &:nth-child(2n)
+                +min-screen(1442px)
+                    margin-left: 102px 
+            &:nth-child(2n + 1)
+                +min-screen(1442px)
+                    margin-right: 102px
             +max-screen($breakpoint-xl)
                 width: calc(50% - (35px * 2))
                 margin: 0 35px
@@ -37,6 +49,7 @@
             +max-screen($breakpoint-md)
                 width: 100%
                 margin: 0
+            
             &:after
                 content: ""
                 position: absolute
