@@ -17,6 +17,12 @@
             &--half
                 background: $color-white
                 width: 50%
+                &:nth-of-type(1)
+                    .img--small
+                        margin-left: 30px
+                &:nth-of-type(2)
+                    .img--small
+                        margin-right: 30px
         &__mobile
             +min-screen($breakpoint-md)
                 display: none
