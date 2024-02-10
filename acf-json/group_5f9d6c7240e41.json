@@ -207,7 +207,7 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "wpml_cf_preferences": 0,
+                            "wpml_cf_preferences": 3,
                             "message": "",
                             "default_value": 0,
                             "ui": 1,
@@ -297,6 +297,31 @@
                             "prepend": "",
                             "append": "",
                             "wpml_cf_preferences": 3
+                        },
+                        {
+                            "key": "field_65c561ccc2523",
+                            "label": "Spacing between paragraphs",
+                            "name": "spacing_between_paragraphs",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 3,
+                            "choices": {
+                                "md": "Md",
+                                "lg": "Lg"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
                         }
                     ],
                     "min": "",
@@ -4230,5 +4255,5 @@
     "description": "",
     "show_in_rest": 0,
     "acfml_field_group_mode": "localization",
-    "modified": 1703159576
+    "modified": 1707434584
 }

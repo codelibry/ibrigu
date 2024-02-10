@@ -69,13 +69,17 @@ body.woocommerce-page
 		background-color: $color-bg-white-light
 body:not(.woocommerce-page)
 	.page-heading
-		padding-top: calc(115px + 94px)
+		padding-top: 262px
+		+max-screen(1440px)
+			padding-top: 220px
+		+max-screen(1200px)
+			padding-top: 202px 
 		+max-screen($breakpoint-lg)
-			padding-top: calc(120px + 40px)
+			padding-top: 180px
 		+max-screen($breakpoint-md)
-			padding-top: 130px 
+			padding-top: 150px 
 		+max-screen($breakpoint-sm)
-			padding-top: 120px
+			padding-top: 140px
 		&__title
 			text-align: center
 			padding-bottom: 57px

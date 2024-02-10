@@ -14,17 +14,18 @@ $paddingTop = get_sub_field('paddingTop');
 $paddingBottom = get_sub_field('paddingBottom');
 $paddingTop_mobile = get_sub_field('paddingTop_mobile');
 $paddingBottom_mobile = get_sub_field('paddingBottom_mobile');
+$spacing = get_sub_field('spacing_between_paragraphs');
 
 $contentClasses = '';
 if($blockLayout=='wrapped'):
-    $contentClasses.= 'col-lg-8 offset-lg-2';
+    $contentClasses.= 'col-xl-6 offset-xl-3 col-lg-8 offset-lg-2';
 else:
     $contentClasses.= 'col-12';
 endif;
 
 if($content || $contentMobile):
     ?>
-    <div <?php echo $id; ?> class="section contentBlock pt-<?php echo $paddingTop_mobile ?> pb-<?php echo $paddingBottom_mobile ?> pt-md-<?php echo $paddingTop ?> pb-md-<?php echo $paddingBottom ?>" style="background-color: <?php echo $backgroundColor; ?>;background-image: url(<?php echo $backgroundImage; ?>);">
+    <div <?php echo $id; ?> class="section contentBlock spacing-<?php echo $spacing; ?> pt-<?php echo $paddingTop_mobile ?> pb-<?php echo $paddingBottom_mobile ?> pt-md-<?php echo $paddingTop ?> pb-md-<?php echo $paddingBottom ?>" style="background-color: <?php echo $backgroundColor; ?>;background-image: url(<?php echo $backgroundImage; ?>);">
         <div class="container">
             <div class="row">
                 <div class="<?php echo $contentClasses?>">
