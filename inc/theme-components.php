@@ -87,11 +87,16 @@
             $blockPadding = 'padding-bottom:' . $imgRatio . '%;';
             if($imgWidth <= 960) {
                 $blockMaxWidth = 'max-width:' . $imgWidth / (1920 / 2) * 100 . '%;';
+                
+                if($imgWidth <= 900) {
+                    $img_small = true;
+                }
             } else {
                 $blockMaxWidth = 'max-width: 100%;';
+                $img_small = false;
             }
             ?>
-            <div class="img-wrap" style="<?php echo $blockMaxWidth . ' ' . 'flex: 1;'?>">
+            <div class="img-wrap<?php echo $img_small ? ' img--small' : ''; ?>" style="<?php echo $blockMaxWidth . ' ' . 'flex: 1;'?>">
                 <div class="img-block" style="<?php echo $blockPadding; ?>">
                     <img src="<?php echo esc_url($image['url']); ?>" class="lazy-img <?php echo $class; ?>"
                          alt="<?php echo esc_attr($image['alt']); ?>"/>
