@@ -214,6 +214,14 @@
             object-fit: cover
             object-position: top
     &__title
+        h2
+            font-size: 30px
+            +max-screen(1440px)
+                font-size: 26px
+            +max-screen(1200px)
+                font-size: 24px
+            +max-screen($breakpoint-lg)
+                font-size: 20px
         +max-screen($breakpoint-md)
             display: none
         &__mobile

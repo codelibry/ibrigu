@@ -52,8 +52,23 @@ body.woocommerce-page
 .back_to_top
 	background: #F2F2EF
 	display: none !important
-	.page-id-564 &
-		display: flex !important
+	cursor: pointer
+.privacy-page 
+	.back_to_top 
+		display: none !important
+		+max-screen($breakpoint-md)
+			display: block !important
+			padding-top: 30px !important
+	#main 
+		padding-bottom: 92px
+		+max-screen(1440px)
+			padding-bottom: 72px 
+		+max-screen(1200px)
+			padding-bottom: 64px 
+		+max-screen($breakpoint-lg)
+			padding-bottom: 48px 
+		+max-screen($breakpoint-md)
+			padding-bottom: 0
 .bg
 	&--primary
 		background-color: $color-primary
@@ -93,6 +108,17 @@ body:not(.woocommerce-page)
 			padding-bottom: 35px
 			+max-screen($breakpoint-md)
 				padding-bottom: 19px
+	&.privacy-page 
+		.page-heading__title 
+			padding-bottom: 76px
+			+max-screen(1440px)
+				padding-bottom: 64px 
+			+max-screen(1200px)
+				padding-bottom: 52px 
+			+max-screen($breakpoint-lg)
+				padding-bottom: 42px
+			+max-screen($breakpoint-md)
+				padding-bottom: 32px
 .woocommerce-page
 	.page-heading
 		&__title

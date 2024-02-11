@@ -19,6 +19,7 @@ $body_classes = '';
 
 $headerTransparent = get_field('transparent_header');
 $headerDark = get_field('dark_header');
+$page_class = get_field('page_class');
 
 if($headerTransparent || is_single() || is_404() || is_category()):
 	$body_classes.='header-transparent header__transparent';
@@ -33,6 +34,9 @@ if(is_front_page()) {
 }
 if(WC()->cart->get_cart_contents_count() == 0 && is_cart()){
     $body_classes .= ' empty-cart';
+}
+if($page_class){
+	$body_classes .= ' ' . $page_class;
 }
 
 ?>

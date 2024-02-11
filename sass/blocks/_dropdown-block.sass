@@ -1,4 +1,7 @@
 .dropdown-block
+    
+    .container 
+        max-width: 1100px
     &__wrap
         &.dropdown--desk
             display: flex
@@ -19,3 +22,13 @@
         +max-screen($breakpoint-md)
             gap: 15px 0
         .list--item
+            &__content 
+                padding-bottom: 26px
+                +max-screen(1200px)
+                    padding-bottom: 16px
+                +max-screen($breakpoint-lg)
+                    padding-bottom: 8px
+                +max-screen($breakpoint-md)
+                    padding-bottom: 2px
+            &__title 
+                cursor: pointer
