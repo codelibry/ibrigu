@@ -5,6 +5,19 @@
 		padding: 0 !important
 		.nf-field-container
 			margin-bottom: 0 !important
+			&.textarea-container 
+				+max-screen($breakpoint-md)
+					.nf-field .field-wrap div.nf-field-element 
+						padding: 6px 7px 
+						border: 1px solid $color-black 
+						height: 120px 
+						display: flex 
+						align-items: flex-end
+						textarea 
+							height: 1rem
+							min-height: auto 
+							border: 0
+							padding: 0
 		.nf-field
 			.checkbox-wrap 
 				.nf-field-element 
@@ -44,9 +57,10 @@
 						&::placeholder
 							color: $color-black
 					textarea
-						border: 1px solid $color-black
-						min-height: 120px
-						padding: 4px 7px
+						border: 1.5px solid $color-black
+						height: 120px
+						padding: 17px 
+						font-size: 13px
 					input:not([type=checkbox]):not([type=submit])
 						width: 50%
 						border: none
@@ -76,10 +90,17 @@
 					&:after
 						display: none !important
 				&.textbox-wrap
-					margin-bottom: 30px
 					&.submit-wrap
-						margin-top: 12px
+						margin-top: 55px
 						margin-bottom: 0
+						+max-screen(1440px)
+							margin-top: 42px
+						+max-screen(1200px)
+							margin-top: 36px
+						+max-screen($breakpoint-lg)
+							margin-top: 24px
+						+max-screen($breakpoint-md)
+							margin-top: 14px
 				&.email-wrap
 					margin-bottom: 20px
 				&.textarea-wrap
@@ -88,26 +109,26 @@
 					.nf-field-label
 						label
 							font-weight: 400
-							line-height: 1.8
+							line-height: 1.16
+							font-size: 12px
+							margin-left: 17px
 							+max-screen($breakpoint-md)
-								margin-left: 20px
 								font-size: 12px
 							+max-screen($breakpoint-sm)
-								margin-left: 16px
 								font-size: 8px
 							&:after
 								background-color: transparent
 								border: 1px solid $color-black
-								+max-screen($breakpoint-md)
-									left: -20px
-									width: 13px
-									height: 13px
-								+max-screen($breakpoint-sm)
-									left: -16px
-									width: 9px
-									height: 9px
+								width: 9px 
+								height: 9px
+								left: -18px
 							&:before
 								line-height: 1
+								font-size: 6px
+								left: -16px
+								top: 2px
+								+max-screen($breakpoint-md)
+									font-size: 5px
 	.nf-before-form-content
 		display: none
 	.field-wrap
@@ -158,7 +179,6 @@
 				&.email-wrap
 					margin-top: 5px
 				&.checkbox-wrap
-
 //	.nf-field-container
 //		margin-bottom: 40px
 //		+max-screen($breakpoint-md)
@@ -321,7 +341,58 @@
 //		font-size: 12px
 //	.ninja-forms-field
 //		height: auto !important
-
+#main
+	.contacts-block 
+		.form .nf-form-content .nf-field .field-wrap.checkbox-wrap .nf-field-label label
+			line-height: 0.9
+		form input
+			+min-screen(993px)
+				padding-top: 0
+				padding-bottom: 13.5px
+		.nf-field-element 
+			line-height: 1
+			display: flex 
+		.nf-error .nf-error-msg
+			font-size: 14px
+			margin-top: -30px
+			+max-screen($breakpoint-lg)
+				font-size: 12px
+				margin-top: -20px
+			+max-screen($breakpoint-md)
+				position: absolute
+				left: 0
+				bottom: 5px
+				font-size: 8px 
+				line-height: 1
+		.nf-after-form-content 
+			+max-screen($breakpoint-md)
+				.nf-error-msg 
+					margin-top: -30px
+					font-size: 8px
+		.form .nf-form-content .textbox-container .field-wrap .nf-field-element 
+			input:not(input[type="submit"])
+				+max-screen($breakpoint-md)
+					width: 50.5% !important
+			input[type="submit"]
+				background-color: $color-black 
+				color: $color-white 
+				border: 1px solid $color-black
+				padding-top: 18px 
+				padding-bottom: 13px
+				font-size: 14px
+				+max-screen($breakpoint-lg)
+					font-size: 13px
+					padding-top: 12px
+					padding-bottom: 12px
+				+max-screen($breakpoint-md)
+					padding-top: 9px
+					padding-bottom: 9px
+					font-size: 11px
+		.form .nf-form-content .nf-field .field-wrap.email-wrap
+			input 
+				+max-screen($breakpoint-md)
+					margin-bottom: 0 !important
+					width: 50.5% !important
 body.page #main
 	.checkoutContent 
 		form 
@@ -490,7 +561,7 @@ body.page #main
 				border-color: $color-red
 				&::placeholder
 					color: $color-red
-		textarea 
+		textarea:not(.ninja-forms-field)
 			border: 1.5px solid $color-black
 			background-color: transparent
 			height: 185px

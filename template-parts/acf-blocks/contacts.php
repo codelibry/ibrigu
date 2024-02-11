@@ -18,7 +18,7 @@
                                     $office = get_sub_field('office');
                                     ?>
                                     <?php if($office) :?>
-                                        <li class="contacts-block__officesItem">
+                                        <li class="contacts-block__officesItem desktop-lg">
                                             <?php echo $office ?>
                                         </li>
                                     <?php endif;?>
@@ -28,7 +28,7 @@
                     <?php endif;?>
                     <div class="horizontal-line color--black"></div>
                     <?php if( have_rows('contacts') ):?>
-                        <div class="contacts-block__infoWrapper-col">
+                        <div class="contacts-block__infoWrapper-col desktop-lg">
                             <h5>
                                 <?php _e('TELEPHONE');?>
                             </h5>
