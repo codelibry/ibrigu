@@ -75,7 +75,7 @@ function register_post_types(){
 		'hierarchical'        => false,
 		'supports'            => [ 'title', 'editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
 		'taxonomies'          => [],
-		'has_archive'         => false,
+		'has_archive'         => true,
 		'rewrite'             => true,
 		'query_var'           => true,
 	] );
