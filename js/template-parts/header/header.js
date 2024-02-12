@@ -21,11 +21,10 @@ function header() {
         const menuItem = $(this).closest('.menu-item-has-children');
         const subMenu = menuItem.find('.sub-menu');
 
-        if(!menuItem.hasClass('menu-active') && $(this).attr('href') == '#') {
+        if(!menuItem.hasClass('menu-active')) {
             e.preventDefault();
 
             menuItem.toggleClass('menu-active');
-
             subMenu.stop().slideToggle();
         }
     })
