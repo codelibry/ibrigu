@@ -25,6 +25,7 @@ import { dropdown } from './template-parts/blocks/dropdown';
 import { form } from './template-parts/blocks/form';
 import { sideCart } from './template-parts/blocks/sideCart';
 import { appearOnScroll } from './template-parts/blocks/appearOnScroll';
+import { registerForm } from './template-parts/blocks/registerForm';
 
 header();
 footer();
@@ -47,4 +48,5 @@ dropdown();
 form();
 sideCart();
 appearOnScroll();
+registerForm();
 // heroSlider();

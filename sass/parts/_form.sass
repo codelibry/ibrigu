@@ -466,6 +466,9 @@ body.page #main
 					margin-bottom: 24px
 				+max-screen($breakpoint-md)
 					margin-bottom: 28px
+		.registerFormButtons
+			&__wrapper 
+				width: 100% 
 		.form-checkbox
 			margin-bottom: 3px
 			position: relative
@@ -528,7 +531,10 @@ body.page #main
 			display: flex 
 			span 
 				width: 100% 
-		input
+				&.phone-country-code-pseudo-el
+					width: auto
+		input,
+		select
 			font-size: 15px
 			width: 100%
 			background-color: transparent
@@ -538,6 +544,7 @@ body.page #main
 			padding-bottom: 14.5px
 			margin-bottom: 30px
 			color: $color-black
+			font-family: 'Menlo', sans-serif
 			+max-screen(1200px)
 				margin-bottom: 24px
 				padding-bottom: 12px
@@ -561,6 +568,17 @@ body.page #main
 				border-color: $color-red
 				&::placeholder
 					color: $color-red
+		select 
+			border-radius: 0
+			padding-left: 0
+			padding-top: 0
+			margin-bottom: 0
+			padding-right: 0
+			z-index: 1
+			-webkit-appearance: none
+  			-moz-appearance: none
+			&::-ms-expand
+				display: none
 		textarea:not(.ninja-forms-field)
 			border: 1.5px solid $color-black
 			background-color: transparent
@@ -583,3 +601,34 @@ body.page #main
 			.woocommerce-shipping-fields__field-wrapper
 				display: flex 
 				flex-wrap: wrap 
+.phone-country-code-pseudo-el
+	font-size: 15px 
+	opacity: 0
+	height: 0
+	display: block 
+	width: auto 
+	position: absolute
+    left: 0
+    top: 0
+	+max-screen($breakpoint-lg)
+		font-size: 13px
+	+max-screen($breakpoint-md)
+		font-size: 12px
+.phone-country-code 
+	display: flex 
+	flex-direction: column
+	align-items: flex-start 
+	select 
+		margin: 0
+	& + .woocommerce-form-row 
+		width: auto
+		flex: 1
+		margin-left: 25px !important
+		+max-screen($breakpoint-md)
+			margin-left: 8px !important
+	&.full-width 
+		+max-screen($breakpoint-md)
+			margin-bottom: 15.3px !important
+		& + .woocommerce-form-row 
+			+max-screen($breakpoint-md)
+				margin-left: 0 !important

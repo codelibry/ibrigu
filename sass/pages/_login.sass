@@ -159,10 +159,13 @@
         form.register 
             display: flex 
             margin-top: 15px
-            flex-direction: column
+            flex-direction: row
+            flex-wrap: wrap
             margin-bottom: 95px
             +max-screen($breakpoint-md)
                 margin-bottom: 20px
+            .woocommerce-form-row 
+                width: 100%
             .form-row 
                 input 
                     +max-screen($breakpoint-md)

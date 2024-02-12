@@ -99,13 +99,13 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 					<?php endif; ?>
 
-
-					<div class="woocommerce-form-row registerFormButtons">
-						<?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
-						<button type="submit" class="woocommerce-Button woocommerceAccountForm__buttonSubmit woocommerce-button button--black button--fz--md button--size--md button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?> woocommerce-form-register__submit" name="register" value="<?php esc_attr_e( 'CONTINUE', 'woocommerce' ); ?>"><?php esc_html_e( 'CONTINUE', 'woocommerce' ); ?></button>
-						<div class="loginFormButton registerFormButton form-switchBtn button button--grey button--fz--xs button--size--md--desktop"><?php _e('I already have an account', 'woocommerce_custom_text'); ?></div>
+					<div class="registerFormButtons__wrapper">
+						<div class="woocommerce-form-row registerFormButtons">
+							<?php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ); ?>
+							<button type="submit" class="woocommerce-Button woocommerceAccountForm__buttonSubmit woocommerce-button button--black button--fz--md button--size--md button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?> woocommerce-form-register__submit" name="register" value="<?php esc_attr_e( 'CONTINUE', 'woocommerce' ); ?>"><?php esc_html_e( 'CONTINUE', 'woocommerce' ); ?></button>
+							<div class="loginFormButton registerFormButton form-switchBtn button button--grey button--fz--xs button--size--md--desktop"><?php _e('I already have an account', 'woocommerce_custom_text'); ?></div>
+						</div>
 					</div>
-
 					<?php do_action( 'woocommerce_register_form_end' ); ?>
 
 				</form>
