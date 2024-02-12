@@ -50,9 +50,11 @@ if ( $terms && ! is_wp_error( $terms ) ) : //only displayed if the product has a
 	<div class="catalog__categoriesList">
 		<div class="catalog__categoriesList__slider">
 			<?php $i = 1; foreach ( $terms as $term ) { ?>
-				<div class="catalog__categoriesList__itemWrapper">
-					<a href="<?php echo get_term_link( $term->slug, 'product_cat' ); ?>"><h4 class="catalog__categoriesList__item fw-r" data-category="<?php echo $term->slug; ?>"><?php echo $term->name; ?></h4></a>
-				</div>
+				<?php if(is_product_category() || !is_product_category() && $term->parent == 0 ): ?>
+					<div class="catalog__categoriesList__itemWrapper">
+						<a href="<?php echo get_term_link( $term->slug, 'product_cat' ); ?>"><h4 class="catalog__categoriesList__item fw-r" data-category="<?php echo $term->slug; ?>"><?php echo $term->name; ?></h4></a>
+					</div>
+				<?php endif; ?>
 			<?php $i++; } ?>
 		</div>
 	</div>

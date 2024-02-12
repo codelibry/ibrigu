@@ -354,6 +354,7 @@ body.woocommerce.woocommerce-page
                         background-color: $color-black
     &__button
         display: flex 
+        justify-content: flex-end
         &Cart 
             form .quantity,
             form .single_variation 
@@ -368,6 +369,8 @@ body.woocommerce.woocommerce-page
             max-width: calc( 100% - 112px )
             position: relative
             min-height: 110px
+            +max-screen($breakpoint-md)
+                max-width: 100% 
             .wishlistIcon 
                 position: absolute
                 top: 25px
@@ -425,6 +428,12 @@ body.woocommerce.woocommerce-page
         max-height: 3.5em
         overflow: hidden
         line-height: 1.75
+        +max-screen(1200px)
+            max-height: 3em 
+        +max-screen($breakpoint-lg)
+            max-height: 2.5em 
+        +max-screen($breakpoint-md)
+            max-height: 3.5em 
         +min-screen(770px)
             line-height: 1.65
             padding-left: 17px
@@ -552,7 +561,10 @@ body.woocommerce.woocommerce-page
                             font-size: 12px
                     .add_to_wishlist span 
                         display: none 
-                    .exists .yith-wcwl-add-button 
+                    .exists .yith-wcwl-add-button,
+                    .yith-wcwl-wishlistexistsbrowse > a,
+                    .delete_item,
+                    .view-wishlist
                         font-size: 0
                     
                 &__top 

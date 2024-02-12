@@ -462,3 +462,11 @@ function display_shipping_province_in_admin($order) {
 
 
 
+//Change Default Products Ordering 
+add_filter( 'woocommerce_get_catalog_ordering_args', 'custom_catalog_ordering_args' );
+
+function custom_catalog_ordering_args( $args ) {
+    $args['orderby'] = 'date'; 
+    $args['order'] = 'DESC'; 
+    return $args;
+}
