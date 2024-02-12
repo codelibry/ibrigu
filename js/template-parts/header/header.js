@@ -18,14 +18,16 @@ function header() {
     });
 
     $(document).on('click', '.menu-item__parent a', function (e) {
-        e.preventDefault();
-
         const menuItem = $(this).closest('.menu-item-has-children');
         const subMenu = menuItem.find('.sub-menu');
 
-        menuItem.toggleClass('menu-active');
+        if(!menuItem.hasClass('menu-active') && $(this).attr('href') == '#') {
+            e.preventDefault();
 
-        subMenu.stop().slideToggle();
+            menuItem.toggleClass('menu-active');
+
+            subMenu.stop().slideToggle();
+        }
     })
 
     // add class to header on scrolling
