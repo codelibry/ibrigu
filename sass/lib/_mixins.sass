@@ -266,3 +266,23 @@
 
 %img-cover
 	+img-cover
+
+/* flex layout with cards */
+
+@mixin flex-layout-cards($qty, $gap-y: 0, $gap-x: $gap-y)
+	display: flex
+	flex-wrap: wrap
+	gap: #{$gap-y} #{$gap-x}
+	> *
+		@if $qty > 1
+			width: calc((100% / #{$qty}) - (#{$gap-x} * (#{$qty} - 1) / #{$qty}))
+		@else
+			width: 100%
+
+// Add hover effect only when
+// the device supports hover
+
+@mixin hover
+	@media (hover: hover)
+		&:hover
+			@content

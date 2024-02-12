@@ -1,23 +1,14 @@
 .collection
     &__item
-        padding-left: 23px
-        padding-right: 23px
-        padding-bottom: 30px
         +max-screen($breakpoint-lg)
             display: flex
             flex-direction: column
             align-items: center
-            padding-left: 15px
-            padding-right: 15px
-        +max-screen($breakpoint-md)
-            padding-left: 10px
-            padding-right: 10px
-        img 
+        img
             width: 100%
             height: auto
         &Title
-            padding-top: 40px
-            text-align: end
+            padding-top: 10px
             +max-screen($breakpoint-lg)
                 padding-top: 15px
                 font-size: 16px
@@ -26,23 +17,10 @@
             padding-left: 20px
             padding-right: 20px
     &__list
-        margin-left: -23px
-        margin-right: -23px
+        +flex-layout-cards(4, 52px, 90px)
+        +max-screen($breakpoint-xl)
+            +flex-layout-cards(3, 30px, 60px)
         +max-screen($breakpoint-lg)
-            margin-left: -15px
-            margin-right: -15px
+            +flex-layout-cards(2, 30px)
         +max-screen($breakpoint-md)
-            margin-left: -10px
-            margin-right: -10px
-.single-collections
-    .collection
-        &__item
-            +max-screen($breakpoint-lg)
-                padding-left: 5px
-                padding-right: 5px
-                padding-bottom: 15px
-                align-items: flex-end
-        &__list
-            +max-screen($breakpoint-lg)
-                margin-left: -5px
-                margin-right: -5px
+            +flex-layout-cards(2, 20px)

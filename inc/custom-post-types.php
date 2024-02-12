@@ -47,6 +47,8 @@ function cptui_register_my_cpts_testimonial() {
 }
 
 add_action( 'init', 'cptui_register_my_cpts_testimonial' );
+
+
 add_action( 'init', 'register_post_types' );
 function register_post_types(){
 	register_post_type( 'collections', [
@@ -75,37 +77,7 @@ function register_post_types(){
 		'hierarchical'        => false,
 		'supports'            => [ 'title', 'editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
 		'taxonomies'          => [],
-		'has_archive'         => false,
-		'rewrite'             => true,
-		'query_var'           => true,
-	] );
-	register_post_type( 'campaigns', [
-		'label'  => null,
-		'labels' => [
-			'name'               => 'Campaigns', 
-			'singular_name'      => 'Campaign', 
-			'add_new'            => 'Add Campaign', 
-			'add_new_item'       => 'Campaign adding', 
-			'edit_item'          => 'Campaign editing', 
-			'new_item'           => 'New  Campaign', 
-			'view_item'          => 'Campaign',
-			'search_items'       => 'Search Campaign', 
-			'not_found'          => 'Not found', 
-			'not_found_in_trash' => 'Not found in trash',
-			'parent_item_colon'  => '', 
-			'menu_name'          => 'Campaigns', 
-		],
-		'description'         => '',
-		'public'              => true,
-		'show_in_menu'        => true, 
-		'show_in_rest'        => true,
-		'rest_base'           => null, 
-		'menu_position'       => null,
-		'menu_icon'           => null,
-		'hierarchical'        => false,
-		'supports'            => [ 'title', 'editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
-		'taxonomies'          => [],
-		'has_archive'         => false,
+		'has_archive'         => true,
 		'rewrite'             => true,
 		'query_var'           => true,
 	] );
