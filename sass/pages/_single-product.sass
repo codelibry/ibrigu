@@ -691,15 +691,21 @@ body.woocommerce.woocommerce-page
                                 border: 0
                 &__attributesPicker 
                     padding-top: 0
-                    width: 100%
                     justify-content: flex-end
                     margin-left: 0
                     +max-screen($breakpoint-lg)
                         flex-direction: column
+                    &.more-attributes 
+                        .singleProduct__attributesPicker__item
+                            max-width: 50%
+                            +max-screen($breakpoint-lg)
+                                max-width: 100%
                     &__item 
                         flex: none 
-                        width: 50%
                         cursor: pointer
+                        +max-screen(1600px)
+                            flex: 1
+                            width: 50%
                         +max-screen($breakpoint-lg)
                             width: 100%
                         &:first-child .singleProduct__attributesPicker__itemTitle
@@ -709,6 +715,10 @@ body.woocommerce.woocommerce-page
                             padding-right: 46px
                             line-height: 1.2
                             cursor: pointer
+                            +min-screen(1601px)
+                                aspect-ratio: 1/1
+                            +max-screen(1600px)
+                                border-top: 0
                             +max-screen($breakpoint-lg)
                                 padding-right: 28px
                             &::before 
@@ -812,9 +822,9 @@ body.woocommerce.woocommerce-page
                     position: static !important
                 &__buttons 
                     display: flex 
-                    width: 100% 
                     position: relative
                     +max-screen(1600px)
+                        width: 100% 
                         flex-direction: column-reverse
                     div.singleProduct__buttonCart 
                         form.cart,

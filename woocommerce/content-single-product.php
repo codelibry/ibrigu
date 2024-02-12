@@ -333,8 +333,15 @@ do_action( 'woocommerce_before_single_product' );
                     <?php 
                         $attributes = $product->get_attributes();
                         if(is_a( $product, 'WC_Product_Variable' )):
+                            $count = 0;
+                            foreach($attributes as $attribute):
+                                $results = woocommerce_get_product_terms($product->id, $attribute['name']);
+                                if(count($results) > 1):
+                                    $count++;
+                                endif;
+                            endforeach;
                         ?>
-                        <div class="singleProduct__attributesPicker">
+                        <div class="singleProduct__attributesPicker<?php if($count > 1){echo ' more-attributes';} ?>">
                             <?php foreach($attributes as $attribute): 
                                 $attributelabel = wc_attribute_label( $attribute['name'] );
                                 $results = woocommerce_get_product_terms($product->id, $attribute['name']);

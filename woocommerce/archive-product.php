@@ -37,7 +37,10 @@ do_action( 'woocommerce_before_main_content' );
 <?php endif; ?>
 <?php 
 if(!is_product_category()){
-    $terms = get_the_terms( $post->ID, 'product_cat' );
+    $terms = get_terms( array(
+		'taxonomy'   => 'product_cat', // таксономія для категорій WooCommerce
+		'hide_empty' => false, // показувати всі категорії, навіть якщо вони порожні
+	) );
 }
 else{
     $queried_object = get_queried_object(); 
