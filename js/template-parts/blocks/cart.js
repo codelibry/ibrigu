@@ -25,9 +25,32 @@ function cart() {
         if($('.emptyCart').length > 0){
             $('body').addClass('empty-cart');
         }
-    })
-}
+    });
 
+    //Quantity
+    $(document).ready(function(){
+        updateCart();
+    });
+    $(document).ajaxComplete(function(){
+        updateCart(); 
+    });
+}
+function updateCart(){
+    $('.decrease').click(function(){
+        const item = $(this).parent().find('input[type="number"]');
+        item.val(item.val() - 1);
+        setTimeout(function(){
+            item.focus().submit();
+        }, 600);
+    });
+    $('.increase').click(function(){
+        const item = $(this).parent().find('input[type="number"]');
+        item.val(parseInt(item.val()) + 1);
+        setTimeout(function(){
+            item.focus().submit();
+        }, 600);
+    });
+}
 function cartRemove(){
     $('.cartContent__itemRemove').click(function(){
         let item = $(this).closest('.cartContent__item');

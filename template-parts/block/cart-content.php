@@ -95,6 +95,7 @@
 									</div>
 								<?php endforeach; ?>
 								<div class="cartContent__itemQuantity">
+									<div class="decrease">-</div>
 									<?php
 										if ( $_product->is_sold_individually() ) {
 											$min_quantity = 1;
@@ -118,6 +119,7 @@
 
 										echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item ); // PHPCS: XSS ok.
 									?>
+									<div class="increase">+</div>
 								</div>
 							</h5>
 							<div class="cartContent__itemBottom">

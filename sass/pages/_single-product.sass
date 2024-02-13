@@ -1,4 +1,7 @@
 body.woocommerce.woocommerce-page 
+    .woocommerce-variation-add-to-cart
+        .added_to_cart 
+            display: none
     .single_add_to_cart_button.button
         background-color: $color-black
         padding: 16px
@@ -16,6 +19,12 @@ body.woocommerce.woocommerce-page
                 min-width: 100%
             +max-screen(1200px)
                 min-height: 90px
+        &.loading::after 
+            top: 4px
+            right: 4px
+            font-size: 16px
+        &.added::after 
+            content: none 
         &.absolute
             position: absolute
             bottom: auto

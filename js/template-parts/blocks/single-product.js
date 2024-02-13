@@ -100,7 +100,7 @@ function singleProduct(){
             asNavFor: '.singleProduct__sideSlider'
         });
         $('.singleProduct__sideSlider').slick({
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
             asNavFor: '.singleProduct__mainSlider',
             focusOnSelect: true,
@@ -156,16 +156,45 @@ function singleProduct(){
     });
     if($('body').hasClass('single-product') && $('.woocommerce-notices-wrapper > div').length > 0){
         $('<div class="scroller"></div>').prependTo('.woocommerce-notices-wrapper');
-        // $('.scroller').animate({
-        //     width: 0,
-        // }, 10000, function() {
-        //     $('.woocommerce-notices-wrapper > div').remove();
-        // });
+        $('.scroller').animate({
+            width: 0,
+        }, 10000, function() {
+            $('.woocommerce-notices-wrapper > div').remove();
+        });
     }
+
+    $('.single_add_to_cart_button').click(function(){
+        let i = 1;
+        $(document).ajaxSuccess(function(event, xhr, settings) {
+            if(i < 3){
+                $.ajax({
+                    url: customjs_ajax_object.ajax_url,
+                    type: 'POST',
+                    data: {
+                        action: 'sideCartUpdate',
+                    },
+                    success: function( response ) {
+                        $('.cartSidebar__list').html(response);
+                        $('.cartSidebar').addClass('cart-opened');
+                    },
+                });
+            }
+            i++;
+        });
+    });
+    $('.qty').on('submit', function(e){
+        // $.ajax({
+        //     url: customjs_ajax_object.ajax_url,
+        //     type: 'POST',
+        //     data: {
+        //         action: 'sideCartUpdate',
+        //     },
+        //     success: function( response ) {
+        //         $('.cartSidebar__list').html(response);
+        //     },
+        // });
+    });
 }
 
-function fixBtn(){
-    
-}
 
 export {singleProduct}

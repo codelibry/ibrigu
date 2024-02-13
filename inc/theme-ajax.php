@@ -67,3 +67,10 @@ function products_filter() {
     endif;
     die();
 }
+
+add_action('wp_ajax_nopriv_sideCartUpdate', 'sideCartUpdate');
+add_action('wp_ajax_sideCartUpdate', 'sideCartUpdate');
+function sideCartUpdate() {
+    get_template_part('template-parts/block/cart-content');
+    die();
+}
