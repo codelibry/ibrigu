@@ -164,6 +164,7 @@ body.woocommerce.woocommerce-page
                 border-right: 1px solid $color-black
                 position: relative
                 cursor: pointer
+                margin-bottom: 0
                 +min-screen(770px)
                     +max-screen(1200px)
                         min-height: 90px
@@ -575,7 +576,6 @@ body.woocommerce.woocommerce-page
                     .delete_item,
                     .view-wishlist
                         font-size: 0
-                    
                 &__top 
                     position: relative
                 &__description 
@@ -843,6 +843,8 @@ body.woocommerce.woocommerce-page
                             height: 100%
                         .single_add_to_cart_button 
                             justify-content: center
+                            .price 
+                                margin-bottom: 0
                         button.single_add_to_cart_button.button
                             padding: 16px 
                             padding-top: 12px
@@ -1178,3 +1180,7 @@ body.woocommerce.woocommerce-page
     padding-top: 67px
     & > .woocommerce-breadcrumb 
         display: none
+.post-type-archive-product  
+    #main main#main
+        +max-screen($breakpoint-md)
+            padding-top: 67px 

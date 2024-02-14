@@ -18,6 +18,10 @@
     +max-screen($breakpoint-lg)
         width: 368px
         left: -368px
+    +max-screen($breakpoint-md)
+        width: 100% 
+        left: -100%
+        overflow-x: hidden
     &.cart-opened 
         left: 0
     &::-webkit-scrollbar 
@@ -43,6 +47,34 @@
         .cart-opened + &
             opacity: 0.4
             visibility: visible
+    div.lii-qty
+        display: flex 
+        margin-top: 32px
+        +max-screen(1440px)
+            margin-top: 24px
+        +max-screen(1200px)
+            margin-top: 18px
+        +max-screen($breakpoint-lg)
+            margin-top: 12px
+        .quantity
+            display: flex
+        .lii-minus,
+        .lii-plus,
+        .lii-qty
+            width: 31.5px 
+            height: 29.75px
+            border: 1px solid $color-black
+            display: flex 
+            justify-content: center
+            align-items: center
+            color: $color-black
+            background-color: transparent
+        .lii-qty
+            border: 1px solid $color-black 
+            border-left: 0
+            border-right: 0
+            padding-top: 0
+            text-align: center
     &__content 
         padding: 127px 40px 0 35px 
         z-index: 9999999
@@ -228,7 +260,6 @@
                     display: flex 
                     justify-content: center
                     align-items: center
-                    padding-top: 6px 
                     color: $color-black
                 .qty
                     border: 1px solid $color-black 
@@ -256,6 +287,8 @@
                 padding: 24px 24px 24px 20px 
         &__buttonsList
             width: 100%
+            & > a 
+                border-radius: 0
         &__shopBtn
             +max-screen(1440px)
                 margin-top: 14px
@@ -267,6 +300,10 @@
                 background-color: $color-white
                 color: $color-black
                 border-color: $color-black
+        &__checkoutBtn
+            &:hover 
+                border-color: $color-black 
+                background-color: $color-white
         &__row 
             margin-bottom: 11px
             line-height: 1.1

@@ -94,6 +94,7 @@
 										</div>
 									</div>
 								<?php endforeach; ?>
+								<?php if(is_cart()): ?>
 								<div class="cartContent__itemQuantity">
 									<div class="decrease">-</div>
 									<?php
@@ -121,6 +122,11 @@
 									?>
 									<div class="increase">+</div>
 								</div>
+								<?php else: ?>
+									<div class="lii-qty lii-buttons-added me-3 <?php echo esc_attr($hidden); ?>">
+										<input type="button" value="-" class="lii-minus" /><input data-key="<?php echo esc_attr($cart_item_key); ?>" type="number" step="1" min="1" max="" name="quantity" value="<?php echo $cart_item['quantity']; ?>" title="Qty" class="lii-input-text lii-qty lii-text" size="4" pattern="" inputmode="" /><input type="button" value="+" class="lii-plus" />
+									</div>
+								<?php endif; ?>
 							</h5>
 							<div class="cartContent__itemBottom">
 								<?php 

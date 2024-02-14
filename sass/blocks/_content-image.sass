@@ -213,6 +213,13 @@
             height: 100%
             object-fit: cover
             object-position: top
+        .home &
+            padding-left: 0
+            padding-right: 0
+            &__inner 
+                padding-bottom: 110.418%
+                +max-screen($breakpoint-md)
+                    min-height: 100%
     &__title
         h2
             font-size: 30px

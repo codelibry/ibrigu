@@ -162,7 +162,6 @@ function singleProduct(){
             $('.woocommerce-notices-wrapper > div').remove();
         });
     }
-
     $('.single_add_to_cart_button').click(function(){
         let i = 1;
         $(document).ajaxSuccess(function(event, xhr, settings) {
@@ -182,18 +181,22 @@ function singleProduct(){
             i++;
         });
     });
-    $('.qty').on('submit', function(e){
-        // $.ajax({
-        //     url: customjs_ajax_object.ajax_url,
-        //     type: 'POST',
-        //     data: {
-        //         action: 'sideCartUpdate',
-        //     },
-        //     success: function( response ) {
-        //         $('.cartSidebar__list').html(response);
-        //     },
-        // });
+    $(document).ajaxComplete(function(event, xhr, settings) {
+        var actionName = settings.url.split('/?wc-ajax='); // отримуємо URL аякс запиту
+        if(actionName[1] == 'lii_ajaxcart_update_item_quantity'){
+            $.ajax({
+                url: customjs_ajax_object.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'sideCartUpdate',
+                },
+                success: function( response ) {
+                    $('.cartSidebar__list').html(response);
+                },
+            });
+        }
     });
+
 }
 
 

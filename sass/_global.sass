@@ -151,3 +151,17 @@ body:not(.woocommerce-page)
 	&.color
 		&--black
 			background-color: black
+#lii-ajax-cart
+	display: none 
+body 
+	& > .alert 
+		border: 1px solid $color-black
+		color: $color-black 
+		background-color: $color-white
+		+max-screen($breakpoint-md)
+			width: 90%
+			left: 50%
+			transform: translateX(-50%)
+	&.woocommerce-cart #main 
+		+max-screen($breakpoint-md)
+			padding-top: 20px
