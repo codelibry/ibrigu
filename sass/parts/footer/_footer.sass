@@ -26,19 +26,20 @@
 			+max-screen($breakpoint-md)
 				padding-top: 5px
 			h4
-				text-transform: uppercase
 				font-size: 12px
 				line-height: 1.33
 				font-weight: 400
-				margin-bottom: 13px
+				margin-bottom: 16px 
+				+max-screen($breakpoint-md)
 				+max-screen($breakpoint-md)
 					font-size: 9px
 					line-height: 1
-					margin-bottom: 0
+					margin-bottom: 12px
 			ul
 				width: 100%
 				display: flex
 				flex-direction: column
+				padding-left: 0
 			li
 				font-size: 12px
 				line-height: 1
@@ -55,6 +56,10 @@
 						color: $color-primary
 				&:not(:last-of-type)
 					margin-bottom: 16px
+					+max-screen($breakpoint-lg)
+						margin-bottom: 12px
+					+max-screen($breakpoint-md)
+						margin-bottom: 8px
 
 		&__social
 			&__list
@@ -161,30 +166,3 @@
 	.footer__menu__title
 		position: relative
 		width: fit-content
-		padding-right: calc(8.5px + 7.223px)
-		&::before
-			content: " "
-			position: absolute
-			width: 7.223px
-			height: 3.707px
-			
-			background-image: url('../assets/images/dropdown_arrow.svg')
-			background-size: cover
-			background-position: center
-			background-repeat: no-repeat
-
-			top: 50%
-			right: 0
-			transform: translateY(-50%)
-			transform-origin: center
-			transition: 0.3s
-			.footer-active &
-				transform: rotate(-180deg) translateY(50%)
-			
-	.footer-nav
-		+max-screen($breakpoint-md)
-			overflow: hidden
-			transition: max-height 0.6s linear 0.3s
-			display: none
-			.footer-active &
-				transition: max-height 0.6s ease-out 0s

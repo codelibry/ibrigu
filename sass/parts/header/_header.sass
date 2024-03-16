@@ -57,6 +57,28 @@
 		.home &
 			+max-screen($breakpoint-md)
 				gap: 0 16px
+		.menu-item 
+			a 
+				position: relative
+				width: fit-content
+				display: block
+				+max-screen($breakpoint-md)
+					width: 100%
+				&::after 
+					content: ""
+					position: absolute 
+					left: 0
+					bottom: 2px 
+					height: 1px 
+					width: 100% 
+					transition: .3s 
+					transform: scaleX(0)
+					transform-origin: left 
+					background-color: $color-black
+					+max-screen($breakpoint-md)
+						content: none 
+				&:hover::after 
+					transform: scaleX(1)
 		&.header--desktop, &.header--mobile
 			.header
 				&__nav
@@ -76,9 +98,6 @@
 								color: $color-white
 								+max-screen($breakpoint-md)
 									color: $color-black
-						&.current-menu-item, &.current-menu-parent .menu-item__parent
-							&>a
-								text-decoration: underline
 				&__logo
 					.header--logo
 						display: block
@@ -118,7 +137,7 @@
 						font-size: 15px
 						line-height: 1.33
 						padding: 2px 0
-						&.menu-active
+						&.menu-item-has-children
 							.sub-menu
 								padding: 14px 0
 					&.nav--left, &.nav--right
@@ -128,7 +147,8 @@
 						a
 							justify-content: flex-start
 					&.nav--right
-						a
+						.menu-item 
+							display: flex 
 							justify-content: flex-end
 				&__logo
 					position: absolute

@@ -30,7 +30,6 @@
 						<div class="cartContent__itemImage__wrapper">
 							<div class="cartContent__itemImage">
 								<?php echo $thumbnail; ?>
-								
 							</div>
 						</div>
 						<div class="cartContent__itemContent">

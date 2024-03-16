@@ -3,15 +3,15 @@ import $  from 'jquery';
 function footer(){
     
     //mobile dropdown
-    $('.footer__main__nav').each(function(){
-        let block = $(this);
-        let title = $(this).find('.footer__menu__title');
-        let dropdown = $(this).find('.footer-nav');
-        title.click(function(){
-            block.toggleClass('footer-active');
-            dropdown.slideToggle(300);
-        });
-    });
+    // $('.footer__main__nav').each(function(){
+    //     let block = $(this);
+    //     let title = $(this).find('.footer__menu__title');
+    //     let dropdown = $(this).find('.footer-nav');
+    //     title.click(function(){
+    //         block.toggleClass('footer-active');
+    //         dropdown.slideToggle(300);
+    //     });
+    // });
     
 
     //back to top

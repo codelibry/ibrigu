@@ -21,12 +21,10 @@ function header() {
         const menuItem = $(this).closest('.menu-item-has-children');
         const subMenu = menuItem.find('.sub-menu');
 
-        if(!menuItem.hasClass('menu-active')) {
-            e.preventDefault();
+        e.preventDefault();
 
-            menuItem.toggleClass('menu-active');
-            subMenu.stop().slideToggle();
-        }
+        menuItem.toggleClass('menu-active');
+        subMenu.stop().slideToggle();
     })
 
     // add class to header on scrolling

@@ -38,7 +38,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         </div>
         <div class="catalog__listItem__body">
             <h5 class="catalog__listItem__title"><?php echo $product->get_title(); ?></h5>
-            <h5 class="catalog__listItem__price"><?php echo $product->get_price() . ' '; show_currency_symbol(); ?></h5>
+            <h5 class="catalog__listItem__price"><?php echo $product->get_price_html(); ?></h5>
             <div class="catalog__listItem__wishlist"><?php do_action( 'woocommerce_after_shop_loop_item' ); ?></div>
         </div>
     </a>

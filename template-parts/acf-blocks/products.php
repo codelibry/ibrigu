@@ -17,15 +17,20 @@
                     <?php if ($product) : ?>
                         <?php
                         $product_title = $product->get_title();
-                        $product_thumbnail = $product->get_image();
+                        // $product_thumbnail = $product->get_image();
                         $product_price = $product->get_price();
                         $product_link = get_permalink($product->get_id());
+                        if(!empty(wp_get_attachment_url( $product->get_image_id() ))):
+                            $product_thumbnail = wp_get_attachment_url( $product->get_image_id() );
+                        else: 
+                            $product_thumbnail = wc_placeholder_img_src();
+                        endif;
                         ?>
 
                         <li class="products__item col-6 col-md-4 col-xl-2">
                             <div class="products__item-wrap">
                                 <a href="<?php echo $product_link; ?>" class="products__item-img">
-                                    <?php echo $product_thumbnail; ?>
+                                    <img src="<?php echo $product_thumbnail; ?>" alt="">
                                 </a>
                                 <span class="products__item-name">
                                     <?php echo $product_title; ?>

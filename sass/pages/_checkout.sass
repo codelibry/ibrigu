@@ -783,25 +783,6 @@
             padding: 0
         .woocommerce-info
             margin: 0
-    #header  
-        &::before 
-            content: ""
-            position: absolute
-            right: 0
-            top: 0
-            width: 25.25%
-            height: 100% 
-            background-color: $color-bg-dark-grey
-            +max-screen(1600px)
-                width: 30%
-            +max-screen(1440px)
-                width: 34.25%
-            +max-screen(1200px)
-                width: 32.25%
-            +max-screen($breakpoint-lg)
-                width: 41.25%
-            +max-screen($breakpoint-md)
-                content: none
     #footer 
         +min-screen(770px)
             display: none
@@ -845,6 +826,26 @@
                 font-size: 13px
                 margin-bottom: 24px
                 padding-bottom: 14px
+.woocommerce-checkout:not(.woocommerce-order-received)
+    #header  
+        &::before 
+            content: ""
+            position: absolute
+            right: 0
+            top: 0
+            width: 25.25%
+            height: 100% 
+            background-color: $color-bg-dark-grey
+            +max-screen(1600px)
+                width: 30%
+            +max-screen(1440px)
+                width: 34.25%
+            +max-screen(1200px)
+                width: 32.25%
+            +max-screen($breakpoint-lg)
+                width: 41.25%
+            +max-screen($breakpoint-md)
+                content: none
 .paymentBtnWrapper 
     display: flex 
     justify-content: center
