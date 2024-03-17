@@ -19,4 +19,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div class="products catalog__list row">
+<div class="products catalog__list row" data-color="" data-size="" data-category="" data-order="">

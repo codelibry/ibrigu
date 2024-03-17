@@ -13,6 +13,36 @@ function shopFilters() {
             sidebarClose();
         }
    });
+
+   //Categories 
+    $('.catalog__categoriesList__itemWrapper').click(function(){
+        $('.catalog__categoriesList__itemWrapper').not($(this)).removeClass('checked');
+        $(this).toggleClass('checked');
+
+        let slug = $(this).attr('data-slug');
+        const color = $('.catalog__list').attr('data-color'),
+              size = $('.catalog__list').attr('data-size'),
+              order = $('.catalog__list').attr('data-order');
+
+        if(!$(this).hasClass('checked')){
+            slug = $('.catalog__categoriesList__slider').attr('data-default-cat');
+        }
+        $.ajax({
+            url: customjs_ajax_object.ajax_url,
+            type: 'post',
+            data: {
+                action: 'product_categories',
+                slug: slug,
+                order: order,
+                size: size,
+                color: color,
+            },
+            success: function(response){
+                $('.catalog__list').html(response);
+            }
+        });
+        $('.catalog__list').attr('data-category', slug);
+    })
 }
 
 function filtersSidebar() {
@@ -37,24 +67,19 @@ function sidebarAttributes(){
 
     //Sort Items 
     $('.catalog__filtersList__attributeItem').click(function(){
-        $('.sort .catalog__filtersList__attributeItem').removeClass('active');
+        if($(this).closest('.catalog__filtersList__attribute').hasClass('sort')){
+            $('.sort .catalog__filtersList__attributeItem').removeClass('active');
+        }
         $(this).toggleClass('active');
     });
 
     //Apply Filters
     $('.catalog__filtersList__attributeItem__apply').click(function(){
+        const category = $('.catalog__list').attr('data-category');
         let colors = [],
             sizes = [],
-            sort = [],
-            isCategoryPage = $('body').hasClass('tax-product_cat'),
-            termSlug;
-        if(isCategoryPage){
-            termSlug = $('body').attr('class').split('term-');
-            termSlug = termSlug[1].split(' ');
-        }
-        else{
-            termSlug = ' ';
-        }
+            sort = [];
+        
         $('.catalog__filtersList__attribute').each(function(){
             let arr = [];
             $(this).find('.catalog__filtersList__attributeItem').each(function(){
@@ -80,14 +105,17 @@ function sidebarAttributes(){
                 colors: colors,
                 sizes: sizes,
                 sort: sort.join(),
-                isCategoryPage: isCategoryPage,
-                category: termSlug[0],
+                category: category,
             },
             success: function(response){
                 $('.catalog__list').html(response);
             }
         });
         $('.catalog__filtersMenu').removeClass('opened');
+
+        $('.catalog__list').attr('data-color', colors);
+        $('.catalog__list').attr('data-size', sizes);
+        $('.catalog__list').attr('data-order', sort);
     });
 }
 function sidebarClose() {

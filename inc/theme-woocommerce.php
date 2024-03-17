@@ -55,9 +55,9 @@ function custom_register_fields() {
     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide phone-country-code">
         <span class="phone-country-code-pseudo-el"></span>
         <select name="billing_phone_country_code" id="billing_phone_country_code">
-        <option value="" <?php selected('', $billing_phone_country_code); ?>><?php _e('Select country code', 'woocommerce_custom_text'); ?></option>
+        <!-- <option value="" <?php selected('', $billing_phone_country_code); ?>><?php _e('Select country code', 'woocommerce_custom_text'); ?></option> 
             <option value="+93" <?php selected('+93', $billing_phone_country_code); ?>>Afghanistan +93</option>
-            <option value="+355" <?php selected('+355', $billing_phone_country_code); ?>>Albania +355</option>
+            <option value="+355" <?php selected('+355', $billing_phone_country_code); ?>>Albania +355</option> 
             <option value="+213" <?php selected('+213', $billing_phone_country_code); ?>>Algeria +213</option>
             <option value="+1-684" <?php selected('+1-684', $billing_phone_country_code); ?>>American Samoa +1-684</option>
             <option value="+376" <?php selected('+376', $billing_phone_country_code); ?>>Andorra +376</option>
@@ -158,9 +158,9 @@ function custom_register_fields() {
             <option value="+964" <?php selected('+964', $billing_phone_country_code); ?>>Iraq +964</option>
             <option value="+353" <?php selected('+353', $billing_phone_country_code); ?>>Ireland +353</option>
             <option value="+44" <?php selected('+44', $billing_phone_country_code); ?>>Isle of Man +44</option>
-            <option value="+972" <?php selected('+972', $billing_phone_country_code); ?>>Israel +972</option>
-            <option value="+39" <?php selected('+39', $billing_phone_country_code); ?>>Italy +39</option>
-            <option value="+225" <?php selected('+225', $billing_phone_country_code); ?>>Ivory Coast +225</option>
+            <option value="+972" <?php selected('+972', $billing_phone_country_code); ?>>Israel +972</option> -->
+            <option value="+39" selected="selected" <?php selected('+39', $billing_phone_country_code); ?>>Italy +39</option>
+            <!-- <option value="+225" <?php selected('+225', $billing_phone_country_code); ?>>Ivory Coast +225</option>
             <option value="+1-876" <?php selected('+1-876', $billing_phone_country_code); ?>>Jamaica +1-876</option>
             <option value="+81" <?php selected('+81', $billing_phone_country_code); ?>>Japan +81</option>
             <option value="+44" <?php selected('+44', $billing_phone_country_code); ?>>Jersey +44</option>
@@ -299,7 +299,7 @@ function custom_register_fields() {
             <option value="+212" <?php selected('+212', $billing_phone_country_code); ?>>Western Sahara +212</option>
             <option value="+967" <?php selected('+967', $billing_phone_country_code); ?>>Yemen +967</option>
             <option value="+260" <?php selected('+260', $billing_phone_country_code); ?>>Zambia +260</option>
-            <option value="+263" <?php selected('+263', $billing_phone_country_code); ?>>Zimbabwe +263</option>
+            <option value="+263" <?php selected('+263', $billing_phone_country_code); ?>>Zimbabwe +263</option> -->
         </select>
     </p>
 	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">

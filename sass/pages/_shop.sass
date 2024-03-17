@@ -60,7 +60,9 @@
                 align-items: center
                 border: 1px solid $color-bg-grey
                 transition: .3s 
-                &:hover 
+                cursor: pointer
+                &:hover,
+                &Wrapper.checked &
                     border: 1px solid $color-black
                     background-color: transparent
                 +max-screen($breakpoint-md)
@@ -150,6 +152,15 @@
         &Empty 
             padding-bottom: 32px
             padding-left: 20px
+            padding: 0 63px 
+            +max-screen(1440px)
+                padding: 0 32px 
+            +max-screen(1200px)
+                padding: 0 24px 
+            +max-screen($breakpoint-lg)
+                padding: 0 48px 
+            +max-screen($breakpoint-md)
+                padding: 0 7.5px 
         &Item 
             &__body 
                 position: relative
@@ -444,6 +455,7 @@
                         margin-bottom: 14px
                     &__name 
                         line-height: 1.2
+                        margin-bottom: 0
                     &__box 
                         width: 20px 
                         height: 20px 

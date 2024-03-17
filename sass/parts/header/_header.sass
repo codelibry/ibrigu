@@ -118,6 +118,8 @@
 				&__nav
 					.cart
 						padding: 2px 0 5px
+						a 
+							justify-content: flex-end
 						svg
 							width: 29px
 							height: auto
@@ -408,6 +410,10 @@
 						transition: all 0.35s linear !important
 
 .header--white-transparent
+	.header__wrap 
+		.menu-item 
+			a::after 
+				background-color: $color-white 
 	.header-active &
 		&.header
 			background: #F2F2EF

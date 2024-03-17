@@ -5,5 +5,5 @@
 <?php if($image): ?>
     <div class="emptyCart__image"><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['title']; ?>"></div>
 <?php endif; ?>
-<a href="<?php echo get_home_url(  ) ?>/shop" class="emptyCart__button btn button--fz--md button--black button--size--md"><?php _e('SHOP NOW', 'woocommerce_custom_text'); ?></a>
-<a href="<?php echo get_home_url(  ) ?>/shop" class="emptyCart__closeIcon "></a>
+<a href="<?php echo get_home_url(  ) ?>" class="emptyCart__button btn button--fz--md button--black button--size--md"><?php _e('HOME', 'woocommerce_custom_text'); ?></a>
+<a href="<?php echo get_home_url(  ) ?>" class="emptyCart__closeIcon"></a>

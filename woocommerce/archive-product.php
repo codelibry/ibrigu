@@ -51,11 +51,14 @@ if ( $terms && ! is_wp_error( $terms ) ) : //only displayed if the product has a
 <div class="catalog__categoriesList__wrapper">
 	<div class="catalog__categoriesList__prev catalog__categoriesList__arrow disabled"></div>
 	<div class="catalog__categoriesList">
-		<div class="catalog__categoriesList__slider">
+		<div class="catalog__categoriesList__slider" data-default-cat="<?php echo $queried_object->slug ?>">
 			<?php $i = 1; foreach ( $terms as $term ) { ?>
 				<?php if(is_product_category() || !is_product_category() && $term->parent == 0 ): ?>
-					<div class="catalog__categoriesList__itemWrapper">
-						<a href="<?php echo get_term_link( $term->slug, 'product_cat' ); ?>"><h4 class="catalog__categoriesList__item fw-r" data-category="<?php echo $term->slug; ?>"><?php echo $term->name; ?></h4></a>
+					<?php 
+					$order = get_field('categories_list_order', 'product_cat_' . $term->term_id);
+					?>
+					<div class="catalog__categoriesList__itemWrapper" <?php if($order): ?>style="order: <?php echo $order; ?>"<?php endif; ?> data-slug="<?php echo $term->slug; ?>">
+						<h4 class="catalog__categoriesList__item fw-r"><?php echo $term->name; ?></h4>
 					</div>
 				<?php endif; ?>
 			<?php $i++; } ?>

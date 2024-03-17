@@ -31,7 +31,14 @@ $slider_title = get_field('empty_wishlist_related_products_title', 'options');
                 $stock_status = isset( $availability['class'] ) ? $availability['class'] : false; ?>
                 <div class="wishlist__itemWrapper col-12 col-md-6 col-lg-3">
                     <div class="wishlist__item">
-                        <div class="wishlist__itemImage"><?php echo $product->get_image(); ?></div>
+                        <?php 
+                        if(!empty(wp_get_attachment_url( $product->get_image_id() ))):
+                            $image = wp_get_attachment_url( $product->get_image_id() );
+                        else: 
+                            $image = wc_placeholder_img_src();
+                        endif;
+                        ?>
+                        <div class="wishlist__itemImage"><img src="<?php echo $image; ?>" alt=""></div>
                         <div class="wishlist__itemTitle"><?php echo $product->get_title(); ?></div>
                         <div class="wishlist__itemBottom">
                             <div class="wishlist__itemAttributes">
