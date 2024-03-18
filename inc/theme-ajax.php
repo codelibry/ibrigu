@@ -87,7 +87,12 @@ function products_filter() {
 add_action('wp_ajax_nopriv_sideCartUpdate', 'sideCartUpdate');
 add_action('wp_ajax_sideCartUpdate', 'sideCartUpdate');
 function sideCartUpdate() {
-    get_template_part('template-parts/block/cart-content');
+    if($_POST['number'] > 0){
+        get_template_part('template-parts/block/cart-content');
+    }
+    else{
+        get_template_part('template-parts/block/empty-cart-content'); 
+    }
     die();
 }
 

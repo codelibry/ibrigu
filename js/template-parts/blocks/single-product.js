@@ -163,26 +163,25 @@ function singleProduct(){
         });
     }
     $('.single_add_to_cart_button').click(function(){
-        let i = 1;
         $(document).ajaxSuccess(function(event, xhr, settings) {
-            if(i < 3){
+            if(settings.data.split('action=')[1] != 'sideCartUpdate'){
                 $.ajax({
                     url: customjs_ajax_object.ajax_url,
                     type: 'POST',
                     data: {
+                        number: $('.lii-single-product').length,
                         action: 'sideCartUpdate',
                     },
                     success: function( response ) {
-                        $('.cartSidebar__list').html(response);
+                        $('.cartSidebar__content').html(response);
                         $('.cartSidebar').addClass('cart-opened');
                     },
                 });
             }
-            i++;
         });
     });
     $(document).ajaxComplete(function(event, xhr, settings) {
-        var actionName = settings.url.split('/?wc-ajax='); // отримуємо URL аякс запиту
+        var actionName = settings.url.split('/?wc-ajax='); 
         if(actionName[1] == 'lii_ajaxcart_update_item_quantity'){
             $.ajax({
                 url: customjs_ajax_object.ajax_url,
