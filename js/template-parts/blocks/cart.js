@@ -53,13 +53,18 @@ function updateCart(){
 }
 function cartRemove(){
     $('.cartContent__itemRemove').click(function(){
-        let item = $(this).closest('.cartContent__item');
-        item.addClass('hide');
-        item.find('.lii-qty').val(0);
-        // item.find('.lii-qty').trigger( "submit" );
-        // $('.cartContent__coupon button[name="update_cart"]').click();
-        item.find('.lii-qty').trigger(jQuery.Event('keypress', { keycode: 13 }))
-        // item.find('.lii-qty').focus().submit();
+        if($('body').hasClass('woocommerce-cart')){
+            let item = $(this).closest('.cartContent__item');
+            item.addClass('hide');
+            item.find('.qty').val(0);
+            item.find('.qty').trigger( "submit" );
+            $('.cartContent__coupon button[name="update_cart"]').click();
+            item.find('.qty').focus().submit();
+        } else{
+            $(this).closest('.cartContent__item').find('.lii-qty').val(0);
+            $('.lii-cart-products').eq($(this).closest('.cartContent__item').index()).find('.lii-trash').click();
+        }
+        
     })
 }
 
