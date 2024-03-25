@@ -283,8 +283,8 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 						$logout_url = wp_logout_url($redirect_full_url);
 					?>
 					<div class="loginedCustomerData woocommerce-text lg">
-						<h4 class="checkoutTabs__listItem__title loginedCustomerData__title login desktop-xl sm"><?php _e('Contact information', 'woocommerce_custom_text'); ?></h4>
-						<h4 class="loginedCustomerData__subtitle sm desktop-md"><?php _e('Signed with', 'woocommerce_custom_text'); ?> <?php echo $current_user->user_email; ?><a href="<?php echo $logout_url; ?>" class="loginedCustomerData__logout h4 sm desktop-md"><?php _e('Logout', 'woocommerce_custom_text'); ?></a></h4>
+						<h4 class="checkoutTabs__listItem__title loginedCustomerData__title login desktop-xl sm"><?php _e('Contact information', 'woocommerce_custom_text'); ?><a href="<?php echo $logout_url; ?>" class="loginedCustomerData__logout h4 sm desktop-md"><?php _e('Logout', 'woocommerce_custom_text'); ?></a></h4>
+						<h4 class="loginedCustomerData__subtitle sm desktop-md"><?php _e('Signed with', 'woocommerce_custom_text'); ?> <?php echo $current_user->user_email; ?></h4>
 						<h4 class="loginedCustomerData__text sm desktop-md"><?php echo $customer_name; ?></h4>
 						<h4 class="loginedCustomerData__text sm desktop-md"><?php echo $current_user->user_email; ?></h4>
 					</div>

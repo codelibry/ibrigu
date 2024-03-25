@@ -303,8 +303,19 @@
                 position: relative
                 line-height: 1.15
                 width: 30% 
+                text-transform: uppercase
                 +max-screen($breakpoint-md)
                     width: 100%
+                .term-home & 
+                    width: 48% 
+                    +max-screen(1400px)
+                        width: 46%
+                    +max-screen(1200px)
+                        width: 41% 
+                    +max-screen($breakpoint-lg)
+                        width: 38%
+                    +max-screen($breakpoint-md)
+                        width: 100%
                 &::after 
                     +max-screen($breakpoint-md)
                         content: ""

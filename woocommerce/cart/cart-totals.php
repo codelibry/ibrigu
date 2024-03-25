@@ -50,8 +50,11 @@ defined( 'ABSPATH' ) || exit;
 		<a class="cartTotals__checkoutBtn btn button--black button--fz--md button--size--md" href="<?php echo get_home_url() ?>/checkout">
 			<?php _e('CHECKOUT', 'woocommerce_custom_text'); ?>
 		</a>
-		<a class="cartTotals__shopBtn btn button--white button--white--border button--fz--xs button--size--md" href="<?php echo get_home_url() ?>/shop">
-			<?php _e('Continue shopping', 'woocommerce_custom_text'); ?>
+		<a class="cartTotals__shopBtn btn button--white button--white--border button--fz--xs button--size--md" href="<?php echo get_home_url() ?>/product-category/clothing/">
+			<?php _e('CLOTHING', 'woocommerce_custom_text'); ?>
+		</a>
+		<a class="cartTotals__shopBtn btn button--white button--white--border button--fz--xs button--size--md" href="<?php echo get_home_url() ?>/product-category/home/">
+			<?php _e('HOME', 'woocommerce_custom_text'); ?>
 		</a>
 	</div>
 

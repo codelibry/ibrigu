@@ -28,7 +28,9 @@ $slider_title = get_field('empty_wishlist_related_products_title', 'options');
                 global $product;
                 $product      = $item->get_product();
                 $availability = $product->get_availability();
-                $stock_status = isset( $availability['class'] ) ? $availability['class'] : false; ?>
+                $stock_status = isset( $availability['class'] ) ? $availability['class'] : false; 
+                $product_id = $product->get_id();
+                ?>
                 <div class="wishlist__itemWrapper col-12 col-md-6 col-lg-3">
                     <div class="wishlist__item">
                         <?php 
@@ -48,22 +50,24 @@ $slider_title = get_field('empty_wishlist_related_products_title', 'options');
                                     <?php 
                                     $attributes = $product->get_attributes();
                                     foreach($attributes as $attribute):
-                                        $attributelabel = wc_attribute_label( $attribute['name'] );
-                                        $results = woocommerce_get_product_terms($product->id, $attribute['name'], 'names');?>
-                                        <div class="wishlist__itemAttributes__item">
-                                            <div class="wishlist__itemAttributes__itemLabel"><?php echo $attributelabel . ': '; ?></div>
-                                            <div class="wishlist__itemAttributes__itemOptions">
-                                                <?php $count = count($results); ?>
-                                                <?php $i = 1; foreach($results as $result): ?>
-                                                    <?php 
-                                                        echo $result; 
-                                                        if($i != $count){
-                                                            echo ', ';
-                                                        }
-                                                    ?>
-                                                <?php $i++; endforeach;?>
+                                        if(gettype($attribute) == 'object'):
+                                            $attributelabel = wc_attribute_label( $attribute['name'] );
+                                            $results = wc_get_product_terms( $product_id, $attribute['name'], array( 'fields' => 'names') ); ?>
+                                            <div class="wishlist__itemAttributes__item">
+                                                <div class="wishlist__itemAttributes__itemLabel"><?php echo $attributelabel . ': '; ?></div>
+                                                <div class="wishlist__itemAttributes__itemOptions">
+                                                    <?php $count = count($results); ?>
+                                                    <?php $i = 1; foreach($results as $result): ?>
+                                                        <?php 
+                                                            echo $result; 
+                                                            if($i != $count){
+                                                                echo ', ';
+                                                            }
+                                                        ?>
+                                                    <?php $i++; endforeach;?>
+                                                </div>
                                             </div>
-                                        </div>
+                                        <?php endif; ?>
                                     <?php endforeach;?>
                                     <div class="wishlist__itemRemove"><?php echo do_shortcode( '[yith_wcwl_add_to_wishlist]' ) ?></div>
                                 </div>

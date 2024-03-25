@@ -24,7 +24,7 @@
 			+max-screen($breakpoint-lg)
 				padding-top: 40px
 			+max-screen($breakpoint-md)
-				padding-top: 5px
+				padding-top: 7px
 			h4
 				font-size: 12px
 				line-height: 1.33
@@ -34,12 +34,14 @@
 				+max-screen($breakpoint-md)
 					font-size: 9px
 					line-height: 1
-					margin-bottom: 12px
+					margin-bottom: 0
 			ul
 				width: 100%
 				display: flex
 				flex-direction: column
 				padding-left: 0
+				+max-screen($breakpoint-md)
+					padding-top: 8px
 			li
 				font-size: 12px
 				line-height: 1
@@ -59,7 +61,7 @@
 					+max-screen($breakpoint-lg)
 						margin-bottom: 12px
 					+max-screen($breakpoint-md)
-						margin-bottom: 8px
+						margin-bottom: 4px
 
 		&__social
 			&__list
@@ -85,13 +87,30 @@
 				max-width: unset
 				padding-top: 40px
 			+max-screen($breakpoint-md)
-				padding-top: 5px
+				padding-top: 7px
+			label
+				line-height: 1
+				font-size: 10px
+			.nf-form-content .nf-field .field-wrap.email-wrap
+				+max-screen($breakpoint-md)
+					margin-bottom: 10px
+				.nf-field-label
+					+max-screen($breakpoint-md)
+						display: none 
+				.ninja-forms-field
+					+max-screen($breakpoint-md)
+						line-height: 1
+				input[type="email"],
+				input[type="email"]::placeholder 
+					+max-screen($breakpoint-md)
+						font-size: 10px
 			p
 				font-size: 12px
 				line-height: 1.5
 				padding-bottom: 15px !important
 				+max-screen($breakpoint-md)
 					font-size: 9px
+					margin-bottom: 0
 					line-height: 1.11
 					padding-bottom: 5px !important
 				strong
@@ -133,21 +152,41 @@
 						font-size: 5px
 						left: -13.5px 
 						top: 2px 
-	//&__menu__title
-	//	text-transform: uppercase
-	//	font-size: 12px
-	//	margin-bottom: 13px
-	//	+max-screen($breakpoint-md)
-	//		margin-bottom: 5px
-	//		font-size: 9px
-	//		a
-	//			font-size: 12px
-	//			+max-screen($breakpoint-md)
-	//				font-size: 9px
+	&__menu__title
+		+max-screen($breakpoint-md)
+			margin-bottom: 5px
+			font-size: 9px
+			position: relative
+			&::after 
+				content: ""
+				position: absolute
+				top: 1px 
+				transform: rotate(90deg) 
+				right: -11px
+				width: 5px
+				height: 8px
+				background-image: url('../assets/images/filterArrow.svg')
+				background-size: contain
+				background-position: centrer
+				background-repeat: no-repeat
+				transition: .3s 
+			a
+				font-size: 12px
+				+max-screen($breakpoint-md)
+					font-size: 9px
+	&__main__nav.footer-active
+		.footer__menu__title::after 
+			transform: rotate(270deg) 
+	.footer-nav 
+		+min-screen(770px)
+			display: block !important
+			height: auto !important
+		+max-screen($breakpoint-md)
+			display: none 
 	&__bottom
 		padding: 37px 0 30px
 		+max-screen($breakpoint-md)
-			padding: 17px 0 13px
+			padding: 12px 0 13px
 		&__wrapper
 			text-align: center
 		&__inner

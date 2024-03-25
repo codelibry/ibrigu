@@ -24,6 +24,10 @@
     
     $blockID = get_sub_field('block_id');
     $id = $blockID ? 'id="' . $blockID . '"' : '';
+    $hasMedia = false;
+    if(($imageType == 'image' && $image) || ($imageType == 'video' && $video) || $lottie){
+        $hasMedia = true;
+    }
 ?>
 
 <?php if ($content) : ?>
@@ -37,13 +41,15 @@
                         <h2><?php echo $block_title; ?></h2>
                     </div>
                 <?php endif; ?>
-                <div class="contentImageBlock__content">
+                <div class="contentImageBlock__content<?php if($hasMedia){ echo ' has-media'; } ?>">
                     <div class="contentImageBlock__content__inner">
                         <div class="content-block">
                             <?php if ($block_title): ?>
                                 <div class="contentImageBlock__title"><h2><?php echo $block_title; ?></h2></div>
                             <?php endif; ?>
-                            <?php echo $content; ?>
+                            <div class="contentImageBlock__text">
+                                <?php echo $content; ?>
+                            </div>
                             <?php if ($button) : ?>
                                 <div class="contentImageBlock__btn">
                                     <a href="<?php echo esc_url($button['url']); ?>" class="button button--black"
@@ -60,6 +66,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
+                <?php if(($imageType == 'image' && $image) || ($imageType == 'video') && ($video || $lottie)): ?>
                 <div class="contentImageBlock__image image--<?php echo $imagePosition; ?>">
                     <div class="contentImageBlock__image__inner">
                         <?php if ($imageType == 'image'): ?>
@@ -84,6 +91,7 @@
 
                     </div>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>

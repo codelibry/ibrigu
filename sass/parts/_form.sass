@@ -125,10 +125,11 @@
 							&:before
 								line-height: 1
 								font-size: 6px
-								left: -16px
+								left: -18px
 								top: 2px
 								+max-screen($breakpoint-md)
 									font-size: 5px
+									left: -13px 
 	.nf-before-form-content
 		display: none
 	.field-wrap
@@ -162,7 +163,7 @@
 					+max-screen($breakpoint-sm)
 						width: calc(7.86px)
 						height: calc(6.74px)
-						transform: translateY(calc(50% + 4px))
+						transform: translateY(50%)
 		.nf-field
 			.field-wrap
 				.nf-field-element
@@ -632,3 +633,7 @@ body.page #main
 		& + .woocommerce-form-row 
 			+max-screen($breakpoint-md)
 				margin-left: 0 !important
+.contacts-block
+	.form .nf-form-content .nf-field .field-wrap.checkbox-wrap .nf-field-label label:before
+		left: -16px 
+		

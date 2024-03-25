@@ -19,4 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<div class="products catalog__list row" data-color="" data-size="" data-category="" data-order="">
+<?php 
+if(is_product_category()){
+    $queried_object = get_queried_object(); 
+    $slug = $queried_object->slug;   
+}
+?>
+<div class="products catalog__list row" data-color="" data-size="" data-category="<?php if(!empty($slug)){echo $slug;} ?>" data-order="">

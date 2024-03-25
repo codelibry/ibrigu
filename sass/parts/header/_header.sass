@@ -6,7 +6,8 @@
 	z-index: 999999
 	background: #F2F2EF
 	.container
-		max-width: 100%
+		width: 100%
+		max-width: 1920px
 	.nav-toggle
 		width: 27px
 		height: 16px
@@ -116,6 +117,9 @@
 				display: none
 			.header
 				&__nav
+					#main-menu-desktop-left 
+						padding-left: 0
+						margin-bottom: 0
 					.cart
 						padding: 2px 0 5px
 						a 
@@ -177,7 +181,8 @@
 					+max-screen($breakpoint-lg)
 						margin: 0 60px 0 auto
 					&__list
-						display: flex
+						// display: flex
+						display: none 
 						line-height: 1.33
 						li, a
 							font-size: 15px
@@ -234,7 +239,8 @@
 					padding: 0
 					background: #F2F2EF
 					z-index: 1
-					.menu-main-menu-mobile-container
+					.menu-main-menu-mobile-container,
+					.menu-main-menu-mobile-it-contain
 						margin-top: auto
 					.sub-menu
 						+max-screen($breakpoint-lg)
@@ -287,16 +293,23 @@
 						margin-left: auto
 						margin-right: auto
 					&__list
-						display: flex
+						// display: flex
+						display: none
 						li, a
 							display: block
 							height: 100%
 							font-size: 10px
+					&__item,
+					&__item-sep 
+						+max-screen($breakpoint-md)
+							line-height: 1
+						
 				&__logo
 					position: absolute
 					left: 50%
-					top: 50%
-					transform: translate(-50%, -50%)
+					top: auto 
+					bottom: 16px 
+					transform: translateX(-50%)
 					transition: all 0.35s linear !important
 					.header-active &
 						opacity: 0
@@ -324,6 +337,8 @@
 					.home &
 						order: 4
 						margin: 0
+						+max-screen($breakpoint-md)
+							margin-top: auto
 					&Count
 						position: absolute
 						font-size: 8px
@@ -339,6 +354,8 @@
 				&__cart
 					.home &
 						order: 3
+						+max-screen($breakpoint-md)
+							margin-top: auto
 .header--scrolled
 	&.header
 		background: #F2F2EF !important
@@ -414,6 +431,11 @@
 		.menu-item 
 			a::after 
 				background-color: $color-white 
+	&.header--scrolled 
+		.header__wrap 
+			.menu-item 
+				a::after 
+					background-color: $color-black 
 	.header-active &
 		&.header
 			background: #F2F2EF

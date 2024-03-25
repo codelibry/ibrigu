@@ -29,15 +29,13 @@ body.woocommerce-page
 		+max-screen($breakpoint-sm)
 			padding-top: 119px
 	&.woocommerce-checkout 
-		padding-top: 208px
+		padding-top: 190px
 		+max-screen(1440px)
-			padding-top: 184px 
+			padding-top: 167px 
 		+max-screen(1200px)
-			padding-top: 169px
+			padding-top: 151px
 		+max-screen($breakpoint-md)
-			padding-top: 146px 
-		+max-screen($breakpoint-sm)
-			padding-top: 136px 
+			padding-top: 120px 
 #app-wrapper
 	//padding-bottom: 15px
 	.header-transparent &
@@ -112,10 +110,13 @@ body:not(.woocommerce-page)
 				padding-bottom: 21px
 			h1
 				font-size: 27px
+				margin-bottom: 0
 				+max-screen($breakpoint-md)
 					font-size: 22px
 		&__content
 			padding-bottom: 35px
+			h5 
+				margin-bottom: 0
 			+max-screen($breakpoint-md)
 				padding-bottom: 19px
 	&.privacy-page 
@@ -175,3 +176,6 @@ body
 	&.woocommerce-cart #main 
 		+max-screen($breakpoint-md)
 			padding-top: 20px
+ul, ol, dl 
+	padding-left: 0
+	margin-bottom: 0

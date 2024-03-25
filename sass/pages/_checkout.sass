@@ -345,6 +345,35 @@
                                     margin: auto
                                     padding: 10px 14px 8px
                     .register
+                        flex-direction: row 
+                        flex-wrap: wrap 
+                        #billing_phone_country_code 
+                            padding-bottom: 19px
+                            font-size: 14px
+                            +max-screen(1440px)
+                                padding-bottom: 17px
+                            +max-screen(1200px)
+                                padding-bottom: 16px
+                            +max-screen($breakpoint-lg)
+                                font-size: 13px
+                            +max-screen($breakpoint-md)
+                                font-size: 12px
+                                padding-bottom: 5px
+                        .form-row 
+                            width: 100%
+                        .form-checkbox 
+                            margin-bottom: 2px
+                        .woocommerce-text 
+                            +min-screen(770px)
+                                font-size: 10px
+                        .phone-country-code
+                            width: 100px 
+                            +max-screen($breakpoint-lg)
+                                width: 90px 
+                            +max-screen($breakpoint-md)
+                                width: 80px 
+                            & + .form-row 
+                                width: calc( 100% - 125px )
                         .form-privacy-checkbox-wrapper 
                             margin-top: -2px
                         .registerFormButtons
@@ -716,6 +745,8 @@
         margin-bottom: 0
     &__title 
         margin-top: 0px
+        display: flex 
+        align-items: center
         +min-screen(770px)
             padding-bottom: 36px
     &__subtitle 
@@ -723,6 +754,7 @@
         line-height: 1.17
         padding-left: 24px
         margin-bottom: 18px
+        display: none 
         +max-screen(1200px)
             padding-left: 18px
             a 
@@ -730,6 +762,7 @@
         +max-screen($breakpoint-lg)
             padding-left: 0
             margin-bottom: 12px
+            display: block 
             a 
                 font-size: 13px
         +max-screen($breakpoint-md) 
@@ -738,15 +771,8 @@
             a 
                 font-size: 10px
     &__text 
-        padding-left: 64px
         margin-bottom: 12px
         line-height: 1.1
-        +max-screen(1440px)
-            padding-left: 48px
-        +max-screen(1200px)
-            padding-left: 36px
-        +max-screen($breakpoint-lg)
-            padding-left: 0
         +max-screen($breakpoint-md)
             padding-left: 48.5px
             margin-bottom: 4px
@@ -758,6 +784,7 @@
         text-decoration: underline
         display: block
         margin-left: 35px
+        margin-bottom: 0
         +max-screen($breakpoint-md)
             margin-left: auto
 .createAccount 
@@ -834,7 +861,7 @@
             right: 0
             top: 0
             width: 25.25%
-            height: 100% 
+            height: calc( 100% + 1px )
             background-color: $color-bg-dark-grey
             +max-screen(1600px)
                 width: 30%

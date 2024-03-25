@@ -16,6 +16,7 @@ function updateContent(){
     let wishlistItems = $('.wishlist__itemWrapper').length;
     if(wishlistItems < 1) {
         $('.wishlist').addClass('empty');
+        $('.wishlist').removeClass('hasItems');
     }
     else{
         $('.wishlist').removeClass('empty');

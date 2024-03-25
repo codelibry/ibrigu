@@ -31,12 +31,14 @@ body.woocommerce.woocommerce-page
         .price 
             font-weight: 700
             padding-bottom: 10px
+            margin-bottom: 0
             line-height: 1.2
             p 
                 padding-bottom: 0
         .label
             font-weight: 400
             line-height: 1.2
+            margin-bottom: 0
     .productAddTocart
         table,
         .quantity
@@ -203,8 +205,13 @@ body.woocommerce.woocommerce-page
                     right: -20px 
                     bottom: -20px 
                     background: $color-bg-white
+                &__text 
+                    +max-screen($breakpoint-md)
+                        position: relative
                 &__content
                     position: relative
+                    +max-screen($breakpoint-md)
+                        position: static
                 &__close 
                     position: absolute
                     right: 17px
@@ -329,7 +336,7 @@ body.woocommerce.woocommerce-page
     &__imagesList
         border-bottom: 1px solid $color-black
         .slick-track div.slick-slide
-            height: calc( 100vh - 223px)
+            // height: calc( 100vh - 255px) !important
         &__item 
             position: relative
             &.slick-slide
@@ -381,7 +388,7 @@ body.woocommerce.woocommerce-page
             position: relative
             min-height: 110px
             +max-screen($breakpoint-md)
-                max-width: 100% 
+                margin-right: auto
             .wishlistIcon 
                 position: absolute
                 top: 25px
@@ -916,11 +923,13 @@ body.woocommerce.woocommerce-page
             padding: 72px 42px 64px 48px
         +max-screen($breakpoint-md)
             right: 100%
+            width: 100%
             left: auto
             padding-top: 110px
             padding-left: 16px
             padding-right: 16px
             padding-bottom: 36px
+            overflow: scroll
         &Overlay 
             position: fixed
             top: 0
@@ -944,6 +953,7 @@ body.woocommerce.woocommerce-page
             left: 0
             +max-screen($breakpoint-md)
                 right: 0
+                left: auto 
         &Close 
             position: absolute
             background-image: url('../assets/images/closePopup.svg')
@@ -1003,6 +1013,9 @@ body.woocommerce.woocommerce-page
             margin-left: -16px
             margin-right: -16px
             margin-top: 53px
+            img 
+                +max-screen($breakpoint-md)
+                    width: 100%
 .singleProductCard
     &sList
         display: flex 
@@ -1186,7 +1199,8 @@ body.woocommerce.woocommerce-page
     padding-top: 67px
     & > .woocommerce-breadcrumb 
         display: none
-.post-type-archive-product  
+.post-type-archive-product,
+.tax-product_cat 
     #main main#main
         +max-screen($breakpoint-md)
-            padding-top: 67px 
+            padding-top: 87px 
