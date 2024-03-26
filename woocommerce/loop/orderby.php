@@ -56,6 +56,7 @@ if(is_product_category()){
                 <h4 class="catalog__filtersList__attributeLabel"><?php _e('Colors', 'woocommerce_custom_text'); ?></h4>
                 <div class="catalog__filtersList__attributeList">
                     <div class="catalog__filtersList__attributeColumn">
+                        <?php $count = ceil(count($product_colors) / 2); ?>
                         <?php $i = 1; foreach($product_colors as $color): ?>
                             <?php $colorHex = get_field('color', 'pa_color_' . $color->term_id); ?>
                             <div class="catalog__filtersList__attributeItem">
@@ -64,7 +65,7 @@ if(is_product_category()){
                                 <?php endif; ?>
                                 <h4 class="catalog__filtersList__attributeItem__name desktop-md lg" data-slug="<?php echo $color->slug; ?>"><?php echo $color->name; ?></h4>
                             </div>
-                            <?php if($i % 8 == 0): ?>
+                            <?php if($i % $count == 0): ?>
                                 </div>
                                 <div class="catalog__filtersList__attributeColumn">
                             <?php endif; ?>

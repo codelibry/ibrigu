@@ -61,6 +61,7 @@
                 border: 1px solid $color-bg-grey
                 transition: .3s 
                 cursor: pointer
+                white-space: nowrap
                 &:hover,
                 &Wrapper.checked &
                     border: 1px solid $color-black
@@ -469,15 +470,18 @@
                         margin-bottom: 0
                     &__box 
                         width: 20px 
+                        min-width: 20px 
                         height: 20px 
                         margin-right: 14px
                         +min-screen(770px)
                             &.white 
                                 border: 1px solid $color-black
                                 width: 19px 
+                                min-width: 19px
                                 height: 19px 
                         +max-screen($breakpoint-md)
                             width: 12px
+                            min-width: 12px 
                             height: 12px 
                             margin-right: 6px 
                     &__checkbox 

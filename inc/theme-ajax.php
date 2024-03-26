@@ -9,7 +9,14 @@ function products_filter() {
     $args = array(
         'post_type' => 'product',
         'posts_per_page' => -1,
-        'meta_query' => array(),
+        'post_status'    => array( 'publish' ),
+        'meta_query'     => array(
+            array(
+                'key'     => '_stock_status',
+                'value'   => 'instock',
+                'compare' => '=',
+            ),
+        ),
         'tax_query' => array(),
     );
     if(!empty($_POST['colors'])){
@@ -122,7 +129,14 @@ function product_categories() {
         'post_type' => 'product',
         'posts_per_page' => -1,
         'tax_query' => array(),
-        'meta_query' => array(),
+        'post_status'    => array( 'publish' ),
+        'meta_query'     => array(
+            array(
+                'key'     => '_stock_status',
+                'value'   => 'instock',
+                'compare' => '=',
+            ),
+        ),
     );
 
     if(!empty($slug)){

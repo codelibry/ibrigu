@@ -38,26 +38,35 @@ do_action( 'woocommerce_before_main_content' );
 <?php 
 if(!is_product_category()){
     $terms = get_terms( array(
-		'taxonomy'   => 'product_cat', // таксономія для категорій WooCommerce
-		'hide_empty' => false, // показувати всі категорії, навіть якщо вони порожні
+		'taxonomy'   => 'product_cat', 
+		'hide_empty' => false, 
 	) );
 }
 else{
     $queried_object = get_queried_object(); 
     $term_id = $queried_object->term_id;   
-    $terms = get_terms( 'product_cat', array( 'parent' => $term_id, 'orderby' => 'slug', 'hide_empty' => false ) );   
+	$terms = get_terms(array(
+		'taxonomy' => 'product_cat', 
+		'hide_empty' => false, 
+		'parent' => $term_id,
+		'meta_query' => array(
+			array(
+				'key' => 'categories_list_order', 
+				'type' => 'NUMERIC' 
+			)
+		),
+		'orderby' => 'meta_value_num', 
+		'order' => 'ASC' 
+	));
 }
-if ( $terms && ! is_wp_error( $terms ) ) : //only displayed if the product has at least one category ?>
+if ( $terms && ! is_wp_error( $terms ) ) : ?>
 <div class="catalog__categoriesList__wrapper">
 	<div class="catalog__categoriesList__prev catalog__categoriesList__arrow disabled"></div>
 	<div class="catalog__categoriesList">
 		<div class="catalog__categoriesList__slider" data-default-cat="<?php echo $queried_object->slug ?>">
 			<?php $i = 1; foreach ( $terms as $term ) { ?>
 				<?php if(is_product_category() || !is_product_category() && $term->parent == 0 ): ?>
-					<?php 
-					$order = get_field('categories_list_order', 'product_cat_' . $term->term_id);
-					?>
-					<div class="catalog__categoriesList__itemWrapper" <?php if($order): ?>style="order: <?php echo $order; ?>"<?php endif; ?> data-slug="<?php echo $term->slug; ?>">
+					<div class="catalog__categoriesList__itemWrapper" data-slug="<?php echo $term->slug; ?>">
 						<h4 class="catalog__categoriesList__item fw-r"><?php echo $term->name; ?></h4>
 					</div>
 				<?php endif; ?>
