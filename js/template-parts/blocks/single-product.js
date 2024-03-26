@@ -10,7 +10,8 @@ function singleProduct(){
               sliderHeight = $(window).innerHeight() - $('header').outerHeight() - $('.singleProduct__breadcrumbsWrapper .woocommerce-breadcrumb').outerHeight() - btnHeight,
               w = $(window).width();
         $('.singleProduct__buttonLeftCol, .singleProduct__attributesPicker__itemTitle').css('height', btnHeight);
-        $('.singleProduct__imagesList .singleProduct__imagesList__item').css('height', sliderHeight);
+        console.log(sliderHeight);
+        $('.singleProduct__imagesList .woocommerce-product-gallery__wrapper .woocommerce-product-gallery__image, .singleProduct__imagesList .woocommerce-product-gallery__wrapper .woocommerce-product-gallery__image--placeholder').css('height', sliderHeight);
         if($('body').hasClass('single-product')){
             $(window).scrollTop(0);
             let descHeight;
@@ -79,7 +80,7 @@ function singleProduct(){
             };
             $('.relatedProducts__list').slick(sliderOptions);
         };
-        $('.singleProduct__imagesList').slick({
+        $('.singleProduct__imagesList .woocommerce-product-gallery__wrapper').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
             dots: true,
@@ -95,7 +96,7 @@ function singleProduct(){
                 $('.single_add_to_cart_button').css('top', attrsTop);
             }
         }
-        $('.singleProduct__mainSlider').slick({
+        $('.singleProduct__mainSlider .woocommerce-product-gallery__wrapper').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
             arrows: false,
@@ -106,7 +107,7 @@ function singleProduct(){
         $('.singleProduct__sideSlider').slick({
             slidesToShow: 2,
             slidesToScroll: 1,
-            asNavFor: '.singleProduct__mainSlider',
+            asNavFor: '.singleProduct__mainSlider .woocommerce-product-gallery__wrapper',
             focusOnSelect: true,
             vertical: true,
             verticalSwiping: true,
@@ -154,9 +155,13 @@ function singleProduct(){
         const element = $(this),
               elementAttr = element.find('.singleProduct__attributesPicker__itemPopup__listItem__title').attr('data-item'),
               attr = element.closest('.singleProduct__attributesPicker__item').attr('data-attribute');
-        element.parent().find('.singleProduct__attributesPicker__itemPopup__listItem').removeClass('active');
-        element.addClass('active');
-        $(`#${attr} option[value="${elementAttr}"]`).attr('selected', 'selected').change();
+        element.parent().find('.singleProduct__attributesPicker__itemPopup__listItem').not(element).removeClass('active');
+        element.toggleClass('active');
+        if(element.hasClass('active')){
+            $(`#${attr} option[value="${elementAttr}"]`).attr('selected', 'selected').change();
+        } else{
+            $(`#${attr} option:first-child`).attr('selected', 'selected').change();
+        }
     });
     if($('body').hasClass('single-product') && $('.woocommerce-notices-wrapper > div').length > 0){
         $('<div class="scroller"></div>').prependTo('.woocommerce-notices-wrapper');
@@ -272,6 +277,91 @@ function singleProduct(){
         }                                          
     };
 
+    $(document).ready(function(){
+        const w = $(window).width();
+        if(w > 769){
+            $('.singleProduct__imagesList').remove();
+        }
+    });
+
+
+    let imageUrl = $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href');
+    $('.attributes-picker-item').click(function(){
+        setTimeout(function(){
+            if($('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href') != imageUrl) {
+                $('.woocommerce-product-gallery__image[data-slick-index="0"]').attr('data-thumb', $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href'));
+                $('.woocommerce-product-gallery__image[data-slick-index="0"] a').attr('href', $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href'));
+                $('.woocommerce-product-gallery__image[data-slick-index="0"] img').attr('srcset', $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href'));
+
+                imageUrl = $('.woocommerce-product-gallery__image[data-slick-index="-1"] a').attr('href');
+            }
+        }, 100)
+    });
+
+    const w = $(window).width();
+    $(document).ajaxSuccess(function(event, xhr, settings) {
+        if(settings.data.split('action=')[1] != undefined && settings.data.split('action=')[1].split('&')[0] == 'load_fragments'){
+            let descId = $('.singleProduct__wishlist .yith-wcwl-add-button > a').attr('data-product-id');
+            if($(`.singleProduct__descriptionText .product-desc-${descId}`).length == 0){
+                descId = 'simple';
+            }
+            $(`.singleProduct__descriptionText .singleProduct__descriptionText__item`).removeClass('active');
+            $(`.singleProduct__descriptionText .product-desc-${descId}`).addClass('active');
+            let descHeight;
+            if(w > 769){
+                descHeight = $('.desktop .singleProduct__description .singleProduct__descriptionText').outerHeight() + $('.desktop .singleProduct__description .attributesItem__list').outerHeight();
+            }
+            else{
+                descHeight = $('.mobile .singleProduct__description .singleProduct__descriptionText').outerHeight() + $('.mobile .singleProduct__description .attributesItem__list').outerHeight();
+            }
+            $('.showContentBtn').off('click').click(function(){
+                $('.singleProduct__description__wrapper').toggleClass('opened');
+                if($(this).hasClass('more')){
+                    $('.singleProduct__description').animate({'max-height': descHeight}, 300);
+                }
+                else{
+                    $('.singleProduct__description').animate({'max-height': '3.5em'}, 300);
+                }
+            });
+        }
+
+    });
+    //Change Available Attributes 
+    $('.singleProduct__attributesPicker__itemPopup__listItem').click(function(){
+        const attributeName = $(this).closest('.singleProduct__attributesPicker__item').attr('data-attribute');
+        let attributes = [];
+
+        $(document).ajaxSuccess(function(event, xhr, settings){
+            if(settings.data.split('action=')[1] != undefined && settings.data.split('action=')[1].split('&')[0] == 'load_fragments'){
+                if(attributeName == 'pa_size'){
+                    $('.mobile #pa_color option').each(function(){
+                        attributes.push($(this).attr('value'));
+                    });
+                    
+                    $('.singleProduct__attributesPicker__item[data-attribute="pa_color"] .singleProduct__attributesPicker__itemPopup__list .singleProduct__attributesPicker__itemPopup__listItem').removeClass('disabled');
+
+                    $('.singleProduct__attributesPicker__item[data-attribute="pa_color"] .singleProduct__attributesPicker__itemPopup__list .singleProduct__attributesPicker__itemPopup__listItem').each(function(){
+                        if($.inArray($(this).find('.singleProduct__attributesPicker__itemPopup__listItem__title').attr('data-item'), attributes) === -1){
+                            $(this).addClass('disabled');
+                        }
+                    });
+                }
+                if(attributeName == 'pa_color'){
+                    $('.mobile #pa_size option').each(function(){
+                        attributes.push($(this).attr('value'));
+                    });
+                    
+                    $('.singleProduct__attributesPicker__item[data-attribute="pa_size"] .singleProduct__attributesPicker__itemPopup__list .singleProduct__attributesPicker__itemPopup__listItem').removeClass('disabled');
+
+                    $('.singleProduct__attributesPicker__item[data-attribute="pa_size"] .singleProduct__attributesPicker__itemPopup__list .singleProduct__attributesPicker__itemPopup__listItem').each(function(){
+                        if($.inArray($(this).find('.singleProduct__attributesPicker__itemPopup__listItem__title').attr('data-item'), attributes) === -1){
+                            $(this).addClass('disabled');
+                        }
+                    });
+                }
+            }
+        });
+    })
 
 }
 

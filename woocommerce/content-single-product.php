@@ -13,25 +13,46 @@ do_action( 'woocommerce_before_single_product' );
         <div class="singleProduct__content mobile">
             <div class="singleProduct__breadcrumbs"></div>
             <div class="singleProduct__imagesList">
-                <?php if(!empty($attachment_ids) || !empty($post_image)): ?>
-                    <?php if(!empty($post_image)): ?>
-                        <div class="singleProduct__imagesList__item">
-                            <img src="<?php echo $post_image; ?>" alt="">
-                        </div>
-                    <?php endif; 
-                    if(!empty($attachment_ids)):
-                        foreach( $attachment_ids as $attachment_id ) {
-                            $image_link = wp_get_attachment_url( $attachment_id ); ?>
-                            <div class="singleProduct__imagesList__item">
-                                <img src="<?php echo $image_link; ?>" alt="">
-                            </div>
-                        <?php } 
-                    endif; ?>
-                <?php else: ?>
-                    <div class="singleProduct__imagesList__item">
-                        <img src="<?php echo wc_placeholder_img_src(); ?>" alt="">
-                    </div>
-                <?php endif; ?>
+                    <?php $columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
+					$post_thumbnail_id = $product->get_image_id();
+					$wrapper_classes   = apply_filters(
+						'woocommerce_single_product_image_gallery_classes',
+						array(
+							'woocommerce-product-gallery',
+							'woocommerce-product-gallery--' . ( $post_thumbnail_id ? 'with-images' : 'without-images' ),
+							'woocommerce-product-gallery--columns-' . absint( $columns ),
+							'images',
+						)
+					);
+					?>
+					<div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
+						<div class="woocommerce-product-gallery__wrapper">
+							<?php
+							if ( $post_thumbnail_id ) {
+								$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
+							} else {
+								$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
+								$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
+								$html .= '</div>';
+							}
+					
+							echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+					
+							$attachment_ids = $product->get_gallery_image_ids();
+							if ( $attachment_ids && count( $attachment_ids ) > 0 ) {
+							    foreach ( $attachment_ids as $attachment_id ) {
+							        $image_url = wp_get_attachment_image_url( $attachment_id, 'full' ); ?>
+									<div data-thumb="<?php echo esc_url( $image_url ); ?>" class="woocommerce-product-gallery__image">
+										<a href="<?php echo esc_url( $image_url ); ?>">
+											<?php echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) . '" />'; ?>
+										</a>
+									</div>
+									<?php
+							    }
+							}
+							?>
+						</div>
+					</div>
             </div>
             <div class="singleProduct__button">
                 <div class="singleProduct__buttonLeftCol"><h2 class="sm"><?php the_title(); ?></h2><div class="wishlistIcon"><?php echo do_shortcode( '[yith_wcwl_add_to_wishlist]' ); ?></div></div>
@@ -136,7 +157,23 @@ do_action( 'woocommerce_before_single_product' );
                             <?php endif; ?>
                         <?php endforeach;?>
                     </div>
-                    <div class="singleProduct__descriptionText woocommerce-text"><?php the_content(); ?></div>
+                    <div class="singleProduct__descriptionText woocommerce-text">
+                            <div class="singleProduct__descriptionText__item product-desc-simple active"><?php the_content(); ?></div>
+                            <?php 
+                                if ($product->is_type('variable')) {
+                                    $variations = $product->get_available_variations();
+                                
+                                    foreach ($variations as $variation) {
+                                        $variation_id = $variation['variation_id'];
+                                        $variation = new WC_Product_Variation($variation_id);
+                                        $variation_description = $variation->get_description(); ?>
+                                        <?php if(!empty($variation_description)): ?>
+                                            <div class="singleProduct__descriptionText__item product-desc-<?php echo $variation_id; ?>"><?php echo $variation_description; ?></div>
+                                        <?php endif; ?>
+                                    <?php }
+                                }
+                            ?>
+                        </div>
                 </div>
                 <div class="showContent">
                     <div class="more showContentBtn"><?php _e('See more +', 'woocommerce_custom_text'); ?></div>
@@ -222,7 +259,23 @@ do_action( 'woocommerce_before_single_product' );
                                 <?php endif; ?>
                             <?php endforeach;?>
                         </div>
-                        <div class="singleProduct__descriptionText woocommerce-text"><?php the_content(); ?></div>
+                        <div class="singleProduct__descriptionText woocommerce-text">
+                            <div class="singleProduct__descriptionText__item product-desc-simple active"><?php the_content(); ?></div>
+                            <?php 
+                                if ($product->is_type('variable')) {
+                                    $variations = $product->get_available_variations();
+                                
+                                    foreach ($variations as $variation) {
+                                        $variation_id = $variation['variation_id'];
+                                        $variation = new WC_Product_Variation($variation_id);
+                                        $variation_description = $variation->get_description(); ?>
+                                        <?php if(!empty($variation_description)): ?>
+                                            <div class="singleProduct__descriptionText__item product-desc-<?php echo $variation_id; ?>"><?php echo $variation_description; ?></div>
+                                        <?php endif; ?>
+                                    <?php }
+                                }
+                            ?>
+                        </div>
                     </div>
                     <div class="showContent">
                         <div class="more showContentBtn woocommerce-text"><?php _e('See more +', 'woocommerce_custom_text'); ?></div>
@@ -250,31 +303,46 @@ do_action( 'woocommerce_before_single_product' );
             </div>
             <div class="singleProduct__imagesWrapper">
                 <div class="singleProduct__mainSlider">
-                    <?php if(!empty($attachment_ids) || !empty($post_image)): ?>
-                        <?php if(!empty($post_image)): ?>
-                            <div class="singleProduct__mainSlider__itemWrapper">
-                                <div class="singleProduct__mainSlider__item">
-                                    <img src="<?php echo $post_image; ?>" alt="">
-                                </div>
-                            </div>
-                        <?php endif; 
-                        if(!empty($attachment_ids)):
-                            foreach( $attachment_ids as $attachment_id ) {
-                                $image_link = wp_get_attachment_url( $attachment_id ); ?>
-                                <div class="singleProduct__mainSlider__itemWrapper">
-                                    <div class="singleProduct__mainSlider__item">
-                                        <img src="<?php echo $image_link; ?>" alt="">
-                                    </div>
-                                </div>
-                            <?php } 
-                        endif; ?>
-                    <?php else: ?>
-                        <div class="singleProduct__mainSlider__itemWrapper">
-                            <div class="singleProduct__mainSlider__item">
-                                <img src="<?php echo wc_placeholder_img_src(); ?>" alt="">
-                            </div>
-                        </div>
-                    <?php endif; ?>
+                    <?php $columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
+					$post_thumbnail_id = $product->get_image_id();
+					$wrapper_classes   = apply_filters(
+						'woocommerce_single_product_image_gallery_classes',
+						array(
+							'woocommerce-product-gallery',
+							'woocommerce-product-gallery--' . ( $post_thumbnail_id ? 'with-images' : 'without-images' ),
+							'woocommerce-product-gallery--columns-' . absint( $columns ),
+							'images',
+						)
+					);
+					?>
+					<div class="<?php echo esc_attr( implode( ' ', array_map( 'sanitize_html_class', $wrapper_classes ) ) ); ?>" data-columns="<?php echo esc_attr( $columns ); ?>" style="opacity: 0; transition: opacity .25s ease-in-out;">
+						<div class="woocommerce-product-gallery__wrapper">
+							<?php
+							if ( $post_thumbnail_id ) {
+								$html = wc_get_gallery_image_html( $post_thumbnail_id, true );
+							} else {
+								$html  = '<div class="woocommerce-product-gallery__image--placeholder">';
+								$html .= sprintf( '<img src="%s" alt="%s" class="wp-post-image" />', esc_url( wc_placeholder_img_src( 'woocommerce_single' ) ), esc_html__( 'Awaiting product image', 'woocommerce' ) );
+								$html .= '</div>';
+							}
+					
+							echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', $html, $post_thumbnail_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+					
+							$attachment_ids = $product->get_gallery_image_ids();
+							if ( $attachment_ids && count( $attachment_ids ) > 0 ) {
+							    foreach ( $attachment_ids as $attachment_id ) {
+							        $image_url = wp_get_attachment_image_url( $attachment_id, 'full' ); ?>
+									<div data-thumb="<?php echo esc_url( $image_url ); ?>" class="woocommerce-product-gallery__image">
+										<a href="<?php echo esc_url( $image_url ); ?>">
+											<?php echo '<img src="' . esc_url( $image_url ) . '" alt="' . esc_attr( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) . '" />'; ?>
+										</a>
+									</div>
+									<?php
+							    }
+							}
+							?>
+						</div>
+					</div>
                 </div>
                 <div class="singleProduct__sideSlider">
                 <?php if(!empty($attachment_ids) || !empty($post_image)): ?>
