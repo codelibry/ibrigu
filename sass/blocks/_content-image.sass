@@ -3,6 +3,13 @@
         p
             +max-screen($breakpoint-md)
                 margin-bottom: 0
+    &__content
+        +max-screen($breakpoint-md)
+            padding: 0
+    &--top.contentImageBlock--full
+        .contentImageBlock__content 
+            +max-screen($breakpoint-md)
+                padding: 0 15px 
     &--full
         .contentImageBlock
             &__row
@@ -49,8 +56,8 @@
                 padding-left: 30px
                 padding-right: 30px
                 +max-screen($breakpoint-md)
-                    padding-left: 15px
-                    padding-right: 15px
+                    padding-left: 0
+                    padding-right: 0
                 &__inner
                     height: 100%
                     .content-block
@@ -262,6 +269,9 @@
         &__mobile
             order: 1
             margin-bottom: 16px
+            padding: 0
+            h2 
+                margin-bottom: 0
             +min-screen($breakpoint-md)
                 display: none
     &__btn
