@@ -7,12 +7,21 @@
             gap: 46px 0
             +max-screen($breakpoint-xl)
                 gap: 10px 0
+            +max-screen($breakpoint-md)
+                margin: 0 -10px 
+                li 
+                    padding: 0 10px !important
+                    p:last-child 
+                        margin-bottom: 0
         &Item
             font-size: 18px
             line-height: 1.55
             +max-screen($breakpoint-lg)
                 font-size: 10px
                 line-height: 1.8
+            a
+                +max-screen($breakpoint-md)
+                    font-size: 10px
 
         //&:last-child
     &__infoWrapper
@@ -44,6 +53,12 @@
         margin: 0 auto
         +max-screen($breakpoint-lg)
             max-width: 100%
+        .nf-field-label
+            +max-screen($breakpoint-md)
+                display: none 
+        .nf-input-limit 
+            +max-screen($breakpoint-md)
+                margin: 0
     &__offices
         &List
             display: flex
@@ -56,6 +71,12 @@
             +max-screen($breakpoint-lg)
                 font-size: 10px
                 line-height: 1.8
+            a
+                +max-screen($breakpoint-md)
+                    font-size: 10px
+            p
+                &:last-child
+                    margin-bottom: 0
             &:last-child
                 margin-bottom: 0
             //h3

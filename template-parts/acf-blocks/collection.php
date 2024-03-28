@@ -20,9 +20,11 @@
                  $image = get_sub_field('image');
                  $title = get_sub_field('title');
                 ?>
-                    <div class="collection__item animate fade-up">
+                    <div class="collection__item animate fade-up<?php if(empty($image) && empty($title)){ echo ' empty';} ?>">
                         <?php if( !empty( $image ) ): ?>
-                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                            <div class="collection__itemImage">
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                            </div>
                         <?php endif; ?>
                         <?php if($title): ?>
                             <div class="collection__itemTitle">

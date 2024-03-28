@@ -27,18 +27,14 @@ function footer(){
         }
       }
     
-      function backToTop() {
-        if (window.pageYOffset > 0) {
-          window.scrollBy(0, -80);
-          setTimeout(backToTop, 0);
-        }
-      }
     
       var goTopBtn = document.querySelector('.back_to_top');
     
       window.addEventListener('scroll', trackScroll);
-      goTopBtn.addEventListener('click', backToTop);
-      
+
+      $('.back_to_top').click(function(){
+        $(window).scrollTop(0);
+      })
 }
 
 

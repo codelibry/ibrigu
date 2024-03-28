@@ -1,4 +1,19 @@
 .collection
+    .heading
+        max-width: 810px  
+        margin: auto 
+
+        p
+            &:last-child
+                margin-bottom: 136px
+                +max-screen(1440px)
+                    margin-bottom: 80px
+                +max-screen(1200px)
+                    margin-bottom: 56px
+                +max-screen($breakpoint-lg)
+                    margin-bottom: 42px
+                +max-screen($breakpoint-md)
+                    margin-bottom: 12px
     &__item
         +max-screen($breakpoint-lg)
             display: flex
@@ -12,15 +27,40 @@
             +max-screen($breakpoint-lg)
                 padding-top: 15px
                 font-size: 16px
+        &Image 
+            position: relative
+            padding-bottom: 148%
+            width: 100%
+            img 
+                position: absolute
+                width: 100%
+                height: 100% 
+                object-fit: cover
+        &.empty 
+            +max-screen($breakpoint-md)
+                display: none 
     &__container
         +max-screen($breakpoint-md)
             padding-left: 20px
             padding-right: 20px
     &__list
         +flex-layout-cards(4, 52px, 90px)
-        +max-screen($breakpoint-xl)
+        +max-screen(1440px)
+            +flex-layout-cards(4, 36px, 72px)
+        +max-screen(1200px)
             +flex-layout-cards(3, 30px, 60px)
         +max-screen($breakpoint-lg)
             +flex-layout-cards(2, 30px)
         +max-screen($breakpoint-md)
-            +flex-layout-cards(2, 20px)
+            gap: 0
+    &__list &__item 
+        +max-screen($breakpoint-md)
+            width: calc( 100% + 40px )
+            margin: 0 -20px 
+            align-items: flex-start
+        &Title 
+            +max-screen($breakpoint-md)
+                padding: 9px 0
+                padding-left: 13px
+                font-size: 22px
+                line-height: 1.2

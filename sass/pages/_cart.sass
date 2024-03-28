@@ -146,6 +146,7 @@
                 align-items: center
                 border: 1px solid #000
                 cursor: pointer
+                border-radius: 0
                 +max-screen(1440px)
                     width: 42px
                     height: 39px 
@@ -164,6 +165,7 @@
             input 
                 margin-bottom: 0
                 border-top: 1px solid #000
+                border-radius: 0
             a,
             input 
                 width: 18px
@@ -274,6 +276,8 @@
                         width: 29.25%
                     +max-screen($breakpoint-lg)
                         content: none
+            #header::before 
+                bottom: -20px 
             .woocommerce 
                 position: relative
                 padding-top: 68px
@@ -426,8 +430,11 @@
                     +max-screen($breakpoint-lg)
                         margin-top: 48px
                     .cartContent__wishlist__buttonsWrapper
-                        line-height: 1.286
-                        margin-top: 2px
+                        a
+                            line-height: 1.08
+                            font-size: 15px
+                            +max-screen(1200px)
+                                font-size: 13px
                 &Body 
                     margin-bottom: auto
                 &Remove 

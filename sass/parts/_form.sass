@@ -353,16 +353,31 @@
 		.nf-field-element 
 			line-height: 1
 			display: flex 
+		.checkbox-container
+			.nf-error .nf-error-msg
+				top: 18px 
+				+max-screen(1200px)
+					top: 14px 
+				+max-screen($breakpoint-md)
+					top: 12px 
+		.nf-error
+			position: static 
+		.nf-error-msg
+			font-size: 12px
+			+max-screen(1200px)
+				font-size: 10px
 		.nf-error .nf-error-msg
-			font-size: 14px
-			margin-top: -30px
-			+max-screen($breakpoint-lg)
-				font-size: 12px
-				margin-top: -20px
+			font-size: 12px
+			line-height: 1
+			position: absolute
+			top: 45px 
+			+max-screen(1200px)
+				font-size: 10px
+				top: 38px 
 			+max-screen($breakpoint-md)
 				position: absolute
 				left: 0
-				bottom: 5px
+				top: 26px 
 				font-size: 8px 
 				line-height: 1
 		.nf-after-form-content 
