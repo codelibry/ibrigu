@@ -141,8 +141,7 @@ do_action( 'woocommerce_before_single_product' );
                                 $attributelabel = wc_attribute_label( $attribute['name'] );
                                 $results = woocommerce_get_product_terms($product->id, $attribute['name'], 'names'); ?>
                                 <div class="attributesItem">
-                                    <div class="attributesItem__label"><?php echo $attributelabel . ': '; ?></div>
-                                    <div class="attributesItem__options">
+                                    <div class="attributesItem__label"><?php echo $attributelabel . ': '; ?>
                                         <?php $count = count($results); ?>
                                         <?php $i = 1; foreach($results as $result): ?>
                                             <?php 
@@ -243,8 +242,7 @@ do_action( 'woocommerce_before_single_product' );
                                     $attributelabel = wc_attribute_label( $attribute['name'] );
                                     $results = woocommerce_get_product_terms($product->id, $attribute['name'], 'names'); ?>
                                     <div class="attributesItem">
-                                        <div class="attributesItem__label"><?php echo $attributelabel . ': '; ?></div>
-                                        <div class="attributesItem__options">
+                                        <div class="attributesItem__label"><?php echo $attributelabel . ': '; ?>
                                             <?php $count = count($results); ?>
                                             <?php $i = 1; foreach($results as $result): ?>
                                                 <?php 

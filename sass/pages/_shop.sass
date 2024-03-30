@@ -347,10 +347,13 @@
             &__attribute 
                 &List 
                     display: flex 
+                    margin-bottom: 42px
                 &Column 
                     margin-left: 0
                     min-width: 37%
                     margin-right: 38px
+                    &:nth-child(3)
+                        display: none 
                     +max-screen($breakpoint-md)
                         margin-left: 10px
                         min-width: 110px
@@ -389,7 +392,7 @@
                             background-color: $color-black
                 &Sublist
                     +min-screen(770px)
-                        display: block !important
+                        display: flex !important
                         position: fixed
                         left: -480px
                         top: 0
@@ -402,12 +405,17 @@
                         padding-left: 88px
                         padding-right: 82px
                         transition: .3s
+                        padding-bottom: 160px
+                        overflow-y: scroll
+                        flex-direction: column
                         +max-screen(1440px)
                             padding-top: 96px !important
                             padding-left: 72px
+                            padding-bottom: 96px
                         +max-screen(1200px)
                             padding-top: 72px !important
                             padding-left: 56px
+                            padding-bottom: 72px
                     +max-screen($breakpoint-md)
                         display: none
                         position: absolute
@@ -497,26 +505,18 @@
                     &__apply 
                         padding-top: 22px
                         padding-bottom: 19px
-                        left: 89px 
-                        right: 80px 
-                        bottom: 160px 
-                        position: absolute
                         cursor: pointer
                         line-height: 1.2
-                        +max-screen(1440px)
-                            left: 72px
-                            bottom: 48px
-                        +max-screen(1200px)
-                            left: 56px 
-                            bottom: 32px 
+                        position: static
+                        margin-top: auto
                         +max-screen($breakpoint-md)
-                            top: 443px
                             left: 50% 
                             transform: translateX(-50%)
                             padding: 9.5px 43px
-                            bottom: auto 
+                            bottom: 10% 
                             right: auto 
                             line-height: 1
+                            position: absolute
                     &.active 
                         .catalog__filtersList__attributeItem__checkbox::before
                             content: ""

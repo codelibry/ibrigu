@@ -171,8 +171,6 @@
                             margin-bottom: 18px
                         +max-screen($breakpoint-lg)
                             margin-bottom: 28px
-                    &__options 
-                        margin-left: 0.4em
                 &Quantity 
                     margin-top: auto 
                     line-height: 1.2
@@ -704,6 +702,9 @@
 //         &.hide 
 //             display: none
 .woocommerce-checkout 
+    form 
+        input 
+            border-radius: 0
     .woocommerce-form-login-toggle,
     .woocommerce-form-coupon-toggle
         display: none

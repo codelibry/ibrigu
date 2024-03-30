@@ -9,11 +9,11 @@ body.woocommerce.woocommerce-page
         text-align: left
         border-radius: 0
         opacity: 1
-        max-width: 112px
+        max-width: 118px
         position: static
         bottom: 0
         right: 0
-        min-height: 110px
+        min-height: 115px
         +min-screen(770px)
             +max-screen(1600px)
                 min-width: 100%
@@ -153,7 +153,7 @@ body.woocommerce.woocommerce-page
             +max-screen($breakpoint-lg)
                 font-size: 0
     &__attributesPicker
-        max-width: calc(100vw - 112px)
+        max-width: calc(100vw - 118px)
         display: flex 
         flex-wrap: wrap
         margin-left: -12px
@@ -168,7 +168,7 @@ body.woocommerce.woocommerce-page
                 width: 100%
                 border-bottom: 1px solid #000
                 position: relative
-                min-height: 110px
+                min-height: 115px
                 border-right: 1px solid $color-black
                 position: relative
                 cursor: pointer
@@ -414,9 +414,9 @@ body.woocommerce.woocommerce-page
             padding-left: 12px
             padding-right: 40px
             width: 100%
-            max-width: calc( 100% - 112px )
+            max-width: calc( 100% - 118px )
             position: relative
-            min-height: 110px
+            min-height: 115px
             +max-screen($breakpoint-md)
                 margin-right: auto
             .wishlistIcon 
@@ -523,8 +523,6 @@ body.woocommerce.woocommerce-page
             display: flex 
             +min-screen(770px)
                 line-height: 1.55
-            &__label 
-                margin-right: 0.6em
             &__list 
                 .woocommerce-text 
                     +max-screen($breakpoint-lg)
@@ -602,9 +600,9 @@ body.woocommerce.woocommerce-page
                     +max-screen(1440px)
                         bottom: 16px 
                     +max-screen(1200px)
-                        bottom: 10px 
+                        bottom: 12px 
                     +max-screen($breakpoint-lg)
-                        bottom: 9px 
+                        bottom: 11px 
                     i 
                         font-size: 24px
                         margin-right: 0
@@ -654,6 +652,7 @@ body.woocommerce.woocommerce-page
                             img 
                                 width: 100%
                     .woocommerce-product-gallery__image
+                        border: 0
                         a 
                             position: relative
                             display: block 
@@ -915,7 +914,8 @@ body.woocommerce.woocommerce-page
                         .single_add_to_cart_button
                             height: 100%
                         .single_add_to_cart_button 
-                            justify-content: center
+                            justify-content: flex-start
+                            padding-top: 15px
                             .price 
                                 margin-bottom: 0
                         button.single_add_to_cart_button.button
@@ -929,14 +929,14 @@ body.woocommerce.woocommerce-page
                             +max-screen($breakpoint-lg)
                                 padding: 10px 
                             h2.price 
-                                font-size: 17px
+                                font-size: 14px
                                 line-height: 1.2
                             p
                                 +max-screen($breakpoint-lg)
                                     font-size: 10px
                             h2.label 
                                 padding-bottom: 0
-                                font-size: 15px
+                                font-size: 13px
                                 line-height: 1
                                 +max-screen($breakpoint-lg)
                                     font-size: 10px

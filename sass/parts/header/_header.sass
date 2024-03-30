@@ -10,7 +10,7 @@
 		max-width: 1920px
 	.nav-toggle
 		width: 27px
-		height: 16px
+		height: 18px
 		z-index: 6
 		position: relative
 		&-icon
@@ -36,8 +36,9 @@
 				top: 0
 			&:before
 				top: 50%
+				transform: translateY(-50%)
 			&:after
-				top: 100%
+				top: calc( 100% - 2px )
 			.header-active &, &.nav-close
 				span, &:before, &:after
 					top: 50%
@@ -190,9 +191,11 @@
 			display: none
 			+max-screen($breakpoint-md)
 				display: flex
-				align-items: center
+				align-items: flex-end
 			.header__toggle
 				z-index: 0
+			.header__nav .header__toggle
+				z-index: 10
 			.header__close 
 				width: 23px 
 				height: 23px
@@ -224,9 +227,9 @@
 				display: flex 
 				flex-direction: column 
 				.header-active &
-					max-height: 100svh
-					min-height: 100svh
-					height: 100svh
+					max-height: 100vh
+					min-height: 100vh
+					height: 100vh
 					padding: 40px 28px
 			.header
 				&__nav
@@ -334,6 +337,9 @@
 					position: relative
 					margin-left: auto
 					margin-right: 10px
+					svg 
+						+max-screen($breakpoint-md)
+							height: 16.5px 
 					.home &
 						order: 4
 						margin: 0
@@ -341,7 +347,7 @@
 							margin-top: auto
 					&Count
 						position: absolute
-						font-size: 8px
+						font-size: 6px
 						top: -5px
 						border-radius: 50%
 						right: -5px

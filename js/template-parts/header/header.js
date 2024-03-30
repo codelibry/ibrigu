@@ -5,7 +5,6 @@ function header() {
 
     $('.header__toggle').on('click',function(e){
         e.preventDefault();
-
         if(headerToggle) {
             $('body').addClass('header-unactive').removeClass('header-active');
             headerToggle = !headerToggle;
@@ -22,7 +21,8 @@ function header() {
         const subMenu = menuItem.find('.sub-menu');
 
         e.preventDefault();
-
+        $(this).closest('.main-nav').find('.menu-item-has-children').not(menuItem).removeClass('menu-active');
+        $(this).closest('.main-nav').find('.sub-menu').not(subMenu).slideUp();
         menuItem.toggleClass('menu-active');
         subMenu.stop().slideToggle();
     })

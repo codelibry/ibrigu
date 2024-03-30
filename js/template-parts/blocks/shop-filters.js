@@ -2,6 +2,16 @@ import $ from 'jquery';
 
 function shopFilters() {
     $(document).ready(function(){
+        const w = $(window).width();
+        if(w < 770){
+            $('.catalog__filtersList__attributeItem__apply, .catalog__filtersClose').click(function(){
+                $('.catalog__filtersList__attributeSublist').parent().removeClass('opened');
+                $('.catalog__filtersList__attributeSublist').slideUp();
+            })
+        }
+    })
+
+    $(document).ready(function(){
         filtersSidebar();
         sidebarAttributes();
         $('.catalog__filtersList__attributeSublist__close, .catalog__filtersList__attributeSublist__overlay').click(function(){
