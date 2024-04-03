@@ -5,6 +5,11 @@
 	width: 100%
 	z-index: 999999
 	background: #F2F2EF
+	&--logo 
+		.hovered_logo
+			position: absolute 
+			top: 0
+			left: 0
 	.container
 		width: 100%
 		max-width: 1920px
@@ -103,6 +108,10 @@
 				&__logo
 					.header--logo
 						display: block
+						position: relative 
+						img 
+							height: 100% 
+							
 						svg
 							display: flex
 							width: 100%
@@ -385,10 +394,8 @@
 					transition: all 0.35s linear !important
 		&__logo
 			.header--logo
-				svg
-					path
-						fill: $color-black !important
-						transition: all 0.35s linear !important
+				.hovered_logo 
+					opacity: 1
 		&__lang
 			&__list
 				color: $color-black !important
@@ -455,11 +462,9 @@
 						background: $color-black
 						transition: all 0.35s ease-out 0s
 			&__logo
-				.header--logo
-					svg
-						path
-							//fill: $color-black
-							transition: all 0.35s ease-out 0s
+				.hovered_logo 
+					opacity: 0
+					transition: .3s
 			&__lang
 				&__list
 					//color: $color-black
@@ -486,11 +491,9 @@
 					background: $color-white
 					transition: all 0.4s linear 0.5s
 			&__logo
-				.header--logo
-				svg
-					path
-						fill: $color-white
-						transition: all 0.4s linear 0.5s
+				.hovered_logo 
+					opacity: 0
+					transition: .3s
 			&__lang
 				&__list
 					color: $color-white
@@ -512,10 +515,9 @@
 			&:after
 				background: $color-white
 		&__logo
-			.header--logo
-			svg
-				path
-					fill: $color-white
+			.hovered_logo 
+				opacity: 0
+				transition: .3s
 		&__lang
 			&__list
 				color: $color-white

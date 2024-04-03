@@ -722,3 +722,46 @@ function custom_catalog_ordering_args( $args ) {
     $args['order'] = 'DESC'; 
     return $args;
 }
+
+
+//ACF Field for variation
+add_action( 'woocommerce_product_after_variable_attributes', 'add_variation_custom_field', 10, 3 );
+
+function add_variation_custom_field( $loop, $variation_data, $variation ) {
+    $custom_field_value = get_post_meta( $variation->ID, 'custom_field_name', true );
+    ?>
+    <tr>
+        <td>
+            <?php
+            echo '<label for="custom_field_name_' . $loop . '">' . __( 'Custom Field', 'woocommerce' ) . '</label>';
+
+            echo '<input type="text" name="custom_field_name[' . $loop . ']" value="' . esc_attr( $custom_field_value ) . '" />';
+            ?>
+        </td>
+    </tr>
+    <?php
+}
+
+add_action( 'woocommerce_save_product_variation', 'save_variation_custom_field', 10, 2 );
+
+function save_variation_custom_field( $variation_id, $i ) {
+    if ( isset( $_POST['custom_field_name'][ $i ] ) ) {
+        $custom_field_value = sanitize_text_field( $_POST['custom_field_name'][ $i ] );
+
+        $variation = wc_get_product( $variation_id );
+
+        $variation->update_meta_data( 'custom_field_name', $custom_field_value );
+
+        $variation->save();
+    }
+}
+
+add_filter( 'woocommerce_available_variation', 'display_variation_custom_field', 10, 3 );
+
+function display_variation_custom_field( $data, $product, $variation ) {
+    $custom_field_value = $variation->get_meta( 'custom_field_name' );
+
+    $data['custom_field_name'] = $custom_field_value;
+
+    return $data;
+}

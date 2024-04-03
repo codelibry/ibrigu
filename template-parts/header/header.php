@@ -1,5 +1,7 @@
 <?php
-    $logo = get_field('logo', 'option')
+    $white_logo = get_field('white_logo', 'option');
+    $black_logo = get_field('black_logo', 'option');
+
 ?>
 <header id="header" class="header <?php echo is_front_page() ? 'header--white-transparent' : ''; ?>">
     <div class="container">
@@ -12,8 +14,11 @@
 
             <div class="header__logo">
                 <a href="<?php echo get_home_url(); ?>" class="header--logo">
-                    <?php if (!empty($logo)): ?>
-                        <?php echo file_get_contents(esc_url($logo['url'])); ?>
+                    <?php if($white_logo): ?>
+                        <img src="<?php echo $white_logo['url']; ?>" alt="<?php echo $white_logo['title']; ?>" class="main_logo">
+                    <?php endif; ?>
+                    <?php if($black_logo): ?>
+                        <img src="<?php echo $black_logo['url']; ?>" alt="<?php echo $black_logo['title']; ?>" class="hovered_logo">
                     <?php endif; ?>
                 </a>
             </div>
@@ -103,8 +108,11 @@
 
             <div class="header__logo">
                 <a href="<?php echo get_home_url(); ?>" class="header--logo">
-                    <?php if (!empty($logo)): ?>
-                        <?php echo file_get_contents(esc_url($logo['url'])); ?>
+                    <?php if($white_logo): ?>
+                        <img src="<?php echo $white_logo['url']; ?>" alt="<?php echo $white_logo['title']; ?>" class="main_logo">
+                    <?php endif; ?>
+                    <?php if($black_logo): ?>
+                        <img src="<?php echo $black_logo['url']; ?>" alt="<?php echo $black_logo['title']; ?>" class="hovered_logo">
                     <?php endif; ?>
                 </a>
             </div>

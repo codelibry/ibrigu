@@ -264,6 +264,7 @@ do_action( 'woocommerce_before_single_product' );
                                     $variations = $product->get_available_variations();
                                 
                                     foreach ($variations as $variation) {
+                                        var_dump($variation);
                                         $variation_id = $variation['variation_id'];
                                         $variation = new WC_Product_Variation($variation_id);
                                         $variation_description = $variation->get_description(); ?>
