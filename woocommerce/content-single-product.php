@@ -264,7 +264,6 @@ do_action( 'woocommerce_before_single_product' );
                                     $variations = $product->get_available_variations();
                                 
                                     foreach ($variations as $variation) {
-                                        var_dump($variation);
                                         $variation_id = $variation['variation_id'];
                                         $variation = new WC_Product_Variation($variation_id);
                                         $variation_description = $variation->get_description(); ?>
@@ -442,11 +441,23 @@ do_action( 'woocommerce_before_single_product' );
                                                         <?php endif; ?>
                                                     </div>
                                                 <?php endif; ?>
-                                                <?php if($size_choosing_text): ?>
-                                                    <div class="singleProduct__attributesPicker__itemPopup__text woocommerce-text lh-sm desktop-xs">
-                                                        <?php echo $size_choosing_text; ?>
-                                                    </div>
-                                                <?php endif; ?>
+                                                <?php 
+                                                    if ($product->is_type('variable')) {
+                                                        $variations = $product->get_available_variations();
+                                                    
+                                                        foreach ($variations as $variation) {
+                                                            $variation_id = $variation['variation_id'];
+                                                            $size_description = $variation['size_description'];
+                                                            $variation = new WC_Product_Variation($variation_id); ?>
+                                                            <?php if(!empty($size_description)): ?>
+                                                                <div class="singleProduct__attributesPicker__itemPopup__text singleProduct__attributesPicker__itemPopup__text-<?php echo $variation_id; ?> woocommerce-text lh-sm desktop-xs">
+                                                                    <p><strong>Fitting and sizing information</strong></p>
+                                                                    <p><?php echo $size_description; ?></p>
+                                                                </div>
+                                                            <?php endif; ?>
+                                                        <?php }
+                                                    }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>

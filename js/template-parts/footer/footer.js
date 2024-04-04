@@ -12,7 +12,11 @@ function footer(){
             dropdown.slideToggle(300);
         });
     });
-    
+    $(document).ajaxComplete(function(event, xhr, settings) {
+      if($('footer .nf-response-msg .form-success').length > 0) {
+        $('footer .form--newsletter .nf-form-layout').addClass('hide');
+      }
+    });
 
     //back to top
     function trackScroll() {

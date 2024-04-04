@@ -212,6 +212,9 @@ body.woocommerce.woocommerce-page
                     bottom: -20px 
                     background: $color-bg-white
                 &__text 
+                    display: none 
+                    &.active 
+                        display: block 
                     +max-screen($breakpoint-md)
                         position: relative
                 &__content

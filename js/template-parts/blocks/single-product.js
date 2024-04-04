@@ -307,6 +307,11 @@ function singleProduct(){
             }
             $(`.singleProduct__descriptionText .singleProduct__descriptionText__item`).removeClass('active');
             $(`.singleProduct__descriptionText .product-desc-${descId}`).addClass('active');
+
+
+            $(`.singleProduct__attributesPicker__itemPopup__text`).removeClass('active');
+            $(`.singleProduct__attributesPicker__itemPopup__text-${$('.singleProduct__wishlist .yith-wcwl-add-button > a').attr('data-product-id')}`).addClass('active');
+
             let descHeight;
             if(w > 769){
                 descHeight = $('.desktop .singleProduct__description .singleProduct__descriptionText').outerHeight() + $('.desktop .singleProduct__description .attributesItem__list').outerHeight();
