@@ -3,9 +3,14 @@
         display: flex
         flex-wrap: wrap
         gap: 122px 0
+        max-width: 1900px 
+        margin: auto 
+        +max-screen(1441px)
+            max-width: 80%
+        +max-screen($breakpoint-lg)
+            max-width: 100%
         +max-screen($breakpoint-md)
             gap: 0
-            //gap: 0%
     &__item
         position: relative
         &.full--width
@@ -36,7 +41,7 @@
             margin: 0 61.5px
             &:nth-child(2n)
                 +min-screen(1442px)
-                    margin-left: 102px 
+                    margin-left: 102px
             &:nth-child(2n + 1)
                 +min-screen(1442px)
                     margin-right: 102px

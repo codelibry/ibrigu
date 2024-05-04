@@ -301,12 +301,20 @@ function singleProduct(){
     const w = $(window).width();
     $(document).ajaxSuccess(function(event, xhr, settings) {
         if(settings.data.split('action=')[1] != undefined && settings.data.split('action=')[1].split('&')[0] == 'load_fragments'){
-            let descId = $('.singleProduct__wishlist .yith-wcwl-add-button > a').attr('data-product-id');
+            let descId = $('.singleProduct__wishlist .yith-wcwl-add-button > a').attr('data-product-id'),
+                tabDescId = $('.singleProduct__wishlist .yith-wcwl-add-button > a').attr('data-product-id');
+
             if($(`.singleProduct__descriptionText .product-desc-${descId}`).length == 0){
                 descId = 'simple';
             }
+            if($(`.singleProduct__infoTab__popupText.desc.product-desc-${tabDescId}`).length == 0){
+                tabDescId = 'simple';
+            }
             $(`.singleProduct__descriptionText .singleProduct__descriptionText__item`).removeClass('active');
             $(`.singleProduct__descriptionText .product-desc-${descId}`).addClass('active');
+
+            $(`.singleProduct__infoTab__popupText.desc`).removeClass('active');
+            $(`.singleProduct__infoTab__popupText.desc.product-desc-${tabDescId}`).addClass('active');
 
 
             $(`.singleProduct__attributesPicker__itemPopup__text`).removeClass('active');

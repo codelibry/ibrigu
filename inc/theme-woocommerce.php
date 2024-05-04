@@ -38,19 +38,19 @@ function custom_register_fields() {
     
 
 	<p class="form-row woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-        <input type="text" class="input-text" name="first_name" id="first_name" placeholder="<?php _e('Name *', 'woocommerce_custom_text'); ?>" value="<?php if (!empty($_POST['first_name'])) echo esc_attr($_POST['first_name']); ?>" />
+        <input type="text" class="input-text" name="first_name" id="first_name" placeholder="<?php _e('Nome *', 'woocommerce_custom_text'); ?>" value="<?php if (!empty($_POST['first_name'])) echo esc_attr($_POST['first_name']); ?>" />
     </p>
 
     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-        <input type="text" class="input-text" name="last_name" id="last_name" placeholder="<?php _e('Surname *', 'woocommerce_custom_text'); ?>" value="<?php if (!empty($_POST['last_name'])) echo esc_attr($_POST['last_name']); ?>" />
+        <input type="text" class="input-text" name="last_name" id="last_name" placeholder="<?php _e('Cognome *', 'woocommerce_custom_text'); ?>" value="<?php if (!empty($_POST['last_name'])) echo esc_attr($_POST['last_name']); ?>" />
     </p>
 	<?php if(is_account_page()): ?>
     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-        <input type="text" class="input-text" name="billing_country" id="billing_country" placeholder="<?php _e('Country *', 'woocommerce_custom_text'); ?>" value="<?php if (!empty($_POST['billing_country'])) echo esc_attr($_POST['billing_country']); ?>" />
+        <input type="text" class="input-text" name="billing_country" id="billing_country" placeholder="<?php _e('Paese *', 'woocommerce_custom_text'); ?>" value="<?php if (!empty($_POST['billing_country'])) echo esc_attr($_POST['billing_country']); ?>" />
     </p>
     <?php endif; ?>
 	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-        <input type="text" class="input-text" name="fiscal_code" id="fiscal_code" placeholder="<?php _e('Fiscal code *', 'woocommerce_custom_text'); ?>" value="<?php if (!empty($_POST['fiscal_code'])) echo esc_attr($_POST['fiscal_code']); ?>" />
+        <input type="text" class="input-text" name="fiscal_code" id="fiscal_code" placeholder="<?php _e('Codice Fiscale *', 'woocommerce_custom_text'); ?>" value="<?php if (!empty($_POST['fiscal_code'])) echo esc_attr($_POST['fiscal_code']); ?>" />
     </p>
     <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide phone-country-code">
         <span class="phone-country-code-pseudo-el"></span>
@@ -303,7 +303,7 @@ function custom_register_fields() {
         </select>
     </p>
 	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-        <input type="tel" class="input-text" name="billing_phone" id="billing_phone" placeholder="<?php _e('Cellphone *', 'woocommerce_custom_text'); ?>" value="<?php if (!empty($_POST['billing_phone'])) echo esc_attr($_POST['billing_phone']); ?>" />
+        <input type="tel" class="input-text" name="billing_phone" id="billing_phone" placeholder="<?php _e('Cellulare *', 'woocommerce_custom_text'); ?>" value="<?php if (!empty($_POST['billing_phone'])) echo esc_attr($_POST['billing_phone']); ?>" />
     </p>
     <?php
 }
@@ -370,22 +370,22 @@ function custom_account_password_form() {
     ?>
     <div class="woocommerce-MyAccount-content myAccount__changePasswordForm">
 		<div class="myAccount__changePasswordForm__title woocommerce-text editAccount__form__title">
-			<?php _e('Change password', 'woocommerce_custom_text'); ?>
+			<?php _e('Cambia Password', 'woocommerce_custom_text'); ?>
 		</div>
         <form action="" method="post" id="chnagePassword">
             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_current" id="password_current" placeholder="<?php _e('Current password *', 'woocommerce_custom_text'); ?>" />
+                <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_current" id="password_current" placeholder="<?php _e('Password attuale *', 'woocommerce_custom_text'); ?>" />
             </p>
             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_1" id="password_1" placeholder="<?php _e('New password *', 'woocommerce_custom_text'); ?>" />
+                <input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password_1" id="password_1" placeholder="<?php _e('Nuova password *', 'woocommerce_custom_text'); ?>" />
             </p>
 			<p class="woocommerce-form-text woocommerce-text chnage-password-text">
-				<?php _e('8-15 characters', 'woocommerce_custom_text'); ?>
+				<?php //_e('8-15 characters', 'woocommerce_custom_text'); ?>
 			</p>
             <p class="submitBtn__wrapper">
                 <input type="hidden" name="action" value="change_password" />
                 <?php wp_nonce_field('change_password', 'change_password_nonce'); ?>
-                <button type="submit" class="woocommerce-Button button button--size--md button--black button--fz--md" name="save_password" value="<?php _e('Change Password', 'woocommerce_custom_text'); ?>"><?php _e('SAVE', 'woocommerce_custom_text'); ?></button>
+                <button type="submit" class="woocommerce-Button button button--size--md button--black button--fz--md" name="save_password" value="<?php _e('Change Password', 'woocommerce_custom_text'); ?>"><?php _e('SALVA', 'woocommerce_custom_text'); ?></button>
             </p>
         </form>
     </div>
@@ -423,24 +423,24 @@ function custom_account_profile_form() {
 		<div class="myAccount__editData__title woocommerce-text editAccount__form__title"><?php _e('Edit account', 'woocommerce_custom_text'); ?></div>
         <form action="" method="post" id="editAccountData">
             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="<?php _e('Email', 'woocommerce_custom_text'); ?>" name="account_email" id="account_email" value="" />
+                <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="<?php _e('E-mail', 'woocommerce_custom_text'); ?>" name="account_email" id="account_email" value="" />
             </p>
             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="<?php _e('Name', 'woocommerce_custom_text'); ?>" name="first_name" id="first_name" value="" />
+                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="<?php _e('Nome', 'woocommerce_custom_text'); ?>" name="first_name" id="first_name" value="" />
             </p>
             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="<?php _e('Surname', 'woocommerce_custom_text'); ?>" name="last_name" id="last_name" value="" />
+                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="<?php _e('Cognome', 'woocommerce_custom_text'); ?>" name="last_name" id="last_name" value="" />
             </p>
             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide country">
-                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="<?php _e('Country', 'woocommerce_custom_text'); ?>" name="billing_country" id="billing_country" value="" />
+                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="<?php _e('Paese', 'woocommerce_custom_text'); ?>" name="billing_country" id="billing_country" value="" />
             </p>
             <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-                <input type="tel" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="<?php _e('Cellphone', 'woocommerce_custom_text'); ?>" name="billing_phone" id="billing_phone" value="" />
+                <input type="tel" class="woocommerce-Input woocommerce-Input--text input-text" placeholder="<?php _e('Cellulare *', 'woocommerce_custom_text'); ?>" name="billing_phone" id="billing_phone" value="" />
             </p>
             <p class="submitBtn__wrapper">
                 <input type="hidden" name="action" value="update_profile" />
                 <?php wp_nonce_field('update_profile', 'update_profile_nonce'); ?>
-                <button type="submit" class="woocommerce-Button button button button--size--md button--black button--fz--md" name="save_profile" value="<?php _e('Update Profile', 'woocommerce_custom_text'); ?>"><?php _e('Save', 'woocommerce_custom_text'); ?></button>
+                <button type="submit" class="woocommerce-Button button button button--size--md button--black button--fz--md" name="save_profile" value="<?php _e('Update Profile', 'woocommerce_custom_text'); ?>"><?php _e('Salva', 'woocommerce_custom_text'); ?></button>
             </p>
         </form>
     </div>
@@ -566,15 +566,15 @@ function ace_remove_checkout_fields( $fields ) {
     $fields['billing']['billing_country']['type'] = 'text';
     $fields['order']['order_comments']['type'] = 'text';
     $fields['order']['order_comments']['maxlength'] = '250';
-    $fields['order']['order_comments']['placeholder'] = __('Write your message here', 'woocommerce_custom_text');
+    $fields['order']['order_comments']['placeholder'] = __('Scrivi il tuo messaggio qui', 'woocommerce_custom_text');
 
-    $fields['shipping']['shipping_first_name']['placeholder'] = __('Name *', 'woocommerce_custom_text');
-    $fields['shipping']['shipping_last_name']['placeholder'] = __('Surname *', 'woocommerce_custom_text');
-    $fields['shipping']['shipping_address_1']['placeholder'] = __('Address 1 *', 'woocommerce_custom_text');
-    $fields['shipping']['shipping_address_2']['placeholder'] = __('Address 2', 'woocommerce_custom_text');
-    $fields['shipping']['shipping_country']['placeholder'] = __('Country *', 'woocommerce_custom_text');
-    $fields['shipping']['shipping_city']['placeholder'] = __('City *', 'woocommerce_custom_text');
-    $fields['shipping']['shipping_postcode']['placeholder'] = __('Zip Code *', 'woocommerce_custom_text');
+    $fields['shipping']['shipping_first_name']['placeholder'] = __('Nome *', 'woocommerce_custom_text');
+    $fields['shipping']['shipping_last_name']['placeholder'] = __('Cognome *', 'woocommerce_custom_text');
+    $fields['shipping']['shipping_address_1']['placeholder'] = __('Indirizzo 1 *', 'woocommerce_custom_text');
+    $fields['shipping']['shipping_address_2']['placeholder'] = __('Indirizzo 2', 'woocommerce_custom_text');
+    $fields['shipping']['shipping_country']['placeholder'] = __('Paese *', 'woocommerce_custom_text');
+    $fields['shipping']['shipping_city']['placeholder'] = __('Città *', 'woocommerce_custom_text');
+    $fields['shipping']['shipping_postcode']['placeholder'] = __('CAP *', 'woocommerce_custom_text');
 
     $fields['shipping']['shipping_address_1']['priority'] = 30;
     $fields['shipping']['shipping_address_2']['priority'] = 40;
@@ -600,7 +600,7 @@ function add_password_fields_to_registration() {
     <p class="form-row woocommerce-form-row form-row-wide">
         <input type="password" class="input-text" name="password" id="reg_password" placeholder="<?php _e('Password *', 'woocommerce'); ?>" value="<?php if (!empty($_POST['password'])) echo esc_attr($_POST['password']); ?>" required/>
     </p>
-    <span class="underPasswordText woocommerce-text "><?php _e('8-15 characters', 'woocommerce_custom_text'); ?></span>
+    <span class="underPasswordText woocommerce-text "><?php _e('8-15 caratteri', 'woocommerce_custom_text'); ?></span>
     <p class="form-row woocommerce-form-row form-row-wide">
         <input type="password" class="input-text" name="confirm_password" id="reg_confirm_password" placeholder="<?php _e('Confirm password *', 'woocommerce'); ?>" value="<?php if (!empty($_POST['confirm_password'])) echo esc_attr($_POST['confirm_password']); ?>" required/>
     </p>
@@ -631,14 +631,14 @@ add_action('woocommerce_created_customer', 'save_password_fields');
 
 //Shipping fields placeholder 
 function shipping_fields_placeholder( $fields ) {
-    $fields['billing']['billing_first_name']['placeholder'] = __('Name *', 'woocommerce_custom_text');
-    $fields['billing']['billing_last_name']['placeholder'] = __('Surname *', 'woocommerce_custom_text');
-    $fields['billing']['billing_postcode']['placeholder'] = __('Zip Code *', 'woocommerce_custom_text');
-    $fields['billing']['billing_city']['placeholder'] = __('City *', 'woocommerce_custom_text');
-    $fields['billing']['billing_country']['placeholder'] = __('Country *', 'woocommerce_custom_text');
-    $fields['billing']['billing_phone']['placeholder'] = __('Cellphone *', 'woocommerce_custom_text');
-    $fields['billing']['billing_address_1']['placeholder'] = __('Address 1 *', 'woocommerce_custom_text');
-    $fields['billing']['billing_address_2']['placeholder'] = __('Address 2', 'woocommerce_custom_text');
+    $fields['billing']['billing_first_name']['placeholder'] = __('Nome *', 'woocommerce_custom_text');
+    $fields['billing']['billing_last_name']['placeholder'] = __('Cognome *', 'woocommerce_custom_text');
+    $fields['billing']['billing_postcode']['placeholder'] = __('CAP *', 'woocommerce_custom_text');
+    $fields['billing']['billing_city']['placeholder'] = __('Città *', 'woocommerce_custom_text');
+    $fields['billing']['billing_country']['placeholder'] = __('Paese *', 'woocommerce_custom_text');
+    $fields['billing']['billing_phone']['placeholder'] = __('Cellulare *', 'woocommerce_custom_text');
+    $fields['billing']['billing_address_1']['placeholder'] = __('Indirizzo 1 *', 'woocommerce_custom_text');
+    $fields['billing']['billing_address_2']['placeholder'] = __('Indirizzo 2', 'woocommerce_custom_text');
 
     return $fields;
 }
@@ -729,6 +729,8 @@ add_action( 'woocommerce_product_after_variable_attributes', 'add_variation_cust
 
 function add_variation_custom_field( $loop, $variation_data, $variation ) {
     $custom_field_value = get_post_meta( $variation->ID, 'size_description', true );
+    $description_tab = get_post_meta( $variation->ID, 'description_tab', true );
+
     ?>
     <tr>
         <td>
@@ -736,6 +738,13 @@ function add_variation_custom_field( $loop, $variation_data, $variation ) {
             echo '<label for="size_description_' . $loop . '">Size Description</label>';
 
             echo '<input type="text" name="size_description[' . $loop . ']" value="' . esc_attr( $custom_field_value ) . '" />';
+            ?>
+        </td>
+        <td>
+            <?php
+            echo '<label for="description_tab_' . $loop . '">Description Tab</label>';
+
+            echo '<input type="text" name="description_tab[' . $loop . ']" value="' . esc_attr( $description_tab ) . '" />';
             ?>
         </td>
     </tr>
@@ -747,10 +756,14 @@ add_action( 'woocommerce_save_product_variation', 'save_variation_custom_field',
 function save_variation_custom_field( $variation_id, $i ) {
     if ( isset( $_POST['size_description'][ $i ] ) ) {
         $custom_field_value = sanitize_text_field( $_POST['size_description'][ $i ] );
+        $description_tab = sanitize_text_field( $_POST['description_tab'][ $i ] );
+
 
         $variation = wc_get_product( $variation_id );
 
         $variation->update_meta_data( 'size_description', $custom_field_value );
+        $variation->update_meta_data( 'description_tab', $description_tab );
+
 
         $variation->save();
     }
@@ -760,8 +773,11 @@ add_filter( 'woocommerce_available_variation', 'display_variation_custom_field',
 
 function display_variation_custom_field( $data, $product, $variation ) {
     $custom_field_value = $variation->get_meta( 'size_description' );
+    $description_tab = $variation->get_meta( 'description_tab' );
 
     $data['size_description'] = $custom_field_value;
+    $data['description_tab'] = $description_tab;
+
 
     return $data;
 }

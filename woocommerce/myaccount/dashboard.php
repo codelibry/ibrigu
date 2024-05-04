@@ -44,10 +44,10 @@ endif;
 			<div class="myAccount__editData editAccount__formWrapper">
 				<div class="account__menu myAccount__menu">
 					<h5 class="account__menuItem current desktop-lg">
-						<?php _e('My information', 'woocommerce_custom_text'); ?>
+						<?php _e('Le mie informazioni', 'woocommerce_custom_text'); ?>
 					</h5>
 					<h5 class="account__menuItem desktop-lg">
-						<a href="<?php echo get_home_url() . '/wishlist'; ?>"><?php _e('My wishlist', 'woocommerce_custom_text'); ?></a>
+						<a href="<?php echo get_home_url() . '/wishlist'; ?>"><?php _e('La mia wishlist', 'woocommerce_custom_text'); ?></a>
 					</h5>
 				</div>
 				<?php do_action('woocommerce_edit_account'); ?>

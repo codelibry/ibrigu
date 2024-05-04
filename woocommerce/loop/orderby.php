@@ -17,43 +17,43 @@ if(is_product_category()){
 <h4 class="catalog__filter"><?php _e('Filters', 'woocommerce_custom_text'); ?></h4>
 <div class="catalog__filtersMenu">
     <div class="catalog__filtersClose"></div>
-    <h4 class="catalog__filtersMenu__title"><?php _e('Filters', 'woocommerce_custom_text'); ?></h4>
+    <h4 class="catalog__filtersMenu__title"><?php _e('FILTRI', 'woocommerce_custom_text'); ?></h4>
     <div class="catalog__filtersList">
         <div class="catalog__filtersList__attribute sort">
-            <h4 class="catalog__filtersList__attributeLabel"><?php _e('Sort by', 'woocommerce_custom_text'); ?></h4>
+            <h4 class="catalog__filtersList__attributeLabel"><?php _e('Ordina per', 'woocommerce_custom_text'); ?></h4>
             <div class="catalog__filtersList__attributeSublist__overlay"></div>
             <div class="catalog__filtersList__attributeSublist">
                 <div class="catalog__filtersList__attributeSublist__close"></div>
-                <h4 class="catalog__filtersList__attributeLabel"><?php _e('Sort by', 'woocommerce_custom_text'); ?></h4>
+                <h4 class="catalog__filtersList__attributeLabel"><?php _e('Ordina per', 'woocommerce_custom_text'); ?></h4>
                 <div class="catalog__filtersList__attributeList">
                     <div class="catalog__filtersList__attributeColumn">
                         <div class="catalog__filtersList__attributeItem">
                             <div class="catalog__filtersList__attributeItem__checkbox"></div>
-                            <h4 class="catalog__filtersList__attributeItem__name desktop-md lg" data-slug="price-desc"><?php _e('Descending Price', 'woocommerce_custom_text'); ?></h4>
+                            <h4 class="catalog__filtersList__attributeItem__name desktop-md lg" data-slug="price-desc"><?php _e('Prezzo Decrescente', 'woocommerce_custom_text'); ?></h4>
                         </div>
                         <div class="catalog__filtersList__attributeItem">
                             <div class="catalog__filtersList__attributeItem__checkbox"></div>
-                            <h4 class="catalog__filtersList__attributeItem__name desktop-md lg" data-slug="price"><?php _e('Ascending Price', 'woocommerce_custom_text'); ?></h4>
+                            <h4 class="catalog__filtersList__attributeItem__name desktop-md lg" data-slug="price"><?php _e('Prezzo Crescente', 'woocommerce_custom_text'); ?></h4>
                         </div>
                         <div class="catalog__filtersList__attributeItem">
                             <div class="catalog__filtersList__attributeItem__checkbox"></div>
-                            <h4 class="catalog__filtersList__attributeItem__name desktop-md lg" data-slug="availability"><?php _e('Availability', 'woocommerce_custom_text'); ?></h4>
+                            <h4 class="catalog__filtersList__attributeItem__name desktop-md lg" data-slug="availability"><?php _e('Disponibilità', 'woocommerce_custom_text'); ?></h4>
                         </div>
                         <div class="catalog__filtersList__attributeItem">
                             <div class="catalog__filtersList__attributeItem__checkbox"></div>
-                            <h4 class="catalog__filtersList__attributeItem__name desktop-md lg" data-slug="date"><?php _e('Most recent', 'woocommerce_custom_text'); ?></h4>
+                            <h4 class="catalog__filtersList__attributeItem__name desktop-md lg" data-slug="date"><?php _e('Più recente', 'woocommerce_custom_text'); ?></h4>
                         </div>
                     </div>
                 </div>
-                <h4 class="catalog__filtersList__attributeItem__apply button button--black sm"><?php _e('APPLY', 'woocommerce_custom_text'); ?></h4>
+                <h4 class="catalog__filtersList__attributeItem__apply button button--black sm"><?php _e('APPLICA', 'woocommerce_custom_text'); ?></h4>
             </div>
         </div>
         <div class="catalog__filtersList__attribute colors">
-            <h4 class="catalog__filtersList__attributeLabel"><?php _e('Colors', 'woocommerce_custom_text'); ?></h4>
+            <h4 class="catalog__filtersList__attributeLabel"><?php _e('Colore', 'woocommerce_custom_text'); ?></h4>
             <div class="catalog__filtersList__attributeSublist__overlay"></div>
             <div class="catalog__filtersList__attributeSublist">
                 <div class="catalog__filtersList__attributeSublist__close"></div>
-                <h4 class="catalog__filtersList__attributeLabel"><?php _e('Colors', 'woocommerce_custom_text'); ?></h4>
+                <h4 class="catalog__filtersList__attributeLabel"><?php _e('Colore', 'woocommerce_custom_text'); ?></h4>
                 <div class="catalog__filtersList__attributeList">
                     <div class="catalog__filtersList__attributeColumn">
                         <?php $count = ceil(count($product_colors) / 2); ?>
@@ -72,16 +72,16 @@ if(is_product_category()){
                         <?php $i++; endforeach; ?>
                     </div>
                 </div>
-                <h4 class="catalog__filtersList__attributeItem__apply button button--black sm"><?php _e('APPLY', 'woocommerce_custom_text'); ?></h4>
+                <h4 class="catalog__filtersList__attributeItem__apply button button--black sm"><?php _e('APPLICA', 'woocommerce_custom_text'); ?></h4>
             </div>
         </div>
         <?php if($slug != 'home'): ?>
             <div class="catalog__filtersList__attribute size">
-                <h4 class="catalog__filtersList__attributeLabel"><?php _e('Size', 'woocommerce_custom_text'); ?></h4>
+                <h4 class="catalog__filtersList__attributeLabel"><?php _e('Taglia', 'woocommerce_custom_text'); ?></h4>
                 <div class="catalog__filtersList__attributeSublist__overlay"></div>
                 <div class="catalog__filtersList__attributeSublist">
                     <div class="catalog__filtersList__attributeSublist__close"></div>
-                    <h4 class="catalog__filtersList__attributeLabel"><?php _e('Size', 'woocommerce_custom_text'); ?></h4>
+                    <h4 class="catalog__filtersList__attributeLabel"><?php _e('Taglia', 'woocommerce_custom_text'); ?></h4>
                     <div class="catalog__filtersList__attributeList">
                         <div class="catalog__filtersList__attributeColumn">
                             <?php $i = 1; foreach($product_sizes as $size): ?>
@@ -92,7 +92,7 @@ if(is_product_category()){
                             <?php $i++; endforeach; ?>
                             </div>
                         </div>
-                    <h4 class="catalog__filtersList__attributeItem__apply button button--black sm"><?php _e('APPLY', 'woocommerce_custom_text'); ?></h4>
+                    <h4 class="catalog__filtersList__attributeItem__apply button button--black sm"><?php _e('APPLICA', 'woocommerce_custom_text'); ?></h4>
                 </div>
             </div>
         <?php endif; ?>

@@ -22,12 +22,12 @@ do_action( 'woocommerce_before_lost_password_form' );
 <section class="lostPasswordForm">
     <div class="container">
         <div class="lostPasswordForm__wrapper woocommerceAccountForm">
-            <h4 class="sm lostPasswordRest__title woocommerceAccountForm__title desktop-lg"><?php echo apply_filters( 'woocommerce_lost_password_message', esc_html__( 'Lost your password?', 'woocommerce' ) ); ?></h4> 
-            <div class="lostPasswordRest__text woocommerce-text woocommerceAccountForm__text desktop-lg"><p><?php echo apply_filters( 'woocommerce_lost_password_message', esc_html__( 'Please enter your username or email address. You will receive a link to create a new password via email.', 'woocommerce' ) ); ?></p></div><?php // @codingStandardsIgnoreLine ?>
+            <h4 class="sm lostPasswordRest__title woocommerceAccountForm__title desktop-lg"><?php _e('Hai perso la password?', 'woocommerce_custom_text'); ?></h4> 
+            <div class="lostPasswordRest__text woocommerce-text woocommerceAccountForm__text desktop-lg"><p><?php _e("Per favore inserisci il tuo nome utente o l'indirizzo email. Riceverai via email un link per creare una nuova password.", 'woocommerce_custom_text'); ?></p></div><?php // @codingStandardsIgnoreLine ?>
             <form method="post" class="woocommerce-ResetPassword lost_reset_password lostPasswordRest woocommerce-form">
 
                 <p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
-                    <input class="woocommerce-Input woocommerce-Input--text input-text" type="text" name="user_login" id="user_login" autocomplete="username" placeholder="Enter your email" />
+                    <input class="woocommerce-Input woocommerce-Input--text input-text" type="text" name="user_login" id="user_login" autocomplete="username" placeholder="<?php _e('Inserisci il tuo indirizzo email', 'woocommerce_custom_text') ?>" />
                 </p>
 
                 <div class="clear"></div>
@@ -36,7 +36,7 @@ do_action( 'woocommerce_before_lost_password_form' );
 
                 <p class="woocommerce-form-row form-row button-wrapper">
                     <input type="hidden" name="wc_reset_password" value="true" />
-                    <button type="submit" class="woocommerce-Button button--black button--fz--md button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" value="<?php esc_attr_e( 'Reset password', 'woocommerce' ); ?>"><?php esc_html_e( 'Reset password', 'woocommerce' ); ?></button>
+                    <button type="submit" class="woocommerce-Button button--black button--fz--md button<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" value="<?php _e( 'Resetta la password', 'woocommerce_custom_text' ); ?>"><?php _e( 'Resetta la password', 'woocommerce_custom_text' ); ?></button>
                 </p>
 
                 <?php wp_nonce_field( 'lost_password', 'woocommerce-lost-password-nonce' ); ?>

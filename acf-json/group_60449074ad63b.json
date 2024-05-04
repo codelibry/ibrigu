@@ -28,7 +28,7 @@
             "mime_types": ""
         },
         {
-            "key": "field_660d5b6a014a3",
+            "key": "field_660d63a97d4cc",
             "label": "Black Logo",
             "name": "black_logo",
             "type": "image",
@@ -72,5 +72,5 @@
     "description": "",
     "show_in_rest": 0,
     "acfml_field_group_mode": "translation",
-    "modified": 1712151430
+    "modified": 1712153536
 }

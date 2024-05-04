@@ -48,7 +48,14 @@
                                              class="productCategory__item-img image--desk">
                                     <?php endif; ?>
                                     <div class="productCategory__item-btn">
-                                        <span><?php _e('Shop ' . $category->name); ?></span>
+                                        <?php 
+                                        $current_lang = apply_filters( 'wpml_current_language', NULL );
+                                        $shop = '';
+                                        if($current_lang == 'en'){
+                                            $shop = 'Shop ';
+                                        }
+                                        ?>
+                                        <span><?php _e($shop . $category->name); ?></span>
                                         <?php if ($is_not_first) : ?>
                                             <?php echo file_get_contents(get_template_directory_uri() . '/assets/images/product_arrow_icon.svg'); ?>
                                         <?php else : ?>
@@ -65,7 +72,7 @@
                                     <img src="<?php echo $thumbnail_url; ?>" alt="<?php echo $category->name; ?>"
                                          class="productCategory__item-img">
                                     <div class="productCategory__item-btn">
-                                        <span><?php _e('Shop ' . $category->name); ?></span>
+                                        <span><?php _e($shop . $category->name); ?></span>
                                         <?php if ($is_not_first) : ?>
                                             <?php echo file_get_contents(get_template_directory_uri() . '/assets/images/product_arrow_icon.svg'); ?>
                                         <?php else : ?>

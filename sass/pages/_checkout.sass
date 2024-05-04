@@ -630,6 +630,11 @@
                     margin-bottom: 0
                     &::after 
                         bottom: 56%
+        #billing_city_field,
+        #billing_province_field
+            order: 1
+        #billing_phone_field 
+            order: 2
         .form-row.empty 
             input 
                 border-color: $color-red 
@@ -923,3 +928,91 @@
 //         margin-bottom: 24px
 //     +max-screen($breakpoint-lg)
 //         margin-bottom: 0
+.woocommerce-checkout 
+    #main 
+        .checkoutPayment 
+            .checkoutTabs__listItem__sublist
+                +max-screen($breakpoint-md)
+                    padding-left: 0
+            #payment 
+                .payment_box
+                    display: none !important
+                .wc_payment_method
+                    display: flex 
+                    margin-bottom: 15px !important
+                    input 
+                        width: 0
+                        margin: 0 !important
+                        opacity: 0
+                        & + label 
+                            position: relative
+                            padding-left: 42px 
+                            display: flex 
+                            align-items: center
+                            font-size: 15px
+                            line-height: 2
+                            +max-screen($breakpoint-lg)
+                                padding-left: 24px 
+                                font-size: 12px
+                                line-height: 1.8
+                            +max-screen($breakpoint-md)
+                                padding-left: 20px
+                                font-size: 10px
+                            &::before 
+                                content: ""
+                                position: absolute
+                                top: 1.5px 
+                                left: 0
+                                width: 20px 
+                                height: 20px 
+                                border-radius: 2px 
+                                border: 1px solid $color-black
+                                +max-screen($breakpoint-lg)
+                                    width: 14px 
+                                    height: 14px 
+                                +max-screen($breakpoint-md)
+                                    width: 12px 
+                                    height: 12px 
+                            &::after 
+                                content: ""
+                                position: absolute
+                                width: 14px 
+                                height: 14px 
+                                background-image: url('../assets/images/check.png')
+                                background-size: contain
+                                background-position: center
+                                background-repeat: no-repeat
+                                top: 4px 
+                                left: 3px 
+                                opacity: 0
+                                transition: .3s
+                                box-shadow: none 
+                                +max-screen(1200px)
+                                    top: 5px 
+                                +max-screen($breakpoint-lg)
+                                    width: 8px 
+                                    height: 8px 
+                                +max-screen($breakpoint-md)
+                                    width: 6px 
+                                    height: 6px 
+                                    top: 4px 
+                        &:checked + label::after 
+                            opacity: 1
+                    img 
+                        height: 15px
+                        +max-screen($breakpoint-lg)
+                            height: 10px 
+                        +max-screen($breakpoint-md)
+                            height: 8px 
+                    &.payment_method_xpay_googlepay 
+                        img 
+                            height: 20px
+                            +max-screen($breakpoint-lg)
+                                height: 18px 
+                            +max-screen($breakpoint-md)
+                                height: 14px 
+                        input + label::after 
+                            +max-screen(1200px)
+                                top: 5px 
+                            +max-screen($breakpoint-lg)
+                                top: 4px

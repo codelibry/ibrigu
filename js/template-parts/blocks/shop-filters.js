@@ -68,10 +68,12 @@ function filtersSidebar() {
 function sidebarAttributes(){
     //Open Filters SubMenu | Filters Menu 
     $('.catalog__filtersList__attributeLabel').click(function(){
+        const w = jQuery(window).width();
         $('.catalog__filtersList__attributeSublist').not($( $(this).parent().find('.catalog__filtersList__attributeSublist'))).slideUp();
         $('.catalog__filtersList__attribute').not($(this).parent()).removeClass('opened');
-
-        $(this).parent().find('.catalog__filtersList__attributeSublist').slideToggle();
+        if(w < 770){
+            $(this).parent().find('.catalog__filtersList__attributeSublist').slideToggle();
+        }
         $(this).parent().toggleClass('opened');
     });
 

@@ -5,7 +5,7 @@
 	<?php if(is_cart()): ?>
 		<h1 class="cartContent__title sm woocommerce-title lg"><?php the_title(); ?></h1>	
 	<?php else: ?>
-		<h4 class="cartContent__title desktop-lg"><?php _e('Cart', 'woocommerce_custom_text'); ?></h4>
+		<h4 class="cartContent__title desktop-lg"><?php _e('Carrello', 'woocommerce_custom_text'); ?></h4>
 	<?php endif; ?>
 	<div class="cartContent__itemsWrapper woocommerce-cart-form__contents" cellspacing="0">
 		<div class="cartContent__itemsList">
@@ -41,7 +41,7 @@
 							<h5 class="cartContent__itemBody desktop-sm">
 								<div class="cartContent__itemAttrs_list woocommerce-text sm desktop-md">
 									<div class="cartContent__itemAttr">
-										<div class="cartContent__itemAttr__options"><?php _e('Model ID:', 'woocommerce_custom_text'); ?> <?php echo $_product->get_sku(); ?></div>
+										<div class="cartContent__itemAttr__options"><?php _e('ID Modello:', 'woocommerce_custom_text'); ?> <?php echo $_product->get_sku(); ?></div>
 									</div>
 								</div>
 								<?php 
@@ -147,7 +147,7 @@
 								?>
 								<div class="woocommerce-text cartContent__wishlist__buttonsWrapper<?php echo $class; ?>">
 									<a href="?add_to_wishlist=<?php echo $product_id; ?>" class="add_to_wishlist woocommerce-text single_add_to_wishlist wishlist_toggle" data-product-id="<?php echo $product_id; ?>" data-product-type="variable" data-original-product-id="<?php echo $product_id; ?>" data-title="Add to wishlist" rel="nofollow">
-										<?php _e('Add to my selection', 'woocommerce_custom_text'); ?>
+										<?php _e('Aggiungi alla mia selezione', 'woocommerce_custom_text'); ?>
 									</a>
 								
 									<a href="?remove_from_wishlist=<?php echo $product_id; ?>" class="delete_item woocommerce-text wishlist_toggle" data-item-id="<?php echo $wishlist_item_id; ?>" data-product-id="<?php echo $product_id; ?>" data-original-product-id="<?php echo $product_id; ?>" data-title="Remove from list" rel="nofollow">
@@ -155,14 +155,14 @@
 									</a>
 								</div>
 								<div class="cartContent__itemRemove woocommerce-text desktop-sm">
-									<?php _e('Cancel', 'woocommerce_custom_text') ?>
+									<?php _e('Elimina', 'woocommerce_custom_text') ?>
 								</div>
 							</div>
 						</div>
 						<div class="cartContent__itemBottom__buttons">
 							<div class="woocommerce-text cartContent__wishlist__buttonsWrapper<?php echo $class; ?>">
 								<a href="?add_to_wishlist=<?php echo $product_id; ?>" class="add_to_wishlist woocommerce-text desktop-md single_add_to_wishlist wishlist_toggle" data-product-id="<?php echo $product_id; ?>" data-product-type="variable" data-original-product-id="<?php echo $product_id; ?>" data-title="Add to wishlist" rel="nofollow">
-									<?php _e('Add to my selection', 'woocommerce_custom_text'); ?>
+									<?php _e('Aggiungi alla mia selezione', 'woocommerce_custom_text'); ?>
 								</a>
 							
 								<a href="?remove_from_wishlist=<?php echo $product_id; ?>" class="delete_item woocommerce-text desktop-md wishlist_toggle" data-item-id="<?php echo $wishlist_item_id; ?>" data-product-id="<?php echo $product_id; ?>" data-original-product-id="<?php echo $product_id; ?>" data-title="Remove from list" rel="nofollow">
@@ -174,7 +174,7 @@
 									echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 										'woocommerce_cart_item_remove_link',
 										sprintf(
-											'<a href="%s" class="removeBtn" aria-label="%s" data-product_id="%s" data-product_sku="%s">' . _e('Cancel', 'woocommerce_custom_text') . '</a>',
+											'<a href="%s" class="removeBtn" aria-label="%s" data-product_id="%s" data-product_sku="%s">' . _e('Elimina', 'woocommerce_custom_text') . '</a>',
 											esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 											/* translators: %s is the product name */
 											esc_attr( sprintf( __( 'Remove %s from cart', 'woocommerce' ), wp_strip_all_tags( $product_name ) ) ),

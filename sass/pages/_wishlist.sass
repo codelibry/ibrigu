@@ -10,6 +10,7 @@
         margin-bottom: 64px
     +max-screen($breakpoint-lg)
         margin: 0 -18px
+        margin-bottom: 32px 
     +max-screen($breakpoint-md)
         margin: 0 -13px 
         margin-bottom: 19px
@@ -93,6 +94,9 @@
                 margin-bottom: 15px
                 line-height: 1.55
                 margin-top: 32px
+        .relatedProducts__list 
+            +max-screen(1440px)
+                margin: 0 auto
     &.hasItems
         .wishlist__empty 
             visibility: hidden 
@@ -259,9 +263,11 @@
             line-height: 1
             .yith-wcwl-add-to-wishlist
                 margin-top: 3px
+            .yith-wcwl-add-button
+                position: relative
+                display: inline-block
             .delete_item
                 font-size: 0
-                position: relative
                 &::before 
                     content: "Cancel"
                     font-weight: 700
@@ -279,6 +285,9 @@
                     background-color: $color-black
                 i
                     display: none 
+            html[lang="it-IT"] & .delete_item
+                &::before 
+                    content: "Annulla"
 
     &__relatedProducts
         padding-bottom: 40px

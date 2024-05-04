@@ -314,3 +314,25 @@
         +max-screen($breakpoint-md)
             order: 3
 
+.home 
+    .contentImageBlock 
+        .container 
+            max-width: 1900px
+            +max-screen(1920px) 
+                max-width: 1920px
+            .row 
+                margin: 0 101.75px 
+                +max-screen(1920px)
+                    margin: 0
+        &__image
+            +max-screen(1441px)
+                max-height: 75vh
+            +max-screen($breakpoint-lg)
+                max-height: 100%
+            &__item 
+                +max-screen(1441px)
+                    max-height: 75vh 
+                    object-fit: cover 
+                +max-screen($breakpoint-lg)
+                    max-height: 100%
+                    

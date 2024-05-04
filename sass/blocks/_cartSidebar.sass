@@ -10,6 +10,7 @@
     scrollbar-color: rgba(0, 0, 0, 0.4) transparent
     transition: .3s 
     background-color: $color-bg-dark-grey
+    overflow-x: hidden
     &.cart-empty
         background-color: $color-white
     +max-screen(1200px)
@@ -229,11 +230,15 @@
                         text-decoration: underline
                         font-weight: 700
                     .cartContent__itemRemove 
-                        line-height: 1
+                        line-height: 1.35
+                        +max-screen($breakpoint-md)
+                            line-height: 1.2
             &Remove 
-                line-height: 1
+                line-height: 1.35
                 font-weight: 700
                 text-decoration: underline
+                +max-screen($breakpoint-md)
+                    line-height: 1.2
             &Content 
                 width: calc( 63% - 28px )
                 +max-screen(1440px)

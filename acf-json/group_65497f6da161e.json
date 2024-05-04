@@ -189,5 +189,7 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1699347372
+    "show_in_rest": false,
+    "modified": 1714742758,
+    "acfml_field_group_mode": "advanced"
 }

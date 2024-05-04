@@ -175,17 +175,17 @@ do_action( 'woocommerce_before_single_product' );
                         </div>
                 </div>
                 <div class="showContent">
-                    <div class="more showContentBtn"><?php _e('See more +', 'woocommerce_custom_text'); ?></div>
-                    <div class="less showContentBtn"><?php _e('See less -', 'woocommerce_custom_text'); ?></div>
+                    <div class="more showContentBtn"><?php _e('Vedi di più +', 'woocommerce_custom_text'); ?></div>
+                    <div class="less showContentBtn"><?php _e('Vedi Meno -', 'woocommerce_custom_text'); ?></div>
                 </div>
             </div>
             
-            <?php if(have_rows('features')): ?>
+            <?php if(have_rows('features', 'options')): ?>
                 <div class="singleProduct__features">
-                    <?php while(have_rows('features')): the_row(); ?>
+                    <?php while(have_rows('features', 'options')): the_row(); ?>
                         <?php 
-                        $icon = get_sub_field('icon');
-                        $text = get_sub_field('text');
+                        $icon = get_sub_field('icon', 'options');
+                        $text = get_sub_field('text', 'options');
                         ?>
                         <div class="singleProduct__featuresItem">
                             <?php if($icon): ?>
@@ -198,9 +198,37 @@ do_action( 'woocommerce_before_single_product' );
                     <?php endwhile; ?>
                 </div>
             <?php endif; ?>
-            <?php if(have_rows('info_tabs')): ?>
+            <?php if(have_rows('info_tabs', 'options')): ?>
                 <div class="singleProduct__infoTabs__list">
-                    <?php while(have_rows('info_tabs')): the_row(); ?>
+                    <div class="singleProduct__infoTab__wrapper">
+                        <div class="singleProduct__infoTab">
+                            <div class="singleProduct__infoTab__title"><?php _E('Dettagli', 'woocommerce_custom_text'); ?></div>
+                        </div>
+                        <div class="singleProduct__infoTab__popup">
+                            <div class="singleProduct__infoTab__popupClose"></div>
+                            <h5 class="singleProduct__infoTab__popupTitle"><?php _E('Dettagli', 'woocommerce_custom_text'); ?></h5>
+                            <?php $default_desc = get_field('default_description'); ?>
+                            <?php if($default_desc): ?>
+                                <div class="singleProduct__infoTab__popupText woocommerce-text product-desc-simple desc active"><?php echo $default_desc; ?></div>
+                            <?php endif; ?>
+                            <?php 
+                                if ($product->is_type('variable')) {
+                                    $variations = $product->get_available_variations();
+                                
+                                    foreach ($variations as $variation) {
+                                        $variation_id = $variation['variation_id'];
+                                        $tab_desc = $variation['description_tab'];
+                                        $variation = new WC_Product_Variation($variation_id); ?>
+                                        <?php if(!empty($tab_desc)): ?>
+                                            <div class="singleProduct__infoTab__popupText woocommerce-text product-desc-<?php echo $variation_id; ?> desc"><?php echo $tab_desc; ?></div>
+                                        <?php endif; ?>
+                                    <?php }
+                                }
+                            ?>
+                        </div>
+                    </div>
+                    
+                    <?php while(have_rows('info_tabs', 'options')): the_row(); ?>
                         <?php 
                         $title = get_sub_field('tab_title');
                         $image = get_sub_field('tab_image');
@@ -276,13 +304,13 @@ do_action( 'woocommerce_before_single_product' );
                         </div>
                     </div>
                     <div class="showContent">
-                        <div class="more showContentBtn woocommerce-text"><?php _e('See more +', 'woocommerce_custom_text'); ?></div>
-                        <div class="less showContentBtn woocommerce-text"><?php _e('See less -', 'woocommerce_custom_text'); ?></div>
+                        <div class="more showContentBtn woocommerce-text"><?php _e('Vedi di più +', 'woocommerce_custom_text'); ?></div>
+                        <div class="less showContentBtn woocommerce-text"><?php _e('Vedi Meno -', 'woocommerce_custom_text'); ?></div>
                     </div>
                 </div>
-                <?php if(have_rows('features')): ?>
+                <?php if(have_rows('features', 'options')): ?>
                     <div class="singleProduct__features">
-                        <?php while(have_rows('features')): the_row(); ?>
+                        <?php while(have_rows('features', 'options')): the_row(); ?>
                             <?php 
                             $icon = get_sub_field('icon');
                             $text = get_sub_field('text');
@@ -371,9 +399,37 @@ do_action( 'woocommerce_before_single_product' );
                 </div>
             </div>
             <div class="singleProduct__rightCol">
-                <?php if(have_rows('info_tabs')): ?>
+                <?php if(have_rows('info_tabs', 'options')): ?>
                     <div class="singleProduct__infoTabs__list">
-                        <?php while(have_rows('info_tabs')): the_row(); ?>
+                        <div class="singleProduct__infoTab__wrapper">
+                            <div class="singleProduct__infoTab">
+                                <div class="singleProduct__infoTab__title woocommerce-text"><?php _E('Dettagli', 'woocommerce_custom_text'); ?></div>
+                            </div>
+                            <div class="singleProduct__infoTab__popup">
+                                <div class="singleProduct__infoTab__popupClose"></div>
+                                <h5 class="singleProduct__infoTab__popupTitle"><?php _E('Dettagli', 'woocommerce_custom_text'); ?></h5>
+                                <?php $default_desc = get_field('default_description'); ?>
+                                <?php if($default_desc): ?>
+                                    <div class="singleProduct__infoTab__popupText woocommerce-text product-desc-simple desc active"><?php echo $default_desc; ?></div>
+                                <?php endif; ?>
+                                <?php 
+                                    if ($product->is_type('variable')) {
+                                        $variations = $product->get_available_variations();
+                                    
+                                        foreach ($variations as $variation) {
+                                            $variation_id = $variation['variation_id'];
+                                            $tab_desc = $variation['description_tab'];
+                                            $variation = new WC_Product_Variation($variation_id); ?>
+                                            <?php if(!empty($tab_desc)): ?>
+                                                <div class="singleProduct__infoTab__popupText woocommerce-text product-desc-<?php echo $variation_id; ?> desc"><?php echo $tab_desc; ?></div>
+                                            <?php endif; ?>
+                                        <?php }
+                                    }
+                                ?>
+                            </div>
+                            <div class="singleProduct__infoTab__popupOverlay"></div>
+                        </div>
+                        <?php while(have_rows('info_tabs', 'options')): the_row(); ?>
                             <?php 
                             $title = get_sub_field('tab_title');
                             $image = get_sub_field('tab_image');
