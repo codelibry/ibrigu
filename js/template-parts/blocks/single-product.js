@@ -101,11 +101,11 @@ function singleProduct(){
             slidesToScroll: 1,
             arrows: false,
             fade: true,
-            dots: true,
-            asNavFor: '.singleProduct__sideSlider'
+            dots: '.singleProduct__sideSlider',
+            //asNavFor: '.singleProduct__sideSlider'
         });
         $('.singleProduct__sideSlider').slick({
-            slidesToShow: 2,
+            slidesToShow: 4,
             slidesToScroll: 1,
             asNavFor: '.singleProduct__mainSlider .woocommerce-product-gallery__wrapper',
             focusOnSelect: true,

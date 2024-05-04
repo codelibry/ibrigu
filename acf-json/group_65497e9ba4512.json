@@ -523,7 +523,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "acf-options-opzioni-tema"
+                "value": "acf-options-theme-options"
             }
         ]
     ],
@@ -536,5 +536,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1713495552
+    "acfml_field_group_mode": "localization",
+    "modified": 1714830228
 }

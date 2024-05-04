@@ -1,15 +1,13 @@
 "use strict";
 
 const gulp            = require('gulp');
-const sass            = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'))
 const concat          = require('gulp-concat');
 const prefix          = require('gulp-autoprefixer');
 const cssnano         = require('gulp-cssnano');
 const rename          = require('gulp-rename');
 const webpack         = require('webpack');
 const webpackStream   = require('webpack-stream');
-const babel           = require('gulp-babel');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CompressionPlugin = require("compression-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
@@ -28,7 +26,7 @@ function compileJs() {
   return gulp.src('./js/main.js')
     .pipe(webpackStream({
       mode: "production",
-      devtool: '',
+      devtool: false,
       output: {
         filename: "main.min.js",
         chunkFilename: "vendors.min.js"
@@ -39,7 +37,7 @@ function compileJs() {
             test: /\.(js|jsx)$/,
             exclude: /(node_modules)/,
             loader: "babel-loader",
-            query: {
+            options: {
               presets: ["@babel/preset-env"],
             },
           },

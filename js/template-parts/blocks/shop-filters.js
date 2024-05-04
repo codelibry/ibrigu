@@ -49,6 +49,7 @@ function shopFilters() {
             },
             success: function(response){
                 $('.catalog__list').html(response);
+                $('.woocommerce-pagination').remove();
             }
         });
         $('.catalog__list').attr('data-category', slug);
