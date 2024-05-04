@@ -244,7 +244,7 @@ do_action('woocommerce_before_single_product');
                         </div>
                     </div>
 
-                    <?php while (have_rows('info_tabs', 'options')) : the_row(); ?>
+                    <?php while (have_rows('info_tabs', 'option')) : the_row(); ?>
                         <?php
                         $title = get_sub_field('tab_title');
                         $image = get_sub_field('tab_image');
@@ -412,7 +412,7 @@ do_action('woocommerce_before_single_product');
                 </div>
             </div>
             <div class="singleProduct__rightCol">
-                <?php if (have_rows('info_tabs', 'options')) : ?>
+                <?php if (have_rows('info_tabs', 'option')) : ?>
                     <div class="singleProduct__infoTabs__list">
                         <div class="singleProduct__infoTab__wrapper">
                             <div class="singleProduct__infoTab">
@@ -431,7 +431,7 @@ do_action('woocommerce_before_single_product');
                             </div>
                             <div class="singleProduct__infoTab__popupOverlay"></div>
                         </div>
-                        <?php while (have_rows('info_tabs', 'options')) : the_row(); ?>
+                        <?php while (have_rows('info_tabs', 'option')) : the_row(); ?>
                             <?php
                             $title = get_sub_field('tab_title');
                             $image = get_sub_field('tab_image');
@@ -493,8 +493,8 @@ do_action('woocommerce_before_single_product');
                                             <div class="singleProduct__attributesPicker__itemPopup__content">
                                                 <?php if ($attribute['name'] == 'pa_size') : ?>
                                                     <?php
-                                                    $popup_title = get_field('size_guide_title', 'options');
-                                                    $size_choosing_text = get_field('size_choosing_text', 'options');
+                                                    $popup_title = get_field('size_guide_title', 'option');
+                                                    $size_choosing_text = get_field('size_choosing_text', 'option');
                                                     ?>
                                                     <div class="singleProduct__attributesPicker__itemPopup__guide">
                                                         <?php if ($popup_title) : ?>
