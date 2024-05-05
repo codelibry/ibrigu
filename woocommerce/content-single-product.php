@@ -7,6 +7,21 @@ $products_list_title = get_field('single_product_products_list_title', 'options'
 $products_slider_title = get_field('single_product_products_slider_title', 'options');
 $products = get_field('products_list');
 do_action('woocommerce_before_single_product');
+
+// Get the product categories
+$categories = wc_get_product_terms($product->get_id(), 'product_cat');
+$care_guide_res = false;
+
+// Loop through each category
+foreach ($categories as $category) {
+    // Check if the category is a child category
+        $care_guide = get_field('category_care_guide' , $category);
+
+        // Check if there is a care guide to display
+        if ($care_guide) {
+            $care_guide_res = $care_guide;
+        }
+}
 ?>
 <section id="product-<?php the_ID(); ?>" <?php wc_product_class('singleProduct', $product); ?>>
     <div class="singleProduct-container container">
@@ -267,6 +282,19 @@ do_action('woocommerce_before_single_product');
                             </div>
                         <?php endif; ?>
                     <?php endwhile; ?>
+
+                    <?php if($care_guide_res): ?>
+                        <div class="singleProduct__infoTab__wrapper">
+                            <div class="singleProduct__infoTab">
+                                <div class="singleProduct__infoTab__title"><?php _e('Care Guide', 'woocommerce_custom_text'); ?></div>
+                            </div>
+                            <div class="singleProduct__infoTab__popup">
+                                <div class="singleProduct__infoTab__popupClose"></div>
+                                <h5 class="singleProduct__infoTab__popupTitle"><?php _e('Care Guide', 'woocommerce_custom_text'); ?></h5>
+                                <?php echo $care_guide_res; ?>                
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
         </div>
@@ -416,11 +444,11 @@ do_action('woocommerce_before_single_product');
                     <div class="singleProduct__infoTabs__list">
                         <div class="singleProduct__infoTab__wrapper">
                             <div class="singleProduct__infoTab">
-                                <div class="singleProduct__infoTab__title woocommerce-text"><?php _E('Dettagli', 'woocommerce_custom_text'); ?></div>
+                                <div class="singleProduct__infoTab__title woocommerce-text"><?php _e('Details', 'woocommerce_custom_text'); ?></div>
                             </div>
                             <div class="singleProduct__infoTab__popup">
                                 <div class="singleProduct__infoTab__popupClose"></div>
-                                <h5 class="singleProduct__infoTab__popupTitle"><?php _E('Dettagli', 'woocommerce_custom_text'); ?></h5>
+                                <h5 class="singleProduct__infoTab__popupTitle"><?php _E('Details', 'woocommerce_custom_text'); ?></h5>
                                 <?php if ( $post->post_excerpt ) : ?>
                                     <div class="woocommerce-product-details__short-description">
                                         <?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ); ?>
@@ -455,6 +483,19 @@ do_action('woocommerce_before_single_product');
                                 </div>
                             <?php endif; ?>
                         <?php endwhile; ?>
+                        <?php if($care_guide_res): ?>
+                            <div class="singleProduct__infoTab__wrapper">
+                                <div class="singleProduct__infoTab">
+                                    <div class="singleProduct__infoTab__title woocommerce-text"><?php _e('Care Guide', 'woocommerce_custom_text'); ?></div>
+                                </div>
+                                <div class="singleProduct__infoTab__popup">
+                                    <div class="singleProduct__infoTab__popupClose"></div>
+                                    <h5 class="singleProduct__infoTab__popupTitle"><?php _E('Care Guide', 'woocommerce_custom_text'); ?></h5>
+                                    <?php echo $care_guide_res; ?>          
+                                </div>
+                                <div class="singleProduct__infoTab__popupOverlay"></div>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
                 <div class="singleProduct__buttons">
@@ -617,18 +658,41 @@ do_action('woocommerce_before_single_product');
     </section>
 <?php endif; ?>
 <?php
-$args = array(
+$current_product_id = get_the_ID();
+
+// Get the terms (categories or tags) associated with the product
+$terms = wp_get_post_terms($current_product_id, 'product_cat', array('fields' => 'ids'));
+
+// Setup the arguments for mobile
+$mobile_args = array(
     'post_type' => 'product',
     'posts_per_page' => 3,
-    'post__not_in' => array(get_the_ID()),
+    'post__not_in' => array($current_product_id),
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'product_cat',
+            'field' => 'id',
+            'terms' => $terms
+        )
+    )
 );
-$mobile_query = new WP_Query($args);
-$args = array(
+$mobile_query = new WP_Query($mobile_args);
+
+// Setup the arguments for desktop
+$desktop_args = array(
     'post_type' => 'product',
     'posts_per_page' => 6,
-    'post__not_in' => array(get_the_ID()),
+    'post__not_in' => array($current_product_id),
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'product_cat',
+            'field' => 'id',
+            'terms' => $terms
+        )
+    )
 );
-$desktop_query = new WP_Query($args);
+$desktop_query = new WP_Query($desktop_args);
+
 if ($mobile_query->have_posts() || $desktop_query->have_posts()) :
 ?>
     <section class="relatedProducts singleProductCardsList__wrapper">

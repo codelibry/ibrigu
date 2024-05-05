@@ -1,0 +1,46 @@
+{
+    "key": "group_6636c46e046a6",
+    "title": "Category Care Guide",
+    "fields": [
+        {
+            "key": "field_6636c47e23285",
+            "label": "Category Care guide",
+            "name": "category_care_guide",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 0,
+            "default_value": "",
+            "tabs": "all",
+            "media_upload": 1,
+            "delay": 0,
+            "toolbar": "full"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "product_cat"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfml_field_group_mode": "localization",
+    "modified": 1714865285
+}

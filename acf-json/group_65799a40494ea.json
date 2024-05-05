@@ -146,8 +146,8 @@
             "placeholder": ""
         },
         {
-            "key": "field_65f5f48400c66",
-            "label": "Shop page",
+            "key": "field_65f5f5a33fac3",
+            "label": "Shop",
             "name": "",
             "type": "tab",
             "instructions": "",
@@ -158,12 +158,12 @@
                 "class": "",
                 "id": ""
             },
-            "wpml_cf_preferences": 0,
+            "wpml_cf_preferences": 1,
             "placement": "top",
             "endpoint": 0
         },
         {
-            "key": "field_65f5f49200c67",
+            "key": "field_65f5f5ad3fac4",
             "label": "Categories List Order",
             "name": "categories_list_order",
             "type": "number",
@@ -175,7 +175,7 @@
                 "class": "",
                 "id": ""
             },
-            "wpml_cf_preferences": 0,
+            "wpml_cf_preferences": 1,
             "default_value": "",
             "placeholder": "",
             "prepend": "",
@@ -204,5 +204,5 @@
     "description": "",
     "show_in_rest": 0,
     "acfml_field_group_mode": "translation",
-    "modified": 1710617764
+    "modified": 1714865256
 }

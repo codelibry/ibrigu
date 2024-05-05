@@ -15,19 +15,30 @@
         position: relative
         &.full--width
             width: 100vw
+            min-width: 100vw
+            height: 100svh
+            left: 50%
+            transform: translateX(-50%)
             a
                 overflow: unset
+                display: block
+                height: 100%
             .productCategory__item-wrap
                 width: 100%
-                padding-bottom: 1080px 
-                +max-screen(1440px)
-                    padding-bottom: 900px
-                +max-screen(1200px)
-                    padding-bottom: 720px
-                +max-screen($breakpoint-lg)
-                    padding-bottom: 100svh
+                height: 100%
+                position: relative
+                padding-bottom: 0
+                &:before
+                    content: ''
+                    position: absolute
+                    z-index: 1
+                    top: 0
+                    left: 0
+                    width: 100%
+                    height: 100%
+                    background-color: rgba(0,0,0,0.2)
             .productCategory__item-img
-                width: 50vw
+                width: 50%
                 +max-screen($breakpoint-md)
                     width: 100%
                 &:nth-last-of-type(2)
@@ -63,7 +74,7 @@
                 background: #545454
                 background: linear-gradient(0deg,#545454,transparent)
                 z-index: 5
-                opacity: 0.19
+                opacity: 0.5
                 width: 100%
                 min-height: 130px
             a
