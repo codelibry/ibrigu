@@ -28,8 +28,10 @@ foreach ($categories as $category) {
         <div class="singleProduct__content mobile">
             <div class="singleProduct__breadcrumbs"></div>
             <div class="singleProduct__imagesList">
-                <?php $columns           = apply_filters('woocommerce_product_thumbnails_columns', 4);
+                <?php 
+                $columns           = apply_filters('woocommerce_product_thumbnails_columns', 4);
                 $post_thumbnail_id = $product->get_image_id();
+                $video = get_field('video');
                 $wrapper_classes   = apply_filters(
                     'woocommerce_single_product_image_gallery_classes',
                     array(
@@ -63,6 +65,15 @@ foreach ($categories as $category) {
                                     </a>
                                 </div>
                         <?php
+                            }
+                            if($video){
+                                ?>
+                                <div data-thumb="<?php echo esc_url($image_url); ?>" class="woocommerce-product-gallery__image video">
+                                    <video class="video-el" loop muted playsinline width="100%" height="100%">
+                                        <source src="<?php echo $video['url'] ?>" type="video/mp4">
+                                    </video>
+                                </div>
+                                <?php
                             }
                         }
                         ?>
@@ -408,6 +419,13 @@ foreach ($categories as $category) {
                                 }
                             }
                             ?>
+                            <?php if($video): ?>
+                                <div class="woocommerce-product-gallery__image video">
+                                    <video class="video-el"  muted playsinline width="100%" height="100%">
+                                        <source src="<?php echo $video['url'] ?>" type="video/mp4">
+                                    </video>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -430,6 +448,15 @@ foreach ($categories as $category) {
                                 </div>
                         <?php }
                         endif; ?>
+                        <?php if($video): ?>
+                            <div class="singleProduct__sideSlider__itemWrapper">
+                                <div class="singleProduct__sideSlider__item video">
+                                    <video class="video-el"  muted playsinline width="100%" height="100%">
+                                        <source src="<?php echo $video['url'] ?>" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     <?php else : ?>
                         <div class="singleProduct__sideSlider__itemWrapper">
                             <div class="singleProduct__sideSlider__item">
@@ -660,38 +687,70 @@ foreach ($categories as $category) {
 <?php
 $current_product_id = get_the_ID();
 
-// Get the terms (categories or tags) associated with the product
-$terms = wp_get_post_terms($current_product_id, 'product_cat', array('fields' => 'ids'));
+// Get cross-sell product IDs
+$cross_sell_ids = $product->get_cross_sell_ids();
 
-// Setup the arguments for mobile
-$mobile_args = array(
-    'post_type' => 'product',
-    'posts_per_page' => 3,
-    'post__not_in' => array($current_product_id),
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'product_cat',
-            'field' => 'id',
-            'terms' => $terms
-        )
-    )
-);
-$mobile_query = new WP_Query($mobile_args);
+// Return if there are no cross sell products
+if (empty($cross_sell_ids)) {
+    // WP_Query arguments to fetch cross-sell products
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => $limit,
+        'post__in' => $cross_sell_ids,
+        'orderby' => 'post__in'
+    );
 
-// Setup the arguments for desktop
-$desktop_args = array(
-    'post_type' => 'product',
-    'posts_per_page' => 6,
-    'post__not_in' => array($current_product_id),
-    'tax_query' => array(
-        array(
-            'taxonomy' => 'product_cat',
-            'field' => 'id',
-            'terms' => $terms
+    // The query
+    $query = new WP_Query($args);
+
+    // Get the terms (categories or tags) associated with the product
+    $terms = wp_get_post_terms($current_product_id, 'product_cat', array('fields' => 'ids'));
+
+    // Setup the arguments for mobile
+    $mobile_args = array(
+        'post_type' => 'product',
+        'posts_per_page' => 3,
+        'post__not_in' => array($current_product_id),
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field' => 'id',
+                'terms' => $terms
+            )
         )
-    )
-);
-$desktop_query = new WP_Query($desktop_args);
+    );
+    $mobile_query = new WP_Query($mobile_args);
+
+    // Setup the arguments for desktop
+    $desktop_args = array(
+        'post_type' => 'product',
+        'posts_per_page' => 6,
+        'post__not_in' => array($current_product_id),
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field' => 'id',
+                'terms' => $terms
+            )
+        )
+    );
+    $desktop_query = new WP_Query($desktop_args);
+} else{
+    
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => -1,
+        'post__in' => $cross_sell_ids,
+        'orderby' => 'post__in'
+    );
+
+    // The query
+    $query = new WP_Query($args);
+    $mobile_query = new WP_Query($args);
+    $desktop_query = new WP_Query($args);
+}
+
+
 
 if ($mobile_query->have_posts() || $desktop_query->have_posts()) :
 ?>

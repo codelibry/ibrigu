@@ -683,6 +683,7 @@ body.woocommerce.woocommerce-page
                                 height: 100% !important
                                 object-fit: cover 
                                 object-position: center
+                        
                     &__item 
                         position: relative
                         &::before 
@@ -734,13 +735,26 @@ body.woocommerce.woocommerce-page
                             content: ""
                             padding-bottom: 120% 
                             display: block 
-                        img 
+                        img , video
                             position: absolute
                             left: 0
                             top: 0
                             width: 100%
                             height: 100% !important
                             object-fit: cover
+                        &.video
+                            &:after
+                                content: ''
+                                position: absolute
+                                top: 50%
+                                left: 50%
+                                transform: translate3d(-50%,-50%,0)
+                                width: 25%
+                                height: 25%
+                                background-image: url(../assets/images/video-play.svg)
+                                background-size: contain
+                                background-position: center
+                                background-repeat: no-repeat
                 &__imagesWrapper 
                     width: 45.5%
                     display: flex 
@@ -1308,3 +1322,24 @@ body.woocommerce.woocommerce-page
     #main main#main
         +max-screen($breakpoint-md)
             padding-top: 87px 
+
+
+.woocommerce-product-gallery__image
+    &.video   
+        position: relative
+        &:after
+            content: ''
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate3d(-50%,-50%,0)
+            width: 40px
+            height: 40px
+            background-image: url(../assets/images/video-play.svg)
+            background-size: contain
+            background-position: center
+            background-repeat: no-repeat
+            pointer-events: none
+        &.playing
+            &::after
+                content: none

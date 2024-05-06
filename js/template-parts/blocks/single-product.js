@@ -105,13 +105,26 @@ function singleProduct(){
             //asNavFor: '.singleProduct__sideSlider'
         });
         $('.singleProduct__sideSlider').slick({
-            slidesToShow: 4,
+            slidesToShow: 5,
             slidesToScroll: 1,
             asNavFor: '.singleProduct__mainSlider .woocommerce-product-gallery__wrapper',
             focusOnSelect: true,
             vertical: true,
             verticalSwiping: true,
             arrows: false,
+        });
+        $('.woocommerce-product-gallery__image video').each(function() {
+            let video = $(this).get(0); // Direct reference to the video element
+            let $video = $(this).parent();
+            $(this).on('click', function() {
+                if (video.paused) {
+                    video.play(); // Play the video if it is currently paused
+                    $video.addClass('playing');
+                } else {
+                    video.pause(); // Pause the video if it is currently playing
+                    $video.removeClass('playing');
+                }
+            });
         });
     });
     $(window).scroll(function(){
