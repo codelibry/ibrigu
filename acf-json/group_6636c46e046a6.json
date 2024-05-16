@@ -1,7 +1,27 @@
 {
     "key": "group_6636c46e046a6",
-    "title": "Category Care Guide",
+    "title": "Category Info Fields",
     "fields": [
+        {
+            "key": "field_663aa5e3787e5",
+            "label": "Single product page notice",
+            "name": "single_product_page_notice",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 0,
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
         {
             "key": "field_6636c47e23285",
             "label": "Category Care guide",
@@ -15,7 +35,7 @@
                 "class": "",
                 "id": ""
             },
-            "wpml_cf_preferences": 0,
+            "wpml_cf_preferences": 2,
             "default_value": "",
             "tabs": "all",
             "media_upload": 1,
@@ -42,5 +62,5 @@
     "description": "",
     "show_in_rest": 0,
     "acfml_field_group_mode": "localization",
-    "modified": 1714865285
+    "modified": 1715119615
 }

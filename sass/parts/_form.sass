@@ -143,27 +143,12 @@
 			&.submit-container
 				position: absolute
 				top: 0
-				right: calc(6.74px * 2)
+				right: 0
 				+max-screen($breakpoint-md)
-					right: calc(6.74px * 2)
+					right: 0
 				+max-screen($breakpoint-sm)
-					right: calc(7.86px)
-				&:after
-					content: " "
-					position: absolute
-					width: calc(7.86px * 2)
-					height: calc(6.74px * 2)
-					background-image: url(../assets/images/send.svg)
-					background-repeat: no-repeat
-					background-position: center
-					background-size: contain
-					top: 50%
-					left: 0
-					transform: translateY(calc(50% - 4px))
-					+max-screen($breakpoint-sm)
-						width: calc(7.86px)
-						height: calc(6.74px)
-						transform: translateY(50%)
+					right: 0
+				
 		.nf-field
 			.field-wrap
 				.nf-field-element
@@ -174,6 +159,16 @@
 						border: none
 						padding: 0
 						font-size: 0
+						width: 40px
+						height: 40px
+						background-image: url(../assets/images/send.svg)
+						background-repeat: no-repeat
+						background-position: center
+						background-size: 15px auto
+						+max-screen($breakpoint-md)
+							height: 30px
+						+max-screen($breakpoint-sm)
+							height: 16px
 				&.textbox-wrap
 					&.submit-wrap
 						margin: 0

@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import 'jquery-zoom';
 
 function singleProduct(){
     
@@ -126,6 +127,15 @@ function singleProduct(){
                 }
             });
         });
+        // Images zoom
+        $('.singleProduct__mainSlider .woocommerce-product-gallery__image a').each(function(){
+            let url = $(this).attr('href');
+            $(this).zoom({url: url});
+            $(this).on('click', function(e){
+                e.preventDefault();
+            });
+        });
+        
     });
     $(window).scroll(function(){
         if($('.productAddTocart').hasClass('variable')){

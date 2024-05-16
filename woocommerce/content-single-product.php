@@ -11,15 +11,20 @@ do_action('woocommerce_before_single_product');
 // Get the product categories
 $categories = wc_get_product_terms($product->get_id(), 'product_cat');
 $care_guide_res = false;
+$product_cat_notice = false;
 
 // Loop through each category
 foreach ($categories as $category) {
     // Check if the category is a child category
         $care_guide = get_field('category_care_guide' , $category);
+        $product_notice_tmp = get_field('single_product_page_notice' , $category);
 
         // Check if there is a care guide to display
         if ($care_guide) {
             $care_guide_res = $care_guide;
+        }
+        if($product_notice_tmp){
+            $product_cat_notice = $product_notice_tmp;
         }
 }
 ?>
@@ -85,7 +90,7 @@ foreach ($categories as $category) {
 
                     <h2 class="sm"><?php the_title(); ?></h2>
                     <div class="wishlistIcon"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?></div>
-
+                    
                     <?php
                     $attributes = $product->get_attributes();
                     foreach ($attributes as $key => $attribute) :
@@ -117,6 +122,9 @@ foreach ($categories as $category) {
                 </div>
             </div>
             <div class="singleProduct__description__wrapper">
+                <?php if($product_cat_notice): ?>
+                    <p class="text-sm mb-1 mt-2"><?php echo $product_cat_notice; ?></p>
+                <?php endif; ?>
                 <?php
                 $attributes = $product->get_attributes();
                 if (is_a($product, 'WC_Product_Variable')) :
@@ -316,6 +324,9 @@ foreach ($categories as $category) {
                     <h2 class="singleProduct__price desktop-md"><?php do_action('woocommerce_product_price'); ?></h2>
                     <h2 class="singleProduct__wishlist desktop-md"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?></h2>
                 </div>
+                <?php if($product_cat_notice): ?>
+                    <p class="text-sm"><?php echo $product_cat_notice; ?></p>
+                <?php endif; ?>
                 <div class="singleProduct__description__wrapper">
                     <div class="singleProduct__description">
                         <div class="attributesItem__list woocommerce-text">
