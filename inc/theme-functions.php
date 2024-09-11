@@ -45,7 +45,7 @@ add_filter( 'big_image_size_threshold', '__return_false' );
 //Nav arrows
 function filter_walker_nav_menu_start_el( $item_output, $item, $depth, $args ) {
     if(in_array('menu-item-has-children',$item->classes)){
-        return '<div class="menu-item__parent">'.$item_output.'<span class="menu-item__icon"><img src="'.get_template_directory_uri().'/assets/images/icon-nav-arrow.svg"/></span></div>';
+        return '<div class="menu-item__parent">'.$item_output.'</div>';
     }
 	return $item_output;
 }

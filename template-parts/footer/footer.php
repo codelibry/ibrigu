@@ -91,7 +91,7 @@
     </div>
 
     <div class="footer__bottom bg--white--light">
-        <div class="container footer__bottom__inner">
+        <div class="container footer__bottom__inner align-items-center flex-lg-row flex-column">
             <?php if ($footerSocials) : ?>
                 <div class="footer__main__social d-none d-lg-flex">
                     <ul class="footer__main__social__list">
@@ -114,7 +114,17 @@
 
                 </div>
             <?php endif; ?>
-
+			
+			<?php 
+			$footer_text = get_field('footer_text' , 'option');
+			if($footer_text): ?>
+				<div class="footer__bottom__text px-lg-1 pb-2 pb-lg-0">
+					<div class="content-block text-xs">
+						 <?php echo $footer_text; ?>
+					</div>
+				</div>
+			<?php endif; ?>
+			
             <div class="text--opacity footer__bottom__copyright">
                 <?php echo __('IBRIGU') . ' ' . date('Y'); ?>©
             </div>

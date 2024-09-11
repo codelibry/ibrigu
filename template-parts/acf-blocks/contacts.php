@@ -37,7 +37,7 @@
                                     $contacts = get_sub_field('contactsItem');
                                     ?>
                                     <?php if($contacts) :?>
-                                        <li class="contacts-block__contactsItem col-6 col-xl-12 p-0">
+                                        <li class="contacts-block__contactsItem col-6 col-lg-12 p-0">
                                             <?php echo $contacts ?>
                                         </li>
                                     <?php endif;?>

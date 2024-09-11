@@ -55,7 +55,7 @@
             <nav class="header__nav nav--right">
                 <div class="cart">
                     <a href="<?php echo get_site_url() . '/cart'; ?>">
-                        <?php echo file_get_contents(esc_url(get_template_directory_uri() . '/assets/images/cart_icon.svg')); ?>
+                        <?php echo file_get_contents(get_template_directory() . '/assets/images/cart_icon.svg'); ?>
                     </a>
                 </div>
                 <div class="main-nav">
@@ -159,7 +159,7 @@
 
             <div class="header__cart">
                 <a href="<?php echo get_site_url() . '/cart'; ?>">
-                    <?php echo file_get_contents(esc_url(get_template_directory_uri() . '/assets/images/cart_icon.svg')); ?>
+                    <?php echo file_get_contents(get_template_directory() . '/assets/images/cart_icon.svg'); ?>
                 </a>
             </div>
         </div>

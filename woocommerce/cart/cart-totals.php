@@ -61,7 +61,7 @@ defined( 'ABSPATH' ) || exit;
 		}
 		?>
 		<a class="cartTotals__checkoutBtn btn button--black button--fz--md button--size--md" href="<?php echo $checkout; ?>">
-			<?php _e('GUARDARE', 'woocommerce_custom_text'); ?>
+			<?php _e('CONTINUE', 'woocommerce_custom_text'); ?>
 		</a>
 		<a class="cartTotals__shopBtn btn button--white button--white--border button--fz--xs button--size--md" href="<?php echo $clothing; ?>">
 			<?php _e('VESTIARIO', 'woocommerce_custom_text'); ?>

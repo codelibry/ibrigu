@@ -206,6 +206,7 @@
 		<div class="cart__bottom">
 			<div class="cart-collaterals">
 				<?php
+				remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
 				/**
 				 * Cart collaterals hook.
 				 *
