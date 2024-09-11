@@ -23,8 +23,13 @@ global $product;
 if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
+
+// Check if the product is in stock
+$in_stock = $product->is_in_stock();
+$stock_status_class = $in_stock ? '' : 'out-of-stock';
+$price_output = $in_stock ? $product->get_price_html() : __( 'Out of stock', 'woocommerce' );
 ?>
-<div class="catalog__listItem__wrapper col-lg-3 col-6">
+<div class="catalog__listItem__wrapper col-lg-3 col-6 <?php echo $stock_status_class; ?>">
     <a class="catalog__listItem" href="<?php the_permalink(); ?>">
         <?php 
         if(!empty(wp_get_attachment_url( $product->get_image_id() ))):
@@ -38,7 +43,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
         </div>
         <div class="catalog__listItem__body">
             <h5 class="catalog__listItem__title"><?php echo $product->get_title(); ?></h5>
-            <h5 class="catalog__listItem__price"><?php echo $product->get_price_html(); ?></h5>
+            <h5 class="catalog__listItem__price"><?php echo $price_output; ?></h5>
             <div class="catalog__listItem__wishlist"><?php do_action( 'woocommerce_after_shop_loop_item' ); ?></div>
         </div>
     </a>

@@ -122,6 +122,7 @@ function sidebarAttributes(){
             },
             success: function(response){
                 $('.catalog__list').html(response);
+                $('.woocommerce-pagination').remove();
             }
         });
         $('.catalog__filtersMenu').removeClass('opened');
